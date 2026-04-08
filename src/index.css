@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-twin-bg: #000000;
+  --color-twin-card: #0A0A0A;
+  --color-twin-border: #1F2937;
+  --color-twin-accent: #3B82F6;
+  --color-aura-medical: #14B8A6;
+  --color-aura-logic: #6366F1;
+  --color-aura-gold: #F59E0B;
+  --color-aura-rigor: #EF4444;
+  --color-lens-architect: #22D3EE;
+  --color-lens-strategist: #A1A1AA;
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "skills": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "Node.js",
+    "FastAPI",
+    "Python",
+    "Three.js",
+    "PostgreSQL",
+    "Docker",
+    "RAG",
+    "Microservices"
+  ],
+  "experience": [
+    {
+      "role": "Architect",
+      "company": "Medical AI Co",
+      "project": "Sakhi",
+      "description": "Built Hybrid routing engine, SLM vs GPT semantic embeddings."
+    },
+    {
+      "role": "Lead Engineer",
+      "company": "Enterprise AI",
+      "project": "Pre-Sales Co-Pilot",
+      "description": "Developed React Generative UI and contextual RAG engine."
+    }
+  ],
+  "awards": [
+    "Smart India Hackathon Finalist",
+    "First class with Distinction"
+  ]
+}
