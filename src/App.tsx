@@ -7,7 +7,7 @@ import { AskDigitalTwin } from "@/components/AskDigitalTwin";
 
 function App() {
   return (
-    <div className="w-full min-h-screen bg-twin-bg text-white flex">
+    <div className="w-full min-h-screen text-white flex relative bg-transparent">
       <BackgroundAura />
       <TelemetryCluster />
       <Sidebar />
