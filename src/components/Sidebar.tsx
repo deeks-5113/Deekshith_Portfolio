@@ -1,10 +1,10 @@
 import React from 'react';
-import { Home, FolderGit2, Network, Users } from 'lucide-react';
+import { Home, FolderGit2, Newspaper, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { NarrativeSidebar } from './NarrativeSidebar';
 import { useLens } from '@/context/LensContext';
 import { useDeepDive } from '@/contexts/DeepDiveContext';
-import { getProjectBySlug, projectsData } from '@/data/projects';
+import { getProjectBySlug } from '@/data/projects';
 
 export function Sidebar() {
   const { isTyping } = useLens();
@@ -48,52 +48,21 @@ export function Sidebar() {
             </Link>
           </li>
           <li>
-            <div className="flex flex-col gap-1 mt-1 p-2 relative">
-              <div className="flex items-center gap-3 text-sm text-gray-300">
-                <FolderGit2 size={16} /> Projects
-              </div>
-              {isInDeepDive && activeProject ? (
-                <ul className="pl-7 text-[11px] text-gray-400 font-mono mt-1 space-y-1">
-                  {deepDiveSections.map((section) => (
-                    <li key={section.id}>
-                      <button
-                        type="button"
-                        onClick={() => scrollToSection(section.id)}
-                        className="block py-1 text-left transition-colors hover:text-twin-accent"
-                      >
-                        {'-> '}
-                        {section.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                !isTyping && (
-                  <ul className="pl-7 text-[11px] text-gray-400 font-mono mt-1">
-                    {projectsData.map((project) => (
-                      <li key={project.id}>
-                        <button
-                          type="button"
-                          onClick={() => scrollToSection(project.id)}
-                          className="block py-1 transition-colors hover:text-twin-accent"
-                        >
-                          {'-> '}
-                          {project.shortTitle}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )
-              )}
-            </div>
-          </li>
-          <li>
             <button
               type="button"
               onClick={() => scrollToSection('projects')}
               className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
             >
-              <Network size={16} /> Architecture
+              <FolderGit2 size={16} /> Projects
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              onClick={() => scrollToSection('blogs')}
+              className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
+            >
+              <Newspaper size={16} /> Blogs
             </button>
           </li>
           <li>

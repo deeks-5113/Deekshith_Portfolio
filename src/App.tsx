@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { BackgroundAura } from '@/components/BackgroundAura';
 import { Sidebar } from '@/components/Sidebar';
 import { HomePage } from '@/pages/HomePage';
+import { BlogPostPage } from '@/pages/BlogPostPage';
 import { ProjectDeepDivePage } from '@/pages/ProjectDeepDivePage';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <div className="transition-[margin] duration-500 lg:ml-72">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/projects/:slug/deep" element={<ProjectDeepDivePage />} />
           </Routes>
         </div>
