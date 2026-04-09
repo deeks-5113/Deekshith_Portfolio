@@ -28,12 +28,19 @@ const projectsData: ProjectCardData[] = [
       'Parses platform-specific DOM trees, compiles selected Q&A pairs into clean Markdown, and auto-injects into any target LLM via Chrome Storage relay with clipboard fallback. No API. No server. No permissions beyond Chrome.',
   },
   commentaryLogs: {
-    'Cross-Platform DOM Interoperability':
-      "Walled gardens lack APIs, so I used the DOM. My parser navigates HTML trees to extract reasoning threads across platforms. It turns structured chaos into portable context.",
-    'Zero-Server Architecture':
-      "Data leakage kills adoption. I built this with 0 backend. Everything lives in Chrome storage—no DBs, no APIs. 100% privacy is why 60+ engineers trusted it on day one.",
+    // Triggers when hovering anywhere on the card
+    'overall': 
+      "I built this to solve the 'context tax.' It's an engineering bridge between isolated LLMs, ensuring reasoning moves as fast as you do, with total privacy baked into the architecture.",
+    
+    // The 4 Specific Architecture Signals
     'Context Teleportation Protocol':
       "Copying is easy; preserving reasoning is hard. This protocol packages intent into a 'context packet' for instant injection. It eliminates the tax of switching models.",
+    'Zero-Server Architecture':
+      "Data leakage kills adoption. I built this with 0 backend. Everything lives in Chrome storage—no DBs, no APIs. 100% privacy is why 60+ engineers trusted it on day one.",
+    'Cross-Platform DOM Interoperability':
+      "Walled gardens lack APIs, so I used the DOM. My parser navigates HTML trees to extract reasoning threads across platforms. It turns structured chaos into portable context.",
+    'Client-Side Execution Only':
+      "Local execution removes latency and infra overhead. By leveraging Chrome's runtime, the tool scales infinitely with zero operational costs or data risks. It's pure, efficient logic.",
   },
 },
 {
@@ -61,6 +68,8 @@ const projectsData: ProjectCardData[] = [
       'Four sequential safety layers - similarity scoring, confidence gating, Straightjacket prompting, and a mid-stream Entity Auditor - guarantee zero hallucination exposure before a single token reaches the user.',
   },
   commentaryLogs: {
+    'overall':
+      "Most healthcare copilots optimize for answers. I optimized for failure modes. Sakhi is a zero-trust clinical agent where every architectural layer exists to prevent unsafe reasoning from ever reaching the patient.",
     '4-Layer Hallucination Shield':
       "Most bots 'hope' LLMs stay on track. I built a stream-level auditor scanning tokens vs source. If it drifts, it aborts. Safety isn't a prompt; it's an architectural guarantee.",
     'Confidence-Gated Hybrid Routing':
@@ -94,10 +103,12 @@ const projectsData: ProjectCardData[] = [
       'Four chained agents handle client enrichment (Clearbit/SerpAPI), call transcription (Whisper -> AssemblyAI fallback), LLM reasoning (GPT-4 + confidence gating), and visual deck generation (Figma API). PostgreSQL owns relational state. VectorDB handles semantic RFP search. n8n orchestrates every handoff.',
   },
   commentaryLogs: {
+    'overall':
+      "This wasn't about making sales research nicer. It was about collapsing an entire pre-sales operating model into one autonomous pipeline, where enrichment, reasoning, and delivery happen as a single system.",
     'Multi-Agent Orchestration (n8n)':
       "I traded 'god-scripts' for a 4-agent pipeline via n8n for state visibility. If enrichment fails, the STT agent still proceeds. It’s modular, fault-tolerant automation.",
     'Dual-Schema RAG Engine':
-      "Enterprise RFPs RFPs mix facts and narratives. I use PostgreSQL for ACID pricing and VectorDB for semantic search. They merge at the UI to deliver a coherent, factually grounded draft..",
+      "Enterprise RFPs mix facts and narratives. I use PostgreSQL for ACID pricing and VectorDB for semantic search. They merge at the UI to deliver a coherent, factually grounded draft..",
     '15-Minute Automated Workflow':
       "I killed the 3-day prep cycle. By chaining discovery transcription to branded Figma deck generation, I turned a manual slog into a 15-minute autonomous pipeline. It’s a game-changer for sales velocity.",
   },

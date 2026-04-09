@@ -33,6 +33,9 @@ const auraColors: Record<string, { border: string; glow: string; accent: string 
   'aura-rigor': { border: 'rgba(239,68,68,0.42)', glow: 'rgba(239,68,68,0.14)', accent: '#EF4444' },
 };
 
+const outsideProjectCommentary =
+  "Most portfolios show the 'what.' I want to show the 'why.' Hover over a project to hear the director's commentary on the architectural pivots and engineering decisions that matter.";
+
 export function ProjectCard({
   data,
   itemClassName = '',
@@ -81,14 +84,26 @@ export function ProjectCard({
     setActiveHoverLog(data.commentaryLogs?.[item] ?? null);
   };
 
+  const handleCardEnter = () => {
+    if (!isArchitectMode) return;
+    setActiveHoverLog(data.commentaryLogs?.overall ?? null);
+  };
+
   const handlePanelItemLeave = () => {
-    setActiveHoverLog(null);
+    if (!isArchitectMode) return;
+    setActiveHoverLog(data.commentaryLogs?.overall ?? null);
+  };
+
+  const handleCardLeave = () => {
+    setActiveHoverLog(outsideProjectCommentary);
   };
 
   return (
     <div
       ref={cardRef}
       id={data.id}
+      onMouseEnter={handleCardEnter}
+      onMouseLeave={handleCardLeave}
       className={`relative min-h-[68vh] w-[93%] max-w-[76rem] overflow-hidden rounded-[1.75rem] border bg-[#171717]/97 ${itemClassName}`.trim()}
       style={{
         borderColor: aura.border,
