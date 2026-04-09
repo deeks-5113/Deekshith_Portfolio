@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Sparkles, Stars } from '@react-three/drei';
+import { Grid, Stars } from '@react-three/drei';
 
 function Scene() {
   const groupRef = useRef<THREE.Group>(null);
@@ -11,18 +11,37 @@ function Scene() {
     // Constant background color
     scene.background = new THREE.Color(0x0A0A0A); // Deep dark gray/black
 
-    // Animate rotation subtly
+    // Animate rotation very subtly (Extremely low entropy)
     if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.05;
-      groupRef.current.rotation.x = Math.sin(clock.elapsedTime * 0.2) * 0.05;
+      groupRef.current.rotation.y += delta * 0.02; // Extremely slow rotation
+      groupRef.current.rotation.x = Math.sin(clock.elapsedTime * 0.05) * 0.02; // Very slow oscillation
     }
   });
 
   return (
     <group ref={groupRef}>
-      <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
-      <Sparkles count={400} size={4} color="#E5E7EB" speed={0.4} opacity={0.5} scale={25} />
-      <Sparkles count={150} size={8} color="#F9FAFB" speed={1.5} opacity={0.3} scale={35} />
+      {/* 
+        Enterprise-grade geometric grid 
+        Replaces chaotic particles with deterministic structure
+      */}
+      <Grid
+        position={[0, -5, 0]}
+        args={[100, 100]}
+        cellSize={1}
+        cellThickness={1}
+        cellColor="#27272a"
+        sectionSize={5}
+        sectionThickness={1.5}
+        sectionColor="#3f3f46"
+        fadeDistance={40}
+        fadeStrength={1}
+      />
+
+      {/* 
+        Subdued background stars 
+        Lowest opacity, tiny factor, very slow speed 
+      */}
+      <Stars radius={100} depth={50} count={2000} factor={2} saturation={0} fade speed={0.1} />
     </group>
   );
 }

@@ -7,7 +7,7 @@ export function HeroSection() {
   const { isArchitectMode } = useLens();
 
   return (
-    <section className="w-full max-w-4xl mx-auto pt-32 pb-20 px-8 lg:pl-16 relative z-10 min-h-[70vh] flex flex-col justify-center">
+    <section className="w-full max-w-4xl mx-auto pt-16 pb-20 px-8 lg:pl-16 relative z-10 min-h-[70vh] flex flex-col justify-center">
 
       <div className="relative">
         <AnimatePresence mode="wait">

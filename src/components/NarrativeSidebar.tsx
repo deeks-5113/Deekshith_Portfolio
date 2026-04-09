@@ -1,21 +1,14 @@
 
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLens } from '@/context/LensContext';
 import { Terminal } from 'lucide-react';
+import { architectureData } from '@/data/architectureMapping';
 
 const narrativeData: Record<string, { architect: string; strategist: string }> = {
   none: {
     architect: ">_ SYSTEM INITIALIZED. Awaiting user scroll sequences to decode context.",
     strategist: "Welcome. Navigate through the timeline to explore my strategic impact and execution frameworks.",
-  },
-  sakhi: {
-    architect: ">_ While building Sakhi, I realized that generic LLMs couldn't handle clinical precision, so I built a hybrid routing engine to solve it.",
-    strategist: "Sakhi represents a critical bridge between patient needs and rapid healthcare assistance, scaling expert care safely.",
-  },
-  navigator: {
-    architect: ">_ I designed the Context Teleportation Protocol with heavy reliance on Chrome Storage API relay logic to persist state flawlessly.",
-    strategist: "Thread Navigator aligned active LLM usages into a single universal platform, capturing significant daily active adoption.",
   },
   leadership: {
     architect: ">_ Containerized deployments scaling across 4 teams, minimizing build bottlenecks by 40% via optimized CI/CD pipelines.",
@@ -28,13 +21,22 @@ const narrativeData: Record<string, { architect: string; strategist: string }> =
 };
 
 export function NarrativeSidebar() {
-  const { isArchitectMode, activeProject } = useLens();
+  const { isArchitectMode, activeProject, activeHoverLog } = useLens();
   const [displayText, setDisplayText] = useState('');
 
-  // Target string based on both the project in view and the current lens
+  // Target string based on hover state, active project, and lens
   const currentKey = activeProject.toLowerCase();
-  const data = narrativeData[currentKey] ? narrativeData[currentKey] : narrativeData['none'];
-  const targetText = isArchitectMode ? data.architect : data.strategist;
+  
+  let targetText = "";
+  if (isArchitectMode) {
+    if (activeHoverLog) {
+      targetText = activeHoverLog;
+    } else {
+      targetText = architectureData[currentKey]?.commentaryLogs.default || narrativeData[currentKey]?.architect || narrativeData['none'].architect;
+    }
+  } else {
+    targetText = architectureData[currentKey]?.strategistLens.strategistLog || narrativeData[currentKey]?.strategist || narrativeData['none'].strategist;
+  }
 
   // Typewriter effect logic
   useEffect(() => {
