@@ -23,7 +23,7 @@ export function BlogPostPage() {
       <div className="mt-10 overflow-hidden rounded-[2rem] border border-white/10 bg-[#060606]/85 shadow-[0_40px_120px_rgba(0,0,0,0.35)]">
         <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="border-b border-white/8 p-8 lg:border-b-0 lg:border-r lg:p-10">
-            <p className="font-mono text-xs uppercase tracking-[0.35em] text-[#22D3EE]">{blog.eyebrow}</p>
+            {/* <p className="font-mono text-xs uppercase tracking-[0.35em] text-[#22D3EE]">{blog.eyebrow}</p> */}
             <h1 className="mt-5 max-w-2xl text-4xl font-semibold leading-tight text-white md:text-5xl">{blog.title}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">{blog.heroSummary}</p>
 

@@ -1,8 +1,9 @@
 import { TelemetryCluster } from '@/components/TelemetryCluster';
 import { HeroSection } from '@/components/HeroSection';
 import { WorkSection } from '@/components/work/WorkSection';
-import { AskDigitalTwin } from '@/components/AskDigitalTwin';
 import { BlogShowcase } from '@/components/blogs/BlogShowcase';
+import { ContactSimpleForm } from '@/components/ContactSimpleForm';
+import { SiteFooter } from '@/components/SiteFooter';
 
 export function HomePage() {
   return (
@@ -11,7 +12,8 @@ export function HomePage() {
       <HeroSection />
       <WorkSection />
       <BlogShowcase />
-      <AskDigitalTwin />
+      <ContactSimpleForm />
+      <SiteFooter />
     </>
   );
 }

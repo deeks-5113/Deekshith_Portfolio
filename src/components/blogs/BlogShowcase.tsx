@@ -1,10 +1,8 @@
-import { useNavigate } from 'react-router-dom';
 import { blogs } from '@/data/blogs';
 import CardSwap, { Card } from './CardSwap';
 import { useLens } from '@/context/LensContext';
 
 export function BlogShowcase() {
-  const navigate = useNavigate();
   const { isTyping } = useLens();
 
   if (isTyping) return null;
@@ -43,12 +41,8 @@ export function BlogShowcase() {
           easing="smooth"
           onCardClick={(index) => {
             const blog = blogs[index];
-            if (!blog) return;
-            if (blog.href) {
-              window.open(blog.href, '_blank', 'noopener,noreferrer');
-              return;
-            }
-            navigate(`/blog/${blog.slug}`);
+            if (!blog?.href) return;
+            window.open(blog.href, '_blank', 'noopener,noreferrer');
           }}
         >
           {blogs.map((blog) => (

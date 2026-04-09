@@ -145,6 +145,117 @@ const threadArchitectureFooters = [
   },
 ];
 
+const sakhiTechTags = ['FastAPI', 'Next.js', 'Supabase', 'pgvector', 'Hybrid RAG', 'Page Indexing'];
+
+const sakhiPerformanceTargets = [
+  { requirement: 'Latency', target: '< 1s TTFT', method: 'SSE (Server-Sent Events) & background tasks.' },
+  { requirement: 'Accuracy', target: 'Functional 0% Hallucination', method: 'Real-time Entity Auditor & 0.85 confidence gate.' },
+  { requirement: 'Guardrails', target: '100% Coverage', method: '4-layer security shield: Triage -> Gate -> Prompt -> Auditor.' },
+];
+
+const sakhiSignals = [
+  {
+    title: 'System Mission',
+    icon: Target,
+    body:
+      'Eliminate the black-box nature of medical AI by enforcing a strictly context-based extraction model that strips all AI personas.',
+  },
+  {
+    title: 'Execution Model',
+    icon: CircuitBoard,
+    body:
+      'Recursive parent hydration pulls the full H1-H3 hierarchy when a child chunk matches, anchoring generation in expert-verified data rather than isolated fragments.',
+  },
+  {
+    title: 'Strategic Outcome',
+    icon: ArrowUpRight,
+    body:
+      'Blocked and uncertain interactions become hit lists, creating a continuous knowledge flywheel that turns edge cases into new institutional knowledge nodes.',
+  },
+];
+
+const sakhiComparisonRows = [
+  {
+    feature: 'Retrieval',
+    architect: 'Weighted fusion scoring with 0.85 gate enforcement.',
+    strategy: 'Minimizes risk by ensuring only high-confidence data reaches the user.',
+  },
+  {
+    feature: 'Context',
+    architect: 'Recursive SQL hydration of parent sections from knowledge_nodes.',
+    strategy: 'Provides specialized, branch-specific expertise across domains like Cardiology and Pediatrics.',
+  },
+  {
+    feature: 'Security',
+    architect: 'Real-time auditor.py scans streaming tokens against source DNA.',
+    strategy: 'Protects institutional liability through automated clinical verification.',
+  },
+  {
+    feature: 'Navigation',
+    architect: 'Page indexing enables near-zero-token retrieval on follow-ups.',
+    strategy: 'Dramatically reduces operational API costs while improving response speed.',
+  },
+];
+
+const presalesTechTags = [
+  'React',
+  'n8n Orchestration',
+  'OpenAI (GPT-4o)',
+  'PostgreSQL',
+  'Whisper API',
+  'Figma/Canva SDKs',
+];
+
+const presalesMetricCards = [
+  { value: '₹3.2L/month', label: 'Saved per AE/SE', detail: 'ROI Projection' },
+  { value: '40%', label: 'Faster simulations', detail: 'Velocity' },
+  { value: '100%', label: 'Context-aware questions', detail: 'Engagement' },
+];
+
+const presalesSignals = [
+  {
+    title: 'System Mission',
+    icon: Target,
+    body:
+      'Transform pre-sales from manual repetition into an intelligent, data-driven digital co-pilot motion that maximizes client impact while minimizing expert grunt work.',
+  },
+  {
+    title: 'Execution Model',
+    icon: CircuitBoard,
+    body:
+      'Built as a handoff chain rather than a monolith. Query Tailor, Summary Bot, and PoC Generator each own a narrow responsibility and exchange explicit state through a unified traceToken.',
+  },
+  {
+    title: 'Strategic Outcome',
+    icon: ArrowUpRight,
+    body:
+      'Shortens sales cycles by creating high-fidelity WOW moments through instant technical credibility and ROI-backed point-of-view decks.',
+  },
+];
+
+const presalesComparisonRows = [
+  {
+    feature: 'Relational Truth vs. Semantic Recall',
+    architect: 'Purposeful separation of SQL persistence from vector-driven context retrieval.',
+    strategy: 'Creates repeatable pitch quality regardless of AE experience level.',
+  },
+  {
+    feature: 'Deterministic Fallbacks',
+    architect: 'Rule-based guardrails handle critical tasks like duplicate checks while the model stays flexible for creative work.',
+    strategy: 'Preserves trust by making automation predictable where mistakes are expensive.',
+  },
+  {
+    feature: 'Real-Time Enrichment',
+    architect: 'Clearbit and SerpAPI context hydrates discovery before reasoning begins.',
+    strategy: 'Scales personalization by aligning discovery with live market news and leadership changes.',
+  },
+  {
+    feature: 'Multi-Model Orchestration',
+    architect: 'OpenAI handles reasoning while Whisper handles transcription with retries and monitoring across the chain.',
+    strategy: 'Supports human-in-the-loop editing so the system assists experts instead of replacing them.',
+  },
+];
+
 function SectionHeader({
   index,
   title,
@@ -416,6 +527,613 @@ function ThreadNavigatorDeepDive({ project }: { project: ProjectData }) {
   );
 }
 
+function SakhiArchitectureDiagram() {
+  return (
+    <div className="rounded-[1.75rem] border border-white/8 bg-[#0a0a0a]/72 p-4 shadow-[0_28px_80px_-52px_rgba(0,0,0,0.95)] md:p-6">
+      <div className="space-y-6">
+        <div className="grid gap-4 xl:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="rounded-[1.5rem] border border-cyan-300/25 bg-[#072c36]/92 p-5 md:p-6"
+          >
+            <h3 className="text-xl font-semibold tracking-tight text-cyan-100">
+              Discovery path: Hybrid HRAG
+            </h3>
+            <p className="mt-3 text-[14px] leading-relaxed text-cyan-50/78">
+              Open-ended clinical queries flow through <span className="font-mono text-cyan-200">search_hierarchical.py</span>,
+              combining vector retrieval via HNSW with keyword retrieval via GIN.
+            </p>
+
+            <div className="mt-5 grid gap-4 xl:grid-cols-4">
+              {[
+                ['User Query', 'Open clinical question'],
+                ['Vector Search', 'HNSW semantic recall'],
+                ['Keyword Search', 'GIN sparse match'],
+                ['Fusion Gate', 'Weighted confidence score'],
+              ].map(([title, body], index) => (
+                <div key={title} className="relative">
+                  <div className="rounded-[1rem] border border-cyan-300/25 bg-[#0d4654] px-4 py-5 text-center">
+                    <h4 className="text-[1rem] font-semibold text-white">{title}</h4>
+                    <p className="mt-2 text-[13px] leading-snug text-white/72">{body}</p>
+                  </div>
+                  {index < 3 && (
+                    <svg
+                      viewBox="0 0 120 24"
+                      className="pointer-events-none absolute left-full top-1/2 z-10 hidden h-6 w-10 -translate-y-1/2 xl:block"
+                      aria-hidden="true"
+                    >
+                      <motion.path
+                        d="M 4 12 L 108 12"
+                        stroke="rgba(103,232,249,0.8)"
+                        strokeWidth="2"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 0.35, delay: 0.1 + index * 0.08 }}
+                      />
+                      <motion.path
+                        d="M 94 5 L 108 12 L 94 19"
+                        fill="none"
+                        stroke="rgba(103,232,249,0.8)"
+                        strokeWidth="2"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 0.25, delay: 0.22 + index * 0.08 }}
+                      />
+                    </svg>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.08 }}
+            className="rounded-[1.5rem] border border-emerald-300/25 bg-[#12311e]/92 p-5 md:p-6"
+          >
+            <h3 className="text-xl font-semibold tracking-tight text-emerald-100">
+              Follow-up path: Magic card transactions
+            </h3>
+            <p className="mt-3 text-[14px] leading-relaxed text-emerald-50/78">
+              Follow-up interactions use page indexing to bypass expensive search and resolve into deterministic SQL lookups with sub-100ms retrieval.
+            </p>
+
+            <div className="mt-5 grid gap-4 xl:grid-cols-4">
+              {[
+                ['Magic Card', 'Follow-up state token'],
+                ['Page Index', 'Direct node pointer'],
+                ['SQL Lookup', 'Deterministic fetch'],
+                ['Clinical Response', '<100ms retrieval path'],
+              ].map(([title, body], index) => (
+                <div key={title} className="relative">
+                  <div className="rounded-[1rem] border border-emerald-300/20 bg-[#285122] px-4 py-5 text-center">
+                    <h4 className="text-[1rem] font-semibold text-white">{title}</h4>
+                    <p className="mt-2 text-[13px] leading-snug text-white/72">{body}</p>
+                  </div>
+                  {index < 3 && (
+                    <svg
+                      viewBox="0 0 120 24"
+                      className="pointer-events-none absolute left-full top-1/2 z-10 hidden h-6 w-10 -translate-y-1/2 xl:block"
+                      aria-hidden="true"
+                    >
+                      <motion.path
+                        d="M 4 12 L 108 12"
+                        stroke="rgba(110,231,183,0.8)"
+                        strokeWidth="2"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 0.35, delay: 0.12 + index * 0.08 }}
+                      />
+                      <motion.path
+                        d="M 94 5 L 108 12 L 94 19"
+                        fill="none"
+                        stroke="rgba(110,231,183,0.8)"
+                        strokeWidth="2"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 0.25, delay: 0.24 + index * 0.08 }}
+                      />
+                    </svg>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.16 }}
+          className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]"
+        >
+          <div className="rounded-[1.35rem] border border-white/10 bg-[#111111]/92 px-5 py-5">
+            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-cyan-300">0.85 Confidence Gate</p>
+            <div className="mt-4 rounded-[1rem] border border-cyan-300/15 bg-black/35 px-4 py-4 font-mono text-sm text-cyan-100">
+              Final_Score = (0.7 x Vector) + (0.3 x Keyword)
+            </div>
+            <p className="mt-4 text-[14px] leading-relaxed text-gray-300">
+              Scores below <span className="font-mono text-cyan-200">0.85</span> are routed into the failed queries log and trigger a safety fallback response instead of speculative output.
+            </p>
+          </div>
+
+          <div className="rounded-[1.35rem] border border-white/10 bg-[#111111]/92 px-5 py-5">
+            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-emerald-300">Clinical Guardrails</p>
+            <div className="mt-4 space-y-2 text-[14px] leading-relaxed text-gray-300">
+              <p>Triage -&gt; Gate -&gt; Prompt -&gt; Auditor</p>
+              <p>Straightjacket prompt envelope</p>
+              <p>Streaming entity verification</p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function SakhiDeepDive({ project }: { project: ProjectData }) {
+  const lensAnalysis = project.lensAnalysis;
+  const nextBuild = project.nextBuild;
+
+  return (
+    <div className="mx-auto flex w-full max-w-6xl flex-col px-4 py-12 md:px-8 lg:pl-16 lg:pr-8">
+      <motion.section
+        id="identity"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0 }}
+        className="scroll-mt-8 pb-20 md:scroll-mt-12"
+      >
+        <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-gray-500">Case Study 02</p>
+        <h1 className="mt-4 text-4xl font-bold tracking-tight text-white md:text-6xl">
+          Sakhi AI: Zero-Trust Clinical Knowledge Engine
+        </h1>
+        <p className="mt-4 max-w-4xl text-base leading-relaxed text-gray-300 md:text-lg">
+          Sakhi is a state-of-the-art medical AI architecture designed to transition from probabilistic generation to deterministic retrieval. It treats uncertainty as a routing problem rather than a UI problem so clinical safety is never compromised by AI persona drift.
+        </p>
+
+        <div className="mt-8 flex flex-wrap gap-2">
+          {sakhiTechTags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-white/10 px-3 py-1.5 text-[11px] font-mono tracking-[0.08em] text-gray-300"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-8 overflow-hidden rounded-[1.5rem] border border-white/8 bg-[#0b0b0b]/72">
+          <div className="grid border-b border-white/8 bg-white/[0.02] px-5 py-3 text-[11px] font-mono uppercase tracking-[0.12em] text-gray-500 md:grid-cols-[0.8fr_0.9fr_1.3fr]">
+            <p>Requirement</p>
+            <p>Target</p>
+            <p>Implementation Method</p>
+          </div>
+
+          {sakhiPerformanceTargets.map((row) => (
+            <div
+              key={row.requirement}
+              className="grid gap-2 border-b border-white/8 px-5 py-4 last:border-b-0 md:grid-cols-[0.8fr_0.9fr_1.3fr]"
+            >
+              <p className="text-sm font-semibold text-white">{row.requirement}</p>
+              <p className="text-sm font-mono text-cyan-300">{row.target}</p>
+              <p className="text-sm leading-relaxed text-gray-300">{row.method}</p>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="architecture"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.1 }}
+        className="scroll-mt-8 pb-24 md:scroll-mt-12"
+      >
+        <SectionHeader
+          index="Section 02"
+          title="System Architecture"
+          subtitle="The high-density retrieval pipeline coordinating hybrid search, deterministic follow-ups, and confidence-gated safety."
+        />
+        <SakhiArchitectureDiagram />
+      </motion.section>
+
+      <motion.section
+        id="signals"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.2 }}
+        className="scroll-mt-8 pb-24 md:scroll-mt-12"
+      >
+        <SectionHeader
+          index="Section 03"
+          title="Deep Dive Signals"
+          subtitle="Three lenses for evaluating the zero-trust clinical engine"
+        />
+
+        <div className="grid gap-4 xl:grid-cols-3">
+          {sakhiSignals.map((signal) => {
+            const Icon = signal.icon;
+
+            return (
+              <article
+                key={signal.title}
+                className="rounded-[1.6rem] border border-white/8 bg-[#0b0b0b]/72 p-6 transition-colors duration-150 hover:border-cyan-300/40"
+              >
+                <Icon size={20} className="text-[#22D3EE]" />
+                <p className="mt-5 text-[11px] font-mono uppercase tracking-[0.12em] text-gray-500">
+                  {signal.title}
+                </p>
+                <div className="mt-3 h-px w-full bg-white/8" />
+                <p className="mt-4 text-[15px] leading-[1.7] text-gray-300">{signal.body}</p>
+              </article>
+            );
+          })}
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="lenses"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.3 }}
+        className="scroll-mt-8 pb-24 md:scroll-mt-12"
+      >
+        <SectionHeader
+          index="Section 04"
+          title="Dual Lens Analysis"
+          subtitle="How Sakhi reads through the architect lens and the strategy lens"
+        />
+
+        <div className="overflow-hidden rounded-[1.75rem] border border-white/8 bg-[#0b0b0b]/72">
+          <div className="grid border-b border-white/8 bg-white/[0.02] px-5 py-3 text-[11px] font-mono uppercase tracking-[0.12em] text-gray-500 md:grid-cols-[0.7fr_1fr_1fr]">
+            <p>Feature</p>
+            <p>Architect Lens</p>
+            <p>Strategy Lens</p>
+          </div>
+
+          {sakhiComparisonRows.map((row) => (
+            <div
+              key={row.feature}
+              className="grid gap-3 border-b border-white/8 px-5 py-5 last:border-b-0 md:grid-cols-[0.7fr_1fr_1fr]"
+            >
+              <p className="text-sm font-semibold text-white">{row.feature}</p>
+              <p className="text-[15px] leading-[1.7] text-gray-300">{row.architect}</p>
+              <p className="text-[15px] leading-[1.7] text-gray-300">{row.strategy}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 grid gap-0 overflow-hidden rounded-[1.75rem] border border-white/8 xl:grid-cols-2">
+          <div className="border-b border-white/8 bg-[rgba(34,211,238,0.05)] p-6 xl:border-b-0 xl:border-r xl:border-white/8 md:p-8">
+            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-cyan-300">Architect Lens</p>
+            <div className="mt-3 h-px w-full bg-white/8" />
+            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
+              {lensAnalysis?.architect}
+            </p>
+          </div>
+
+          <div className="bg-[rgba(20,184,166,0.05)] p-6 md:p-8">
+            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-emerald-300">Strategy Lens</p>
+            <div className="mt-3 h-px w-full bg-white/8" />
+            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
+              {lensAnalysis?.strategy}
+            </p>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="next-build"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.4 }}
+        className="scroll-mt-8 pb-16 md:scroll-mt-12"
+      >
+        <SectionHeader
+          index="Section 05"
+          title="What I'd Build Next"
+          subtitle="The node that transitions Sakhi from deterministic routing into agentic self-correction"
+        />
+
+        <div className="mx-auto max-w-[760px] rounded-[1.75rem] border border-white/6 bg-[#0a0a0a]/56 p-6 opacity-90 md:p-8">
+          <span className="inline-flex items-center rounded-full border border-dashed border-amber-300/35 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.14em] text-amber-200">
+            {nextBuild?.status}
+          </span>
+          <h3 className="mt-6 text-2xl font-semibold text-white">{nextBuild?.title}</h3>
+          <div className="mt-3 h-px w-full bg-white/8" />
+          <div className="mt-6 space-y-5 text-[15px] leading-[1.7] text-gray-400">
+            {nextBuild?.body.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+    </div>
+  );
+}
+
+function PresalesArchitectureDiagram() {
+  const columns = [
+    {
+      title: 'Trigger Layer',
+      shellClassName: 'border-sky-300/20 bg-[#102539]/92',
+      blocks: [
+        ['Zoom / Teams', 'meeting webhooks'],
+        ['Salesforce CRM', 'opportunity events'],
+      ],
+    },
+    {
+      title: 'Orchestration Backbone',
+      shellClassName: 'border-violet-300/20 bg-[#2b1d44]/92',
+      blocks: [
+        ['n8n', 'chained agent execution'],
+        ['State Machine', 'retries + transitions'],
+      ],
+    },
+    {
+      title: 'Intelligence Layer',
+      shellClassName: 'border-cyan-300/20 bg-[#0f3740]/92',
+      blocks: [
+        ['STT', 'Whisper / AssemblyAI'],
+        ['Reasoning', 'Business Model / Track Record / Current Focus'],
+      ],
+    },
+    {
+      title: 'Generation Layer',
+      shellClassName: 'border-amber-300/20 bg-[#4b2f12]/92',
+      blocks: [
+        ['Mermaid', 'architecture diagrams'],
+        ['Slide Drafting', 'JSON -> Figma API'],
+      ],
+    },
+    {
+      title: 'Data Layer',
+      shellClassName: 'border-emerald-300/20 bg-[#183523]/92',
+      blocks: [
+        ['PostgreSQL', 'relational truth'],
+        ['Redis', 'ephemeral caching'],
+      ],
+    },
+  ];
+
+  return (
+    <div className="rounded-[1.75rem] border border-white/8 bg-[#0a0a0a]/72 p-4 shadow-[0_28px_80px_-52px_rgba(0,0,0,0.95)] md:p-6">
+      <div className="space-y-5">
+        <div className="grid gap-4 xl:grid-cols-5">
+          {columns.map((column, index) => (
+            <div key={column.title} className="relative">
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className={`h-full rounded-[1.45rem] border p-5 ${column.shellClassName}`}
+              >
+                <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-white/50">
+                  {column.title}
+                </p>
+                <div className="mt-4 space-y-3">
+                  {column.blocks.map(([title, body]) => (
+                    <div key={title} className="rounded-[1rem] border border-white/10 bg-black/22 px-4 py-4">
+                      <h4 className="text-[1rem] font-semibold text-white">{title}</h4>
+                      <p className="mt-2 text-[13px] leading-snug text-white/72">{body}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {index < columns.length - 1 && (
+                <svg
+                  viewBox="0 0 120 24"
+                  className="pointer-events-none absolute left-full top-1/2 z-10 hidden h-6 w-10 -translate-y-1/2 xl:block"
+                  aria-hidden="true"
+                >
+                  <motion.path
+                    d="M 4 12 L 108 12"
+                    stroke="rgba(255,255,255,0.72)"
+                    strokeWidth="2"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.35, delay: 0.18 + index * 0.08 }}
+                  />
+                  <motion.path
+                    d="M 94 5 L 108 12 L 94 19"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.72)"
+                    strokeWidth="2"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.22, delay: 0.28 + index * 0.08 }}
+                  />
+                </svg>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PresalesDeepDive({ project }: { project: ProjectData }) {
+  const lensAnalysis = project.lensAnalysis;
+  const nextBuild = project.nextBuild;
+
+  return (
+    <div className="mx-auto flex w-full max-w-6xl flex-col px-4 py-12 md:px-8 lg:pl-16 lg:pr-8">
+      <motion.section
+        id="identity"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0 }}
+        className="scroll-mt-8 pb-20 md:scroll-mt-12"
+      >
+        <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-gray-500">Case Study 03</p>
+        <h1 className="mt-4 text-4xl font-bold tracking-tight text-white md:text-6xl">
+          Autonomous Pre-Sales Co-Pilot
+        </h1>
+        <p className="mt-4 max-w-4xl text-base leading-relaxed text-gray-300 md:text-lg">
+          A multi-agent revenue engine that automates the full-cycle sales engineering workflow, from real-time client enrichment and call intelligence to the automated generation of technical PoCs and visual storytelling decks.
+        </p>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {presalesMetricCards.map((metric) => (
+            <div
+              key={metric.detail}
+              className="rounded-[1.25rem] border border-white/8 bg-[#0b0b0b]/72 px-5 py-4 transition-all duration-150 hover:-translate-y-0.5 hover:border-amber-300/40"
+            >
+              <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-gray-500">{metric.detail}</p>
+              <p className="mt-3 text-2xl font-bold text-amber-300">{metric.value}</p>
+              <p className="mt-2 text-sm text-gray-300">{metric.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-2">
+          {presalesTechTags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-white/10 px-3 py-1.5 text-[11px] font-mono tracking-[0.08em] text-gray-300"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="architecture"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.1 }}
+        className="scroll-mt-8 pb-24 md:scroll-mt-12"
+      >
+        <SectionHeader
+          index="Section 02"
+          title="System Architecture"
+          subtitle="The orchestrated handoff chain flowing from raw input signals to delivered pre-sales artifacts."
+        />
+        <PresalesArchitectureDiagram />
+      </motion.section>
+
+      <motion.section
+        id="signals"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.2 }}
+        className="scroll-mt-8 pb-24 md:scroll-mt-12"
+      >
+        <SectionHeader
+          index="Section 03"
+          title="Deep Dive Signals"
+          subtitle="Why this system matters operationally, technically, and commercially"
+        />
+
+        <div className="grid gap-4 xl:grid-cols-3">
+          {presalesSignals.map((signal) => {
+            const Icon = signal.icon;
+
+            return (
+              <article
+                key={signal.title}
+                className="rounded-[1.6rem] border border-white/8 bg-[#0b0b0b]/72 p-6 transition-colors duration-150 hover:border-amber-300/35"
+              >
+                <Icon size={20} className="text-amber-300" />
+                <p className="mt-5 text-[11px] font-mono uppercase tracking-[0.12em] text-gray-500">
+                  {signal.title}
+                </p>
+                <div className="mt-3 h-px w-full bg-white/8" />
+                <p className="mt-4 text-[15px] leading-[1.7] text-gray-300">{signal.body}</p>
+              </article>
+            );
+          })}
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="lenses"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.3 }}
+        className="scroll-mt-8 pb-24 md:scroll-mt-12"
+      >
+        <SectionHeader
+          index="Section 04"
+          title="Dual Lens Analysis"
+          subtitle="How the system reads through architect depth and strategist value"
+        />
+
+        <div className="overflow-hidden rounded-[1.75rem] border border-white/8 bg-[#0b0b0b]/72">
+          <div className="grid border-b border-white/8 bg-white/[0.02] px-5 py-3 text-[11px] font-mono uppercase tracking-[0.12em] text-gray-500 md:grid-cols-[0.8fr_1fr_1fr]">
+            <p>Feature</p>
+            <p>Architect Lens</p>
+            <p>Strategy Lens</p>
+          </div>
+
+          {presalesComparisonRows.map((row) => (
+            <div
+              key={row.feature}
+              className="grid gap-3 border-b border-white/8 px-5 py-5 last:border-b-0 md:grid-cols-[0.8fr_1fr_1fr]"
+            >
+              <p className="text-sm font-semibold text-white">{row.feature}</p>
+              <p className="text-[15px] leading-[1.7] text-gray-300">{row.architect}</p>
+              <p className="text-[15px] leading-[1.7] text-gray-300">{row.strategy}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 grid gap-0 overflow-hidden rounded-[1.75rem] border border-white/8 xl:grid-cols-2">
+          <div className="border-b border-white/8 bg-[rgba(245,158,11,0.05)] p-6 xl:border-b-0 xl:border-r xl:border-white/8 md:p-8">
+            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-amber-300">Architect Lens</p>
+            <div className="mt-3 h-px w-full bg-white/8" />
+            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
+              {lensAnalysis?.architect}
+            </p>
+          </div>
+
+          <div className="bg-[rgba(99,102,241,0.05)] p-6 md:p-8">
+            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-indigo-300">Strategy Lens</p>
+            <div className="mt-3 h-px w-full bg-white/8" />
+            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
+              {lensAnalysis?.strategy}
+            </p>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="next-build"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.4 }}
+        className="scroll-mt-8 pb-16 md:scroll-mt-12"
+      >
+        <SectionHeader
+          index="Section 05"
+          title="What I'd Build Next"
+          subtitle="The feedback layer that would make the co-pilot self-optimizing over time"
+        />
+
+        <div className="mx-auto max-w-[760px] rounded-[1.75rem] border border-white/6 bg-[#0a0a0a]/56 p-6 opacity-90 md:p-8">
+          <span className="inline-flex items-center rounded-full border border-dashed border-amber-300/35 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.14em] text-amber-200">
+            {nextBuild?.status}
+          </span>
+          <h3 className="mt-6 text-2xl font-semibold text-white">{nextBuild?.title}</h3>
+          <div className="mt-3 h-px w-full bg-white/8" />
+          <div className="mt-6 space-y-5 text-[15px] leading-[1.7] text-gray-400">
+            {nextBuild?.body.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+    </div>
+  );
+}
+
 function GenericDeepDiveBody({ project }: { project: ProjectData }) {
   const Diagram = diagramMap[project.diagramKey];
 
@@ -472,9 +1190,16 @@ export function ProjectDeepDivePage() {
     return <Navigate to="/" replace />;
   }
 
-  const content = project.slug === 'thread-navigator'
-    ? <ThreadNavigatorDeepDive project={project} />
-    : <GenericDeepDiveBody project={project} />;
+  const content =
+    project.slug === 'thread-navigator' ? (
+      <ThreadNavigatorDeepDive project={project} />
+    ) : project.slug === 'sakhi' ? (
+      <SakhiDeepDive project={project} />
+    ) : project.slug === 'presales' ? (
+      <PresalesDeepDive project={project} />
+    ) : (
+      <GenericDeepDiveBody project={project} />
+    );
 
   return (
     <DeepDiveTunnelTransition projectId={project.slug} projectData={project}>

@@ -229,21 +229,48 @@ export const projectsData: ProjectData[] = [
     ],
     deepDiveSections: [
       {
-        title: 'Risk Architecture',
+        title: 'System Mission',
         body:
-          'Sakhi treats uncertainty as a routing problem, not a UI problem. Requests are scored before they are answered, and unsafe branches never emit user-facing language.',
+          'To eliminate the black-box nature of medical AI by enforcing a strictly context-based extraction model that strips all AI personas.',
       },
       {
-        title: 'Hybrid Runtime',
+        title: 'Execution Model',
         body:
-          'Local models carry the routine operational load while cloud models are only invited into the loop after confidence drops and structured safeguards are satisfied.',
+          'The system employs recursive parent hydration. When a granular child chunk is matched, the backend recursively fetches the full H1-H3 hierarchy so the LLM is anchored in expert-verified data.',
       },
       {
-        title: 'Knowledge Flywheel',
+        title: 'Strategic Outcome',
         body:
-          'Blocked or uncertain interactions become the fuel for the next retrieval cycle, turning edge cases into structured institutional knowledge.',
+          'Blocked or uncertain interactions are logged as hit lists, turning edge cases into new structured institutional knowledge nodes.',
       },
     ],
+    sidebar: {
+      commentary:
+        'Sakhi was designed around one principle: uncertainty is a routing problem, not a UI problem. The model never gets to improvise clinically. If confidence falls, the system narrows, verifies, or refuses before unsafe language can reach the patient.',
+      systemLog: [
+        '[TRIAGE] intent classified -> clinical query',
+        '[SEARCH] hybrid HRAG pipeline engaged',
+        '[GATE] weighted fusion score evaluated',
+        '[PROMPT] straightjacket context envelope assembled',
+        '[AUDIT] streaming entities verified against source DNA',
+        '[STATUS] safe response emitted or fallback triggered',
+      ],
+    },
+    lensAnalysis: {
+      architect:
+        'Weighted Fusion scoring with a 0.85 gate ensures only high-confidence retrieval reaches the model.\n\nRecursive SQL hydration rebuilds the full H1-H3 context tree from knowledge_nodes when a child chunk is matched, so the LLM reads complete expert context instead of isolated fragments.\n\nA real-time auditor scans streaming tokens against source DNA to catch drift before a clinical answer escapes the pipeline.\n\nPage indexing short-circuits follow-up retrieval into deterministic lookups, driving sub-100ms access for magic-card transactions.',
+      strategy:
+        'The weighted gate minimizes clinical risk by ensuring only high-confidence evidence reaches the user.\n\nRecursive hydration makes the system feel branch-specialized, giving users trustworthy domain depth across areas like Cardiology and Pediatrics.\n\nReal-time auditing protects institutional liability by turning verification into an automated runtime behavior instead of a manual review burden.\n\nPage indexing dramatically cuts operational API cost while improving speed on follow-up interactions.',
+    },
+    nextBuild: {
+      status: 'IN PROGRESS - NEXT ITERATION',
+      title: 'Agentic Self-Correction',
+      body: [
+        'The next node is transitioning from a deterministic pipeline to a LangGraph-based reflective agent.',
+        'Right now, a query below the 0.85 threshold is logged and routed to a safety fallback. The next iteration introduces a Reflect and Retry loop that diagnoses why confidence was low, re-queries with adjusted semantic weights, and attempts to resolve the gap autonomously.',
+        'Only after that self-correction loop fails would the system escalate the case into the expert log.',
+      ],
+    },
   },
   {
     id: 'presales',
@@ -304,21 +331,48 @@ export const projectsData: ProjectData[] = [
     ],
     deepDiveSections: [
       {
-        title: 'Pipeline Design',
+        title: 'System Mission',
         body:
-          'The system is built as a handoff chain, not a monolith. Enrichment, transcription, reasoning, and deliverable generation each own a narrow responsibility and exchange explicit state.',
+          'To transform pre-sales from a manual, repetitive task into an intelligent, data-driven digital co-pilot motion that maximizes client impact while minimizing expert grunt work.',
       },
       {
-        title: 'Data Strategy',
+        title: 'Execution Model',
         body:
-          'Relational truth and semantic recall are separated on purpose. This lets the system answer with enterprise-grade precision without sacrificing flexible retrieval.',
+          'Built as a handoff chain rather than a monolith. Each module owns a narrow responsibility and exchanges explicit state through a shared traceToken.',
       },
       {
-        title: 'Commercial Impact',
+        title: 'Strategic Outcome',
         body:
-          'The result is a pipeline that protects expert time, shortens sales cycles, and makes pre-sales output more consistent under pressure.',
+          'Shortens sales cycles by delivering high-fidelity WOW moments with instant technical credibility through auto-generated, ROI-backed point-of-view decks.',
       },
     ],
+    sidebar: {
+      commentary:
+        'This system was built to remove the grunt work from pre-sales without flattening the craft. The real architectural move was not automation in isolation. It was chaining enrichment, reasoning, and delivery into one accountable operating loop.',
+      systemLog: [
+        '[TRIGGER] zoom/team webhook received',
+        '[ENRICH] crm + market context hydrated',
+        '[TRANSCRIBE] whisper pipeline generated call intelligence',
+        '[REASON] gpt-4o extracted business model and current focus',
+        '[GENERATE] pov draft + diagram payload assembled',
+        '[STATUS] deck artifact delivered to seller workflow',
+      ],
+    },
+    lensAnalysis: {
+      architect:
+        'Relational truth and semantic recall are intentionally separated so PostgreSQL owns persistence while retrieval layers remain flexible for context search.\n\nCritical tasks use deterministic fallbacks and rule-based guardrails, while the model handles the generative and synthesizing work.\n\nMulti-model orchestration coordinates OpenAI for reasoning and Whisper for transcription with retries and error monitoring across the chain.',
+      strategy:
+        'The system makes pitch quality repeatable so every AE or SE can present at a high technical standard.\n\nReal-time enrichment turns discovery into scalable personalization by adapting questions to current market news, company motion, and leadership changes.\n\nHuman-in-the-loop editing keeps experts in control, so the agent amplifies seller output rather than replacing judgment.',
+    },
+    nextBuild: {
+      status: 'NEXT ARCHITECTURAL MOVE',
+      title: 'Adaptive Feedback Fine-Tuning',
+      body: [
+        'Right now, user edits to AI-generated questions or PoC steps are logged, but they are not yet fed back into the generation system.',
+        'The next move is a feedback loop layer that treats upvotes, downvotes, and edits as few-shot examples for future prompts and workflow decisions.',
+        'That would create a self-optimizing agent that learns the team’s technical preferences and organizational voice over time, pushing the system toward zero-edit deliverable generation.',
+      ],
+    },
   },
 ];
 

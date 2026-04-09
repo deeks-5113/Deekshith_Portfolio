@@ -2,16 +2,16 @@ import React from 'react';
 import { Home, FolderGit2, Newspaper, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { NarrativeSidebar } from './NarrativeSidebar';
-import { useLens } from '@/context/LensContext';
 import { useDeepDive } from '@/contexts/DeepDiveContext';
 import { getProjectBySlug } from '@/data/projects';
 
 export function Sidebar() {
-  const { isTyping } = useLens();
   const { isInDeepDive, currentProjectId } = useDeepDive();
   const activeProject = currentProjectId ? getProjectBySlug(currentProjectId) : null;
   const deepDiveSections =
-    activeProject?.slug === 'thread-navigator'
+    activeProject?.slug === 'thread-navigator' ||
+    activeProject?.slug === 'sakhi' ||
+    activeProject?.slug === 'presales'
       ? [
           { id: 'identity', label: 'Project Identity' },
           { id: 'architecture', label: 'System Architecture' },
@@ -48,13 +48,27 @@ export function Sidebar() {
             </Link>
           </li>
           <li>
-            <button
-              type="button"
-              onClick={() => scrollToSection('projects')}
-              className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
-            >
-              <FolderGit2 size={16} /> Projects
-            </button>
+            <div className="flex flex-col gap-1 mt-1 p-2 relative">
+              <div className="flex items-center gap-3 text-sm text-gray-300">
+                <FolderGit2 size={16} /> Projects
+              </div>
+              {isInDeepDive && deepDiveSections.length > 0 && (
+                <ul className="pl-7 text-[11px] text-gray-400 font-mono mt-1 space-y-1">
+                  {deepDiveSections.map((section) => (
+                    <li key={section.id}>
+                      <button
+                        type="button"
+                        onClick={() => scrollToSection(section.id)}
+                        className="block py-1 text-left transition-colors hover:text-twin-accent"
+                      >
+                        {'-> '}
+                        {section.label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </li>
           <li>
             <button
@@ -66,9 +80,13 @@ export function Sidebar() {
             </button>
           </li>
           <li>
-            <a href="#leadership" className="flex items-center gap-3 text-sm text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-twin-card/50">
-              <Users size={16} /> Leadership
-            </a>
+            <button
+              type="button"
+              onClick={() => scrollToSection('connect')}
+              className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
+            >
+              <Users size={16} /> Let&apos;s Connect
+            </button>
           </li>
         </ul>
       </nav>

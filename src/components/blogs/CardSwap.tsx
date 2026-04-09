@@ -4,6 +4,7 @@ import {
   forwardRef,
   isValidElement,
   useEffect,
+  useMemo,
   useRef,
   type CSSProperties,
   type HTMLAttributes,
@@ -93,29 +94,34 @@ export default function CardSwap({
   const intervalRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const config =
-    easing === 'elastic'
-      ? {
-          ease: 'elastic.out(0.6,0.9)',
-          durDrop: 2,
-          durMove: 2,
-          durReturn: 2,
-          promoteOverlap: 0.9,
-          returnDelay: 0.05,
-        }
-      : {
-          ease: 'power2.inOut',
-          durDrop: 0.85,
-          durMove: 0.85,
-          durReturn: 0.85,
-          promoteOverlap: 0.4,
-          returnDelay: 0.16,
-        };
+  const config = useMemo(
+    () =>
+      easing === 'elastic'
+        ? {
+            ease: 'elastic.out(0.6,0.9)',
+            durDrop: 2,
+            durMove: 2,
+            durReturn: 2,
+            promoteOverlap: 0.9,
+            returnDelay: 0.05,
+          }
+        : {
+            ease: 'power2.inOut',
+            durDrop: 0.85,
+            durMove: 0.85,
+            durReturn: 0.85,
+            promoteOverlap: 0.4,
+            returnDelay: 0.16,
+          },
+    [easing],
+  );
 
   useEffect(() => {
     const total = childArray.length;
     orderRef.current = Array.from({ length: total }, (_, index) => index);
-    cardRefs.current = cardRefs.current.slice(0, total);
+    cardRefs.current = containerRef.current
+      ? (Array.from(containerRef.current.querySelectorAll('[data-card-swap-item="true"]')) as HTMLDivElement[])
+      : [];
 
     cardRefs.current.forEach((element, index) => {
       placeNow(element, makeSlot(index, cardDistance, verticalDistance, total), skewAmount);
@@ -222,29 +228,44 @@ export default function CardSwap({
       timelineRef.current?.kill();
       timelineRef.current = null;
     };
-  }, [childArray.length, cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
+  }, [
+    childArray.length,
+    cardDistance,
+    verticalDistance,
+    delay,
+    pauseOnHover,
+    skewAmount,
+    config.durDrop,
+    config.durMove,
+    config.durReturn,
+    config.ease,
+    config.promoteOverlap,
+    config.returnDelay,
+  ]);
 
-  const renderedChildren = childArray.map((child, index) => {
-    if (!isValidElement(child)) return child;
+  const renderedChildren = useMemo(
+    () =>
+      childArray.map((child, index) => {
+        if (!isValidElement(child)) return child;
 
-    const element = child as ReactElement<{
-      style?: CSSProperties;
-      onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-    }>;
-    const childStyle = (element.props.style ?? {}) as CSSProperties;
+        const element = child as ReactElement<{
+          style?: CSSProperties;
+          onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+        }>;
+        const childStyle = (element.props.style ?? {}) as CSSProperties;
 
-    return cloneElement(element, {
-      key: index,
-      ref: (node: HTMLDivElement | null) => {
-        cardRefs.current[index] = node;
-      },
-      style: { width, height, ...childStyle },
-      onClick: (event: React.MouseEvent<HTMLDivElement>) => {
-        element.props.onClick?.(event);
-        onCardClick?.(index);
-      },
-    } as never);
-  });
+        return cloneElement(element, {
+          key: index,
+          'data-card-swap-item': 'true',
+          style: { width, height, ...childStyle },
+          onClick: (event: React.MouseEvent<HTMLDivElement>) => {
+            element.props.onClick?.(event);
+            onCardClick?.(index);
+          },
+        } as never);
+      }),
+    [childArray, height, onCardClick, width],
+  );
 
   return (
     <div
