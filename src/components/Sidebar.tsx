@@ -1,8 +1,17 @@
 import React from 'react';
-import { Home, FolderGit2, Network, Users, BookMarked, Layers } from 'lucide-react';
+import { Home, FolderGit2, Network, Users } from 'lucide-react';
 import { NarrativeSidebar } from './NarrativeSidebar';
+import { useLens } from '@/context/LensContext';
 
 export function Sidebar() {
+  const { isTyping } = useLens();
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <aside className="fixed left-0 top-0 bottom-0 w-72 bg-twin-bg/95 border-r border-twin-border p-5 flex flex-col z-40 backdrop-blur-sm hidden lg:flex">
       {/* Profile Section */}
@@ -25,10 +34,13 @@ export function Sidebar() {
               <div className="flex items-center gap-3 text-sm text-gray-300">
                 <FolderGit2 size={16} /> Projects
               </div>
-              <ul className="pl-7 text-[11px] text-gray-400 font-mono">
-                <li><a href="#sakhi" className="block py-1 hover:text-twin-accent transition-colors">↳ Sakhi</a></li>
-                <li><a href="#navigator" className="block py-1 hover:text-twin-accent transition-colors">↳ Thread Navigator</a></li>
-              </ul>
+              {!isTyping && (
+                <ul className="pl-7 text-[11px] text-gray-400 font-mono mt-1">
+                  <li><button type="button" onClick={() => scrollToSection('thread-navigator')} className="block py-1 hover:text-twin-accent transition-colors">{'-> '}Thread Navigator</button></li>
+                  <li><button type="button" onClick={() => scrollToSection('sakhi')} className="block py-1 hover:text-twin-accent transition-colors">{'-> '}Sakhi</button></li>
+                  <li><button type="button" onClick={() => scrollToSection('presales')} className="block py-1 hover:text-twin-accent transition-colors">{'-> '}Pre-sales Co-pilot</button></li>
+                </ul>
+              )}
             </div>
           </li>
           <li>
@@ -43,23 +55,6 @@ export function Sidebar() {
           </li>
         </ul>
       </nav>
-
-      {/* Resources */}
-      <div className="mb-4">
-        <h2 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Resources</h2>
-        <ul className="space-y-2">
-          <li>
-            <a href="#" className="flex items-center gap-3 text-sm text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-twin-card/50">
-              <BookMarked size={16} /> Research Vault
-            </a>
-          </li>
-          <li>
-            <a href="#" className="flex items-center gap-3 text-sm text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-twin-card/50">
-              <Layers size={16} /> System Stack
-            </a>
-          </li>
-        </ul>
-      </div>
 
       {/* Narrative Console (System Log) */}
       <div className="flex-grow flex flex-col justify-end">

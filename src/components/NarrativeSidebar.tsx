@@ -21,21 +21,27 @@ const narrativeData: Record<string, { architect: string; strategist: string }> =
 };
 
 export function NarrativeSidebar() {
-  const { isArchitectMode, activeProject, activeHoverLog } = useLens();
+  const { isArchitectMode, activeHoverLog, commentaryProject, isTyping } = useLens();
   const [displayText, setDisplayText] = useState('');
 
-  // Target string based on hover state, active project, and lens
-  const currentKey = activeProject.toLowerCase();
+  // Target string based on hover state, commentary project, and lens
+  const currentKey = commentaryProject.toLowerCase();
   
   let targetText = "";
   if (isArchitectMode) {
-    if (activeHoverLog) {
+    if (isTyping || commentaryProject === 'none') {
+      targetText = 'Hello ! , I am Deekshith here';
+    } else if (activeHoverLog) {
       targetText = activeHoverLog;
     } else {
       targetText = architectureData[currentKey]?.commentaryLogs.default || narrativeData[currentKey]?.architect || narrativeData['none'].architect;
     }
   } else {
-    targetText = architectureData[currentKey]?.strategistLens.strategistLog || narrativeData[currentKey]?.strategist || narrativeData['none'].strategist;
+    if (isTyping || commentaryProject === 'none') {
+      targetText = 'Hello ! , I am Deekshith here';
+    } else {
+      targetText = architectureData[currentKey]?.strategistLens.strategistLog || narrativeData[currentKey]?.strategist || narrativeData['none'].strategist;
+    }
   }
 
   // Typewriter effect logic

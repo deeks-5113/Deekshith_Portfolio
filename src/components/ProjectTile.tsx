@@ -13,16 +13,17 @@ interface ProjectTileProps {
 }
 
 export function ProjectTile({ id, title, architectData, strategistData, className = '', icon }: ProjectTileProps) {
-  const { isArchitectMode, setActiveProject } = useLens();
+  const { isArchitectMode, setActiveProject, setCommentaryProject } = useLens();
   const ref = useRef<HTMLDivElement>(null);
 
-  // Intersection Observer to update the Global activeProject
+  // Intersection Observer to update the Global activeProject and commentary context
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveProject(id);
+            setCommentaryProject(id);
           }
         });
       },

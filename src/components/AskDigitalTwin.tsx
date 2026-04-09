@@ -7,7 +7,9 @@ import { useLens } from '@/context/LensContext';
 export function AskDigitalTwin() {
   const [query, setQuery] = useState('');
   const [result, setResult] = useState<string | null>(null);
-  const { isArchitectMode, setActiveProject } = useLens();
+  const { isArchitectMode, setActiveProject, isTyping } = useLens();
+
+  if (isTyping) return null;
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,7 +46,7 @@ export function AskDigitalTwin() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 xl:pl-48 mb-24 relative z-10">
+    <div className="w-full max-w-5xl mx-auto px-4 xl:pl-48 mb-32 relative z-10">
       <div className={`backdrop-blur-md p-6 rounded-2xl w-full transition-all duration-500 ${isArchitectMode ? 'bg-[#050505]/80 border border-[#22D3EE]/30 shadow-[0_0_25px_rgba(34,211,238,0.05)]' : 'bg-twin-card/50 border border-twin-border'}`}>
         <h3 className="text-xl font-bold mb-4">Ask my Digital Twin</h3>
         <form onSubmit={handleSearch} className="relative flex items-center mb-4">

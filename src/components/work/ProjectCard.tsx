@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CircleCheckBig } from 'lucide-react';
 import { useLens } from '@/context/LensContext';
@@ -11,11 +11,14 @@ interface LensContent {
 
 export interface ProjectCardData {
   id: string;
+  commentaryKey: string;
   title: string;
   domainAura: string;
   tags: string[];
   strategistLens: LensContent;
   architectLens: LensContent;
+  architectPanelItems?: string[];
+  commentaryLogs?: Record<string, string>;
 }
 
 interface ProjectCardProps {
@@ -34,18 +37,58 @@ export function ProjectCard({
   data,
   itemClassName = '',
 }: ProjectCardProps) {
-  const { isArchitectMode } = useLens();
+  const {
+    isArchitectMode,
+    setActiveHoverLog,
+    setActiveProject,
+    setCommentaryProject,
+  } = useLens();
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const lensData = isArchitectMode ? data.architectLens : data.strategistLens;
   const aura = auraColors[data.domainAura] ?? auraColors['aura-logic'];
   const eyebrow = `${data.domainAura.replace('aura-', '').toUpperCase()} SYSTEM`;
   const panelTitle = isArchitectMode ? 'ARCHITECTURE SIGNALS' : 'KEY HIGHLIGHTS';
   const panelItems = isArchitectMode
-    ? [...data.tags.slice(0, 2), lensData.metrics, 'Deterministic execution path']
+    ? data.architectPanelItems ?? [...data.tags.slice(0, 2), lensData.metrics, 'Deterministic execution path']
     : [...data.tags.slice(0, 2), lensData.metrics, 'Outcome-led delivery'];
+
+  useEffect(() => {
+    const node = cardRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          setActiveProject(data.commentaryKey);
+          setCommentaryProject(data.commentaryKey);
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [data.commentaryKey, setActiveProject, setCommentaryProject]);
+
+  useEffect(() => {
+    setActiveHoverLog(null);
+  }, [isArchitectMode, data.commentaryKey, setActiveHoverLog]);
+
+  const handlePanelItemEnter = (item: string) => {
+    if (!isArchitectMode) return;
+    setActiveHoverLog(data.commentaryLogs?.[item] ?? null);
+  };
+
+  const handlePanelItemLeave = () => {
+    setActiveHoverLog(null);
+  };
 
   return (
     <div
+      ref={cardRef}
+      id={data.id}
       className={`relative min-h-[68vh] w-[93%] max-w-[76rem] overflow-hidden rounded-[1.75rem] border bg-[#171717]/97 ${itemClassName}`.trim()}
       style={{
         borderColor: aura.border,
@@ -142,9 +185,14 @@ export function ProjectCard({
 
               <div className="space-y-3.5">
                 {panelItems.map((item) => (
-                  <div
+                  <button
                     key={item}
-                    className="flex items-center gap-3 rounded-[1.2rem] bg-[#0a0a0a] px-4 py-3.5 shadow-[0_14px_34px_-24px_rgba(0,0,0,0.9)]"
+                    type="button"
+                    onMouseEnter={() => handlePanelItemEnter(item)}
+                    onMouseLeave={handlePanelItemLeave}
+                    onFocus={() => handlePanelItemEnter(item)}
+                    onBlur={handlePanelItemLeave}
+                    className="flex w-full items-center gap-3 rounded-[1.2rem] bg-[#0a0a0a] px-4 py-3.5 text-left shadow-[0_14px_34px_-24px_rgba(0,0,0,0.9)] transition-colors duration-200 hover:bg-[#101010] focus:outline-none focus:ring-1 focus:ring-white/20"
                   >
                     <div
                       className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
@@ -153,7 +201,7 @@ export function ProjectCard({
                       <CircleCheckBig size={16} />
                     </div>
                     <p className="text-xs font-semibold text-white md:text-sm">{item}</p>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>

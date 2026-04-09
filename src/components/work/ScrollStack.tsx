@@ -15,7 +15,7 @@ type ScrollStackItemProps = {
 type ScrollStackProps = {
   children: ReactNode;
   className?: string;
-  itemDistance?: number;
+      itemDistance?: number;
   itemScale?: number;
   itemStackDistance?: number;
   stackPosition?: string;
@@ -43,11 +43,11 @@ export function ScrollStackItem({ children, itemClassName = '' }: ScrollStackIte
 export default function ScrollStack({
   children,
   className = '',
-  itemDistance = 88,
+  itemDistance = 72,
   itemScale = 0.03,
-  itemStackDistance = 24,
-  stackPosition = '16%',
-  scaleEndPosition = '8%',
+  itemStackDistance = 20,
+  stackPosition = '18%',
+  scaleEndPosition = '12%',
   baseScale = 0.91,
   rotationAmount = 0,
   blurAmount = 0,
@@ -56,6 +56,8 @@ export default function ScrollStack({
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const frameRef = useRef<number | null>(null);
+  const currentScrollRef = useRef(0);
+  const targetScrollRef = useRef(0);
   const stackCompletedRef = useRef(false);
   const lastTransformsRef = useRef(
     new Map<number, { translateY: number; scale: number; rotation: number; blur: number }>()
@@ -75,13 +77,13 @@ export default function ScrollStack({
     return parseFloat(value);
   }, []);
 
-  const updateCardTransforms = useCallback(() => {
+  const updateCardTransforms = useCallback((scrollTopOverride?: number) => {
     const container = containerRef.current;
     if (!container || !cardsRef.current.length || isUpdatingRef.current) return;
 
     isUpdatingRef.current = true;
 
-    const scrollTop = window.scrollY;
+    const scrollTop = scrollTopOverride ?? window.scrollY;
     const containerHeight = window.innerHeight;
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
     const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
@@ -169,13 +171,29 @@ export default function ScrollStack({
     stackPosition,
   ]);
 
-  const scheduleUpdate = useCallback(() => {
-    if (frameRef.current !== null) return;
-    frameRef.current = window.requestAnimationFrame(() => {
+  const animateScroll = useCallback(() => {
+    const delta = targetScrollRef.current - currentScrollRef.current;
+    currentScrollRef.current += delta * 0.14;
+
+    if (Math.abs(delta) < 0.1) {
+      currentScrollRef.current = targetScrollRef.current;
+    }
+
+    updateCardTransforms(currentScrollRef.current);
+
+    if (Math.abs(targetScrollRef.current - currentScrollRef.current) > 0.1) {
+      frameRef.current = window.requestAnimationFrame(animateScroll);
+    } else {
       frameRef.current = null;
-      updateCardTransforms();
-    });
+    }
   }, [updateCardTransforms]);
+
+  const scheduleUpdate = useCallback(() => {
+    targetScrollRef.current = window.scrollY;
+    if (frameRef.current === null) {
+      frameRef.current = window.requestAnimationFrame(animateScroll);
+    }
+  }, [animateScroll]);
 
   useLayoutEffect(() => {
     const container = containerRef.current;
@@ -195,7 +213,9 @@ export default function ScrollStack({
       card.style.perspective = '1000px';
     });
 
-    updateCardTransforms();
+    currentScrollRef.current = window.scrollY;
+    targetScrollRef.current = window.scrollY;
+    updateCardTransforms(window.scrollY);
 
     window.addEventListener('scroll', scheduleUpdate, { passive: true });
     window.addEventListener('resize', scheduleUpdate);
