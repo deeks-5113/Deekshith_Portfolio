@@ -20,7 +20,6 @@ import { CatmullRomCurve3, Color, DoubleSide, Vector3, type Mesh } from 'three';
 import { useNavigate } from 'react-router-dom';
 import { useDeepDive } from '@/contexts/DeepDiveContext';
 import { useCameraFlight } from '@/hooks/useCameraFlight';
-import { ProjectDeepNav } from '@/components/ProjectDeepNav';
 import type { ProjectData } from '@/data/projects';
 import { useLens } from '@/context/LensContext';
 
@@ -356,7 +355,6 @@ export function DeepDiveTunnelTransition({
           />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:42px_42px] [mask-image:radial-gradient(circle_at_center,black,transparent_82%)]" />
 
-          <ProjectDeepNav project={projectData} onExit={handleExit} />
           <div className="relative z-10">{children}</div>
         </motion.div>
       )}

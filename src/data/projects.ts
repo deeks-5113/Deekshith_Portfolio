@@ -18,6 +18,22 @@ export interface ProjectDeepDiveSection {
   body: string;
 }
 
+export interface ProjectSidebarContent {
+  commentary: string;
+  systemLog: string[];
+}
+
+export interface ProjectLensAnalysis {
+  architect: string;
+  strategy: string;
+}
+
+export interface ProjectNextBuild {
+  status: string;
+  title: string;
+  body: string[];
+}
+
 export interface ProjectTheme {
   primary: string;
   secondary: string;
@@ -46,6 +62,9 @@ export interface ProjectData {
   theme: ProjectTheme;
   telemetry: ProjectDeepDiveMetric[];
   deepDiveSections: ProjectDeepDiveSection[];
+  sidebar?: ProjectSidebarContent;
+  lensAnalysis?: ProjectLensAnalysis;
+  nextBuild?: ProjectNextBuild;
 }
 
 export const projectsData: ProjectData[] = [
@@ -123,6 +142,33 @@ export const projectsData: ProjectData[] = [
           'The product eliminated manual copy-paste loops for power users and made model switching feel operational rather than disruptive.',
       },
     ],
+    sidebar: {
+      commentary:
+        "Thread Navigator began as a fix for a simple pain: losing the right snippet deep inside long LLM threads. The key insight was not the HUD. It was realizing browser-resident state could persist context across sessions and platforms without any backend at all.",
+      systemLog: [
+        '[INIT]   chrome.runtime -> content_script injected',
+        '[READY]  DOM observer active across 4 platforms',
+        '[EVENT]  floating HUD rendered - 0 layout shift',
+        '[STORE]  chrome.storage.local -> prompt library loaded',
+        '[EXEC]   context packet serialised -> cross-platform relay',
+        '[STATUS] extension active - manifest v3 compliant',
+      ],
+    },
+    lensAnalysis: {
+      architect:
+        "The interesting problem wasn't the UI. It was how to maintain coherent state across four DOM environments you do not control without a backend.\n\nThe answer was to treat chrome.storage as the single source of truth. Every platform reads from and writes to the same local store. The HUD is just a read layer.\n\nManifest V3 forced service workers instead of background pages. That constraint improved the architecture by making it stateless by design.",
+      strategy:
+        "60+ active users is a proof point, not a vanity metric. It means real distribution, real retention, and real dependency.\n\nThe Chrome Web Store listing is also a forcing function. Public shipping with reviews creates accountability that side projects without distribution never have.\n\nThe multi-platform support is not feature bloat. It is evidence that the abstraction layer generalises, which is the actual hiring signal.",
+    },
+    nextBuild: {
+      status: 'IN PROGRESS - NOT YET BUILT',
+      title: 'Enterprise API Layer',
+      body: [
+        "Right now, Thread Navigator is entirely local. That's a feature, but it is also a ceiling.",
+        'The next architectural move is an optional sync layer that maps chrome.storage state to Microsoft Graph API or Notion API, letting enterprise users persist context across devices and share prompt libraries across teams.',
+        'The local-first architecture was never a limitation. It was step one of a two-step design.',
+      ],
+    },
   },
   {
     id: 'sakhi',
