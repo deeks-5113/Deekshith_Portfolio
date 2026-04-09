@@ -35,7 +35,7 @@ export function ProjectTile({ id, title, architectData, strategistData, classNam
     }
 
     return () => observer.disconnect();
-  }, [id, setActiveProject]);
+  }, [id, setActiveProject, setCommentaryProject]);
 
   return (
     <div

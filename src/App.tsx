@@ -1,24 +1,25 @@
-import { BackgroundAura } from "@/components/BackgroundAura";
-import { Sidebar } from "@/components/Sidebar";
-import { TelemetryCluster } from "@/components/TelemetryCluster";
-import { HeroSection } from "@/components/HeroSection";
-
-import { WorkSection } from "@/components/work/WorkSection";
-import { AskDigitalTwin } from "@/components/AskDigitalTwin";
+import { Route, Routes } from 'react-router-dom';
+import { BackgroundAura } from '@/components/BackgroundAura';
+import { Sidebar } from '@/components/Sidebar';
+import { useDeepDive } from '@/contexts/DeepDiveContext';
+import { HomePage } from '@/pages/HomePage';
+import { ProjectDeepDivePage } from '@/pages/ProjectDeepDivePage';
 
 function App() {
+  const { isInDeepDive } = useDeepDive();
+
   return (
-    <div className="w-full min-h-screen text-white flex relative bg-transparent">
+    <div className="relative flex min-h-screen w-full bg-transparent text-white">
       <BackgroundAura />
       <Sidebar />
-      
-      {/* Main Content Area */}
-      <main className="flex-1 lg:ml-72 relative z-0 overflow-x-hidden">
-        <TelemetryCluster />
-        <HeroSection />
 
-        <WorkSection />
-        <AskDigitalTwin />
+      <main className="relative z-0 flex-1 overflow-x-hidden">
+        <div className={`transition-[margin] duration-500 ${isInDeepDive ? 'ml-0' : 'lg:ml-72'}`}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projects/:slug/deep" element={<ProjectDeepDivePage />} />
+          </Routes>
+        </div>
       </main>
     </div>
   );

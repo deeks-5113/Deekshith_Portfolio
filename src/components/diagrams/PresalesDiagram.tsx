@@ -8,8 +8,6 @@ export function PresalesDiagram() {
   const data = architectureData['presales'];
 
   const architectColor = "#F59E0B"; // aura-gold
-  const strategistColor = "#A1A1AA";
-
   const handleHover = (nodeId: string | null) => {
     if (!isArchitectMode || !nodeId) {
       setActiveHoverLog(null);

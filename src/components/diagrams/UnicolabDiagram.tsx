@@ -8,8 +8,6 @@ export function UnicolabDiagram() {
   const data = architectureData['unicolab'];
 
   const architectColor = "#EF4444"; // aura-rigor (Red)
-  const strategistColor = "#A1A1AA";
-
   const handleHover = (nodeId: string | null) => {
     if (!isArchitectMode || !nodeId) {
       setActiveHoverLog(null);

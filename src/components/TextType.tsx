@@ -1,11 +1,20 @@
 'use client';
 
-import { useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  createElement,
+  useMemo,
+  useCallback,
+  type ComponentPropsWithoutRef,
+  type ElementType,
+} from 'react';
 import { gsap } from 'gsap';
 
-interface TextTypeProps {
+interface TextTypeProps extends Omit<ComponentPropsWithoutRef<'div'>, 'text'> {
   text: string | string[];
-  as?: string | React.ComponentType<any>;
+  as?: ElementType;
   typingSpeed?: number;
   initialDelay?: number;
   pauseDuration?: number;
@@ -23,7 +32,6 @@ interface TextTypeProps {
   onTypingComplete?: () => void;
   startOnVisible?: boolean;
   reverseMode?: boolean;
-  [key: string]: any;
 }
 
 const TextType: React.FC<TextTypeProps> = ({
@@ -53,8 +61,8 @@ const TextType: React.FC<TextTypeProps> = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(!startOnVisible);
-  const cursorRef = useRef(null);
-  const containerRef = useRef(null);
+  const cursorRef = useRef<HTMLSpanElement | null>(null);
+  const containerRef = useRef<HTMLElement | null>(null);
 
   const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
 

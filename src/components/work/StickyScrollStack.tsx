@@ -1,8 +1,10 @@
 import React from 'react';
 import ScrollStack, { ScrollStackItem } from './ScrollStack';
-import { ProjectCard, ProjectCardData } from './ProjectCard';
+import { ProjectCard } from './ProjectCard';
+import { projectsData as sharedProjectsData } from '@/data/projects';
 
-const projectsData: ProjectCardData[] = [
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const projectsData = [
 {
   id: 'thread-navigator',
   commentaryKey: 'navigator',
@@ -126,7 +128,7 @@ export function StickyScrollStack() {
       baseScale={0.91}
       className="relative w-full"
     >
-      {projectsData.map((project) => (
+      {sharedProjectsData.map((project) => (
         <ScrollStackItem key={project.id} itemClassName="mx-auto flex justify-center">
           <ProjectCard data={project} />
         </ScrollStackItem>

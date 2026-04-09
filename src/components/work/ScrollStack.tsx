@@ -171,7 +171,7 @@ export default function ScrollStack({
     stackPosition,
   ]);
 
-  const animateScroll = useCallback(() => {
+  const animateScroll = useCallback(function animateScrollFrame() {
     const delta = targetScrollRef.current - currentScrollRef.current;
     currentScrollRef.current += delta * 0.14;
 
@@ -182,7 +182,7 @@ export default function ScrollStack({
     updateCardTransforms(currentScrollRef.current);
 
     if (Math.abs(targetScrollRef.current - currentScrollRef.current) > 0.1) {
-      frameRef.current = window.requestAnimationFrame(animateScroll);
+      frameRef.current = window.requestAnimationFrame(animateScrollFrame);
     } else {
       frameRef.current = null;
     }
@@ -198,9 +198,10 @@ export default function ScrollStack({
   useLayoutEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    const transformsCache = lastTransformsRef.current;
 
     cardsRef.current = Array.from(container.querySelectorAll('.scroll-stack-card')) as HTMLDivElement[];
-    lastTransformsRef.current.clear();
+    transformsCache.clear();
 
     cardsRef.current.forEach((card, i, allCards) => {
       if (i < allCards.length - 1) {
@@ -228,7 +229,7 @@ export default function ScrollStack({
       }
       stackCompletedRef.current = false;
       cardsRef.current = [];
-      lastTransformsRef.current.clear();
+      transformsCache.clear();
       isUpdatingRef.current = false;
     };
   }, [itemDistance, scheduleUpdate, updateCardTransforms]);

@@ -1,25 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CircleCheckBig } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useLens } from '@/context/LensContext';
+import type { ProjectData } from '@/data/projects';
 
-interface LensContent {
-  headline: string;
-  metrics: string;
-  description: string;
-}
-
-export interface ProjectCardData {
-  id: string;
-  commentaryKey: string;
-  title: string;
-  domainAura: string;
-  tags: string[];
-  strategistLens: LensContent;
-  architectLens: LensContent;
-  architectPanelItems?: string[];
-  commentaryLogs?: Record<string, string>;
-}
+export type ProjectCardData = ProjectData;
 
 interface ProjectCardProps {
   data: ProjectCardData;
@@ -40,6 +26,7 @@ export function ProjectCard({
   data,
   itemClassName = '',
 }: ProjectCardProps) {
+  const navigate = useNavigate();
   const {
     isArchitectMode,
     setActiveHoverLog,
@@ -98,6 +85,10 @@ export function ProjectCard({
     setActiveHoverLog(outsideProjectCommentary);
   };
 
+  const handleViewSystem = () => {
+    navigate(`/projects/${data.slug}/deep`);
+  };
+
   return (
     <div
       ref={cardRef}
@@ -152,15 +143,18 @@ export function ProjectCard({
                 </div>
 
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <div
-                    className="inline-flex w-fit min-w-40 items-center justify-between gap-3 rounded-full px-4 py-2 text-[10px] font-bold text-black md:text-[11px]"
+                  <button
+                    type="button"
+                    onClick={handleViewSystem}
+                    aria-label={`View ${data.title} system deep dive`}
+                    className="inline-flex w-fit min-w-40 items-center justify-between gap-3 rounded-full px-4 py-2 text-[10px] font-bold text-black transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white/25 md:text-[11px]"
                     style={{ backgroundColor: aura.accent }}
                   >
                     <span>{isArchitectMode ? 'VIEW SYSTEM' : 'VIEW FEATURES'}</span>
                     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-black text-white">
                       <ArrowRight size={14} />
                     </span>
-                  </div>
+                  </button>
 
                   <div className="rounded-full border border-white/8 bg-black/40 px-3.5 py-2 text-[10px] font-mono text-gray-400 md:text-[11px]">
                     {lensData.metrics}

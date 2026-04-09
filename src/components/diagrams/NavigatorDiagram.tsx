@@ -8,8 +8,6 @@ export function NavigatorDiagram() {
   const data = architectureData['navigator'];
 
   const architectColor = "#6366F1"; // aura-logic (Indigo)
-  const strategistColor = "#A1A1AA";
-
   const handleHover = (nodeId: string | null) => {
     if (!isArchitectMode || !nodeId) {
       setActiveHoverLog(null);
