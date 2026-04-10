@@ -174,29 +174,6 @@ const sakhiSignals = [
   },
 ];
 
-const sakhiComparisonRows = [
-  {
-    feature: 'Retrieval',
-    architect: 'Weighted fusion scoring with 0.85 gate enforcement.',
-    strategy: 'Minimizes risk by ensuring only high-confidence data reaches the user.',
-  },
-  {
-    feature: 'Context',
-    architect: 'Recursive SQL hydration of parent sections from knowledge_nodes.',
-    strategy: 'Provides specialized, branch-specific expertise across domains like Cardiology and Pediatrics.',
-  },
-  {
-    feature: 'Security',
-    architect: 'Real-time auditor.py scans streaming tokens against source DNA.',
-    strategy: 'Protects institutional liability through automated clinical verification.',
-  },
-  {
-    feature: 'Navigation',
-    architect: 'Page indexing enables near-zero-token retrieval on follow-ups.',
-    strategy: 'Dramatically reduces operational API costs while improving response speed.',
-  },
-];
-
 const presalesTechTags = [
   'React',
   'n8n Orchestration',
@@ -230,29 +207,6 @@ const presalesSignals = [
     icon: ArrowUpRight,
     body:
       'Shortens sales cycles by creating high-fidelity WOW moments through instant technical credibility and ROI-backed point-of-view decks.',
-  },
-];
-
-const presalesComparisonRows = [
-  {
-    feature: 'Relational Truth vs. Semantic Recall',
-    architect: 'Purposeful separation of SQL persistence from vector-driven context retrieval.',
-    strategy: 'Creates repeatable pitch quality regardless of AE experience level.',
-  },
-  {
-    feature: 'Deterministic Fallbacks',
-    architect: 'Rule-based guardrails handle critical tasks like duplicate checks while the model stays flexible for creative work.',
-    strategy: 'Preserves trust by making automation predictable where mistakes are expensive.',
-  },
-  {
-    feature: 'Real-Time Enrichment',
-    architect: 'Clearbit and SerpAPI context hydrates discovery before reasoning begins.',
-    strategy: 'Scales personalization by aligning discovery with live market news and leadership changes.',
-  },
-  {
-    feature: 'Multi-Model Orchestration',
-    architect: 'OpenAI handles reasoning while Whisper handles transcription with retries and monitoring across the chain.',
-    strategy: 'Supports human-in-the-loop editing so the system assists experts instead of replacing them.',
   },
 ];
 
@@ -788,25 +742,6 @@ function SakhiDeepDive({ project }: { project: ProjectData }) {
           subtitle="How Sakhi reads through the architect lens and the strategy lens"
         />
 
-        <div className="overflow-hidden rounded-[1.75rem] border border-white/8 bg-[#0b0b0b]/72">
-          <div className="grid border-b border-white/8 bg-white/[0.02] px-5 py-3 text-[11px] font-mono uppercase tracking-[0.12em] text-gray-500 md:grid-cols-[0.7fr_1fr_1fr]">
-            <p>Feature</p>
-            <p>Architect Lens</p>
-            <p>Strategy Lens</p>
-          </div>
-
-          {sakhiComparisonRows.map((row) => (
-            <div
-              key={row.feature}
-              className="grid gap-3 border-b border-white/8 px-5 py-5 last:border-b-0 md:grid-cols-[0.7fr_1fr_1fr]"
-            >
-              <p className="text-sm font-semibold text-white">{row.feature}</p>
-              <p className="text-[15px] leading-[1.7] text-gray-300">{row.architect}</p>
-              <p className="text-[15px] leading-[1.7] text-gray-300">{row.strategy}</p>
-            </div>
-          ))}
-        </div>
-
         <div className="mt-8 grid gap-0 overflow-hidden rounded-[1.75rem] border border-white/8 xl:grid-cols-2">
           <div className="border-b border-white/8 bg-[rgba(34,211,238,0.05)] p-6 xl:border-b-0 xl:border-r xl:border-white/8 md:p-8">
             <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-cyan-300">Architect Lens</p>
@@ -1065,25 +1000,6 @@ function PresalesDeepDive({ project }: { project: ProjectData }) {
           title="Dual Lens Analysis"
           subtitle="How the system reads through architect depth and strategist value"
         />
-
-        <div className="overflow-hidden rounded-[1.75rem] border border-white/8 bg-[#0b0b0b]/72">
-          <div className="grid border-b border-white/8 bg-white/[0.02] px-5 py-3 text-[11px] font-mono uppercase tracking-[0.12em] text-gray-500 md:grid-cols-[0.8fr_1fr_1fr]">
-            <p>Feature</p>
-            <p>Architect Lens</p>
-            <p>Strategy Lens</p>
-          </div>
-
-          {presalesComparisonRows.map((row) => (
-            <div
-              key={row.feature}
-              className="grid gap-3 border-b border-white/8 px-5 py-5 last:border-b-0 md:grid-cols-[0.8fr_1fr_1fr]"
-            >
-              <p className="text-sm font-semibold text-white">{row.feature}</p>
-              <p className="text-[15px] leading-[1.7] text-gray-300">{row.architect}</p>
-              <p className="text-[15px] leading-[1.7] text-gray-300">{row.strategy}</p>
-            </div>
-          ))}
-        </div>
 
         <div className="mt-8 grid gap-0 overflow-hidden rounded-[1.75rem] border border-white/8 xl:grid-cols-2">
           <div className="border-b border-white/8 bg-[rgba(245,158,11,0.05)] p-6 xl:border-b-0 xl:border-r xl:border-white/8 md:p-8">

@@ -1,12 +1,14 @@
 import React from 'react';
-import { Home, FolderGit2, Newspaper, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { FolderGit2, Home, Newspaper, User, Users } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { NarrativeSidebar } from './NarrativeSidebar';
 import { useDeepDive } from '@/contexts/DeepDiveContext';
 import { getProjectBySlug } from '@/data/projects';
 
 export function Sidebar() {
   const { isInDeepDive, currentProjectId } = useDeepDive();
+  const location = useLocation();
+  const navigate = useNavigate();
   const activeProject = currentProjectId ? getProjectBySlug(currentProjectId) : null;
   const deepDiveSections =
     activeProject?.slug === 'thread-navigator' ||
@@ -26,6 +28,15 @@ export function Sidebar() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleNavigateToSection = (sectionId: string) => {
+    if (location.pathname === '/') {
+      scrollToSection(sectionId);
+      return;
+    }
+
+    navigate('/', { state: { scrollTo: sectionId } });
   };
 
   return (
@@ -48,10 +59,23 @@ export function Sidebar() {
             </Link>
           </li>
           <li>
+            <button
+              type="button"
+              onClick={() => handleNavigateToSection('about')}
+              className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
+            >
+              <User size={16} /> About
+            </button>
+          </li>
+          <li>
             <div className="flex flex-col gap-1 mt-1 p-2 relative">
-              <div className="flex items-center gap-3 text-sm text-gray-300">
+              <button
+                type="button"
+                onClick={() => (isInDeepDive ? scrollToSection('identity') : handleNavigateToSection('projects'))}
+                className="flex items-center gap-3 text-left text-sm text-gray-300 transition-colors hover:text-white"
+              >
                 <FolderGit2 size={16} /> Projects
-              </div>
+              </button>
               {isInDeepDive && deepDiveSections.length > 0 && (
                 <ul className="pl-7 text-[11px] text-gray-400 font-mono mt-1 space-y-1">
                   {deepDiveSections.map((section) => (
@@ -73,7 +97,7 @@ export function Sidebar() {
           <li>
             <button
               type="button"
-              onClick={() => scrollToSection('blogs')}
+              onClick={() => handleNavigateToSection('blogs')}
               className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
             >
               <Newspaper size={16} /> Blogs
@@ -82,7 +106,7 @@ export function Sidebar() {
           <li>
             <button
               type="button"
-              onClick={() => scrollToSection('connect')}
+              onClick={() => handleNavigateToSection('connect')}
               className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
             >
               <Users size={16} /> Let&apos;s Connect

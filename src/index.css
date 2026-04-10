@@ -19,3 +19,31 @@
     background-size: 32px 32px;
   }
 }
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-spin-reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@layer utilities {
+  .orbit-rotate {
+    animation: orbit-spin 28s linear infinite;
+  }
+
+  .orbit-counter-rotate {
+    animation: orbit-spin-reverse 28s linear infinite;
+  }
+}
