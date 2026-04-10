@@ -7,7 +7,7 @@ type SkillNode = {
 };
 
 const orbitSkills: SkillNode[] = [
-  { label: 'OpenAI', icon: 'https://cdn.simpleicons.org/openai/FFFFFF' },
+  { label: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
   { label: 'Python', icon: 'https://cdn.simpleicons.org/python/3776AB' },
   { label: 'Node.js', icon: 'https://cdn.simpleicons.org/nodedotjs/5FA04E' },
   { label: 'React', icon: 'https://cdn.simpleicons.org/react/61DAFB' },
@@ -68,8 +68,10 @@ export function AboutSection() {
             <div className="absolute inset-[14%] rounded-full border border-white/8" aria-hidden="true" />
             <div className="absolute inset-[4%] rounded-full border border-dashed border-[#A855F7]/20" aria-hidden="true" />
 
-            <div className="absolute left-1/2 top-1/2 z-20 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#C084FC]/40 bg-[#7E22CE] text-center text-base font-semibold text-white shadow-[0_0_40px_rgba(168,85,247,0.35)] md:h-40 md:w-40 md:text-lg">
-              Agentic AI
+            <div className="absolute inset-0 z-20 flex items-center justify-center">
+              <div className="flex h-28 w-28 items-center justify-center rounded-full border border-[#C084FC]/40 bg-[#7E22CE] px-4 text-center text-sm font-semibold text-white shadow-[0_0_40px_rgba(168,85,247,0.35)] motion-reduce:animate-none center-signal md:h-32 md:w-32 md:text-base">
+                <span className="max-w-[4.5rem] leading-tight md:max-w-[5rem]">Agentic AI</span>
+              </div>
             </div>
 
             <div className="group absolute inset-0 motion-reduce:animate-none orbit-rotate">
@@ -78,15 +80,24 @@ export function AboutSection() {
                 const x = Math.cos(angle) * orbitRadius;
                 const y = Math.sin(angle) * orbitRadius;
                 const isActive = hoveredSkill === skill.label;
+                const signalWave = index % 4;
                 const skillPositionStyle = {
                   left: '50%',
                   top: '50%',
                   transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
                 } satisfies CSSProperties;
+                const signalStyle = {
+                  animationDelay: `${signalWave * 1.15}s`,
+                } satisfies CSSProperties;
 
                 return (
                   <div key={skill.label} className="absolute" style={skillPositionStyle}>
-                    <div className="relative orbit-counter-rotate motion-reduce:animate-none group-hover:[animation-play-state:paused]">
+                    <div className="relative motion-reduce:animate-none orbit-counter-rotate">
+                      <span
+                        aria-hidden="true"
+                        style={signalStyle}
+                        className="pointer-events-none absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A855F7]/0 blur-xl motion-reduce:animate-none skill-signal-glow md:h-16 md:w-16"
+                      />
                       <button
                         type="button"
                         aria-label={skill.label}
@@ -94,7 +105,8 @@ export function AboutSection() {
                         onMouseLeave={() => setHoveredSkill(null)}
                         onFocus={() => setHoveredSkill(skill.label)}
                         onBlur={() => setHoveredSkill(null)}
-                        className="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] transition duration-300 hover:scale-110 hover:border-[#C084FC]/55 hover:shadow-[0_0_22px_rgba(168,85,247,0.5)] focus:scale-110 focus:border-[#C084FC]/55 focus:shadow-[0_0_22px_rgba(168,85,247,0.5)] focus:outline-none md:h-16 md:w-16"
+                        style={signalStyle}
+                        className="relative flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] transition duration-300 motion-reduce:animate-none skill-signal hover:scale-110 hover:border-[#C084FC]/55 hover:shadow-[0_0_22px_rgba(168,85,247,0.5)] focus:scale-110 focus:border-[#C084FC]/55 focus:shadow-[0_0_22px_rgba(168,85,247,0.5)] focus:outline-none md:h-16 md:w-16"
                       >
                         <img
                           src={skill.icon}
@@ -105,7 +117,7 @@ export function AboutSection() {
                       </button>
 
                       <div
-                        className={`pointer-events-none absolute left-1/2 top-full mt-3 -translate-x-1/2 rounded-full border border-white/10 bg-black/95 px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-zinc-200 transition duration-200 ${
+                        className={`pointer-events-none absolute left-1/2 top-full z-30 mt-5 -translate-x-1/2 rounded-full border border-white/10 bg-black/95 px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-zinc-200 transition duration-200 ${
                           isActive ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
                         }`}
                       >
