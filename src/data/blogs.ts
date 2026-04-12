@@ -1,9 +1,9 @@
 export interface BlogPost {
   slug: string;
   title: string;
-  href?: string;
   description: string;
   image: string;
+  href: string | null;
   tag: string;
   readTime: string;
   date: string;
@@ -35,6 +35,7 @@ export const blogs: BlogPost[] = [
   {
     slug: 'thread-navigator-v1-3',
     title: 'From Managing to Creating Context',
+    href: 'https://www.linkedin.com/feed/update/urn:li:activity:7430800943299870720/?originTrackingId=DociBkdsCXlAHrWGGupJkQ%3D%3D',
     description:
       'Why developers are wasting hours rewriting prompts and how I built a system to engineer inputs instead of repeating them.',
     image: '/images/blog-system-design.svg',
@@ -53,6 +54,7 @@ export const blogs: BlogPost[] = [
   {
     slug: 'ai-workflow-wall',
     title: 'The AI Workflow Wall',
+    href: 'https://medium.com/@deekshithsistu/the-ai-workflow-wall-architecting-a-local-first-context-engine-for-llms-1b9f737afd04',
     description:
       'A deep dive into building a local-first context engine to eliminate scroll fatigue, silos, and repeated inputs in LLM workflows.',
     image: '/images/blog-n8n-ai.svg',

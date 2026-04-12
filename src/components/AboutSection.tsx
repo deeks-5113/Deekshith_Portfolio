@@ -28,6 +28,7 @@ export function AboutSection() {
   if (isTyping) return null;
 
   const orbitRadius = 168;
+  const animationsPaused = hoveredSkill !== null;
 
   return (
     <section
@@ -35,7 +36,7 @@ export function AboutSection() {
       className="relative z-10 mx-auto w-full max-w-6xl px-4 py-24 md:px-8 lg:pl-16"
     >
       <div
-        className="grid items-center gap-16 overflow-hidden rounded-[2rem] border border-white/8 bg-black/75 px-6 py-8 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-sm md:px-10 md:py-12 xl:grid-cols-2"
+        className="grid items-center gap-16 overflow-visible rounded-[2rem] border border-white/8 bg-black/75 px-6 py-8 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-sm md:px-10 md:py-12 xl:grid-cols-2"
       >
         <div className="relative">
           <div className="absolute left-0 top-0 h-32 w-32 rounded-full bg-[#A855F7]/12 blur-3xl" aria-hidden="true" />
@@ -74,7 +75,10 @@ export function AboutSection() {
               </div>
             </div>
 
-            <div className="group absolute inset-0 motion-reduce:animate-none orbit-rotate">
+            <div
+              className="group absolute inset-0 motion-reduce:animate-none orbit-rotate"
+              style={{ animationPlayState: animationsPaused ? 'paused' : 'running' }}
+            >
               {orbitSkills.map((skill, index) => {
                 const angle = (index / orbitSkills.length) * Math.PI * 2 - Math.PI / 2;
                 const x = Math.cos(angle) * orbitRadius;
@@ -88,15 +92,19 @@ export function AboutSection() {
                 } satisfies CSSProperties;
                 const signalStyle = {
                   animationDelay: `${signalWave * 1.15}s`,
+                  animationPlayState: animationsPaused ? 'paused' : 'running',
                 } satisfies CSSProperties;
 
                 return (
                   <div key={skill.label} className="absolute" style={skillPositionStyle}>
-                    <div className="relative motion-reduce:animate-none orbit-counter-rotate">
+                    <div
+                      className="relative motion-reduce:animate-none orbit-counter-rotate"
+                      style={{ animationPlayState: animationsPaused ? 'paused' : 'running' }}
+                    >
                       <span
                         aria-hidden="true"
                         style={signalStyle}
-                        className="pointer-events-none absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A855F7]/0 blur-xl motion-reduce:animate-none skill-signal-glow md:h-16 md:w-16"
+                        className="pointer-events-none absolute left-1/2 top-1/2 h-[2.8rem] w-[2.8rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A855F7]/0 blur-xl motion-reduce:animate-none skill-signal-glow md:h-[3.2rem] md:w-[3.2rem]"
                       />
                       <button
                         type="button"
@@ -106,18 +114,18 @@ export function AboutSection() {
                         onFocus={() => setHoveredSkill(skill.label)}
                         onBlur={() => setHoveredSkill(null)}
                         style={signalStyle}
-                        className="relative flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#090909] transition duration-300 motion-reduce:animate-none skill-signal hover:scale-110 hover:border-[#C084FC]/55 hover:shadow-[0_0_22px_rgba(168,85,247,0.5)] focus:scale-110 focus:border-[#C084FC]/55 focus:shadow-[0_0_22px_rgba(168,85,247,0.5)] focus:outline-none md:h-16 md:w-16"
+                        className="relative flex h-[2.8rem] w-[2.8rem] items-center justify-center rounded-full border border-white/10 bg-[#090909] transition duration-300 motion-reduce:animate-none skill-signal hover:scale-110 hover:border-[#C084FC]/55 hover:shadow-[0_0_22px_rgba(168,85,247,0.5)] focus:scale-110 focus:border-[#C084FC]/55 focus:shadow-[0_0_22px_rgba(168,85,247,0.5)] focus:outline-none md:h-[3.2rem] md:w-[3.2rem]"
                       >
                         <img
                           src={skill.icon}
                           alt={skill.label}
                           loading="lazy"
-                          className="h-6 w-6 object-contain md:h-7 md:w-7"
+                          className="h-5 w-5 object-contain md:h-6 md:w-6"
                         />
                       </button>
 
                       <div
-                        className={`pointer-events-none absolute left-1/2 top-full z-30 mt-5 -translate-x-1/2 rounded-full border border-white/10 bg-black/95 px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-zinc-200 transition duration-200 ${
+                        className={`pointer-events-none absolute left-1/2 top-full z-40 mt-5 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-black/95 px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-zinc-100 shadow-[0_0_24px_rgba(0,0,0,0.45)] transition duration-200 ${
                           isActive ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
                         }`}
                       >
