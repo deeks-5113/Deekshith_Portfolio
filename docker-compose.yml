@@ -1,0 +1,9 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: deekshith-portfolio
+    ports:
+      - "9271:9271"
+    restart: unless-stopped

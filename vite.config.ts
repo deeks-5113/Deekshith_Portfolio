@@ -12,6 +12,14 @@ export default defineConfig({
     },
   },
   server: {
+    host: '0.0.0.0',
+    port: 9271,
+    strictPort: true,
     allowedHosts: ['uncollectively-unfutile-deandrea.ngrok-free.dev'],
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 9271,
+    strictPort: true,
   },
 })
