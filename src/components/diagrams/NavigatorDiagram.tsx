@@ -1,15 +1,15 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLens } from '@/context/LensContext';
 import { architectureData } from '@/data/architectureMapping';
 
 export function NavigatorDiagram() {
-  const { isArchitectMode, setActiveHoverLog } = useLens();
+  const { setActiveHoverLog } = useLens();
   const data = architectureData['navigator'];
 
   const architectColor = "#6366F1"; // aura-logic (Indigo)
   const handleHover = (nodeId: string | null) => {
-    if (!isArchitectMode || !nodeId) {
+    if (!nodeId) {
       setActiveHoverLog(null);
       return;
     }
@@ -30,15 +30,12 @@ export function NavigatorDiagram() {
           </filter>
         </defs>
 
-        <AnimatePresence mode="wait">
-          {isArchitectMode ? (
-            <motion.g
-              key="architect-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+        <motion.g
+          key="architect-view"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
               {/* Path: DOM -> Relay */}
               <motion.path
                 d="M 220 250 L 330 250"
@@ -92,40 +89,7 @@ export function NavigatorDiagram() {
                 <text x="660" y="245" fill="white" fontSize="14" fontFamily="monospace" textAnchor="middle">Injection Engine</text>
                 <text x="660" y="265" fill="gray" fontSize="10" fontFamily="monospace" textAnchor="middle">Hydrates Target</text>
               </motion.g>
-            </motion.g>
-          ) : (
-            <motion.g
-              key="strategist-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* Strategist Metrics Chart Visual */}
-              {/* Bar 1 morphing from dom */}
-              <motion.g layoutId="nav-node-dom">
-                <rect x="200" y="300" width="80" height="100" fill="gray" opacity="0.6" />
-                <text x="240" y="285" fill="white" fontSize="12" fontFamily="sans-serif" textAnchor="middle">Month 1</text>
-              </motion.g>
-              
-              {/* Bar 2 morphing from relay */}
-              <motion.g layoutId="nav-node-relay">
-                <rect x="340" y="200" width="80" height="200" fill="gray" opacity="0.8" />
-                <text x="380" y="185" fill="white" fontSize="12" fontFamily="sans-serif" textAnchor="middle">Month 2</text>
-              </motion.g>
-
-              {/* Bar 3 morphing from inject */}
-              <motion.g layoutId="nav-node-inject">
-                <rect x="480" y="100" width="80" height="300" fill={architectColor} opacity="0.9" />
-                <text x="520" y="85" fill="white" fontSize="12" fontFamily="sans-serif" textAnchor="middle">Month 3</text>
-                <text x="520" y="55" fill={architectColor} fontSize="14" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">60+ Active Users</text>
-              </motion.g>
-
-              {/* X Axis Baseline */}
-              <line x1="180" y1="400" x2="600" y2="400" stroke="white" strokeWidth="2" opacity="0.2" />
-            </motion.g>
-          )}
-        </AnimatePresence>
+        </motion.g>
       </svg>
     </div>
   );

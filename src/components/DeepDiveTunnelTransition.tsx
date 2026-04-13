@@ -17,7 +17,7 @@ import {
 } from '@react-three/drei';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { CatmullRomCurve3, Color, DoubleSide, Vector3, type Mesh } from 'three';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDeepDive } from '@/contexts/DeepDiveContext';
 import { useCameraFlight } from '@/hooks/useCameraFlight';
 import type { ProjectData } from '@/data/projects';
@@ -249,6 +249,7 @@ export function DeepDiveTunnelTransition({
   children,
 }: DeepDiveTunnelTransitionProps) {
   const navigate = useNavigate();
+  const location = useLocation();
   const shouldReduceMotion = useReducedMotion();
   const { enterDeepDive, exitDeepDive } = useDeepDive();
   const { setActiveProject, setCommentaryProject } = useLens();
@@ -271,8 +272,8 @@ export function DeepDiveTunnelTransition({
   const finalizeExit = useCallback(() => {
     setCommentaryProject('none');
     exitDeepDive();
-    navigate('/', { replace: true });
-  }, [exitDeepDive, navigate, setCommentaryProject]);
+    navigate(`/${location.search}`, { replace: true });
+  }, [exitDeepDive, location.search, navigate, setCommentaryProject]);
 
   const handleExit = useCallback(() => {
     setFlightDirection('backward');

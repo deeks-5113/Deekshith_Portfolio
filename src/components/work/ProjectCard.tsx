@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CircleCheckBig } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useLens } from '@/context/LensContext';
 import type { ProjectData } from '@/data/projects';
+import { content, getProjectCommentary } from '@/data/content';
+import { useSiteContent } from '@/data/siteContent';
 
 export type ProjectCardData = ProjectData;
 
@@ -19,29 +21,22 @@ const auraColors: Record<string, { border: string; glow: string; accent: string 
   'aura-rigor': { border: 'rgba(239,68,68,0.42)', glow: 'rgba(239,68,68,0.14)', accent: '#EF4444' },
 };
 
-const outsideProjectCommentary =
-  "Most portfolios show the 'what.' I want to show the 'why.' Hover over a project to hear the director's commentary on the architectural pivots and engineering decisions that matter.";
-
 export function ProjectCard({
   data,
   itemClassName = '',
 }: ProjectCardProps) {
   const navigate = useNavigate();
-  const {
-    isArchitectMode,
-    setActiveHoverLog,
-    setActiveProject,
-    setCommentaryProject,
-  } = useLens();
+  const { setActiveHoverLog, setActiveProject, setCommentaryProject } = useLens();
+  const { siteContent } = useSiteContent();
+  const location = useLocation();
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const lensData = isArchitectMode ? data.architectLens : data.strategistLens;
+  const lensData = data.architectLens;
   const aura = auraColors[data.domainAura] ?? auraColors['aura-logic'];
   const eyebrow = `${data.domainAura.replace('aura-', '').toUpperCase()} SYSTEM`;
-  const panelTitle = isArchitectMode ? 'ARCHITECTURE SIGNALS' : 'KEY HIGHLIGHTS';
-  const panelItems = isArchitectMode
-    ? data.architectPanelItems ?? [...data.tags.slice(0, 2), lensData.metrics, 'Deterministic execution path']
-    : [...data.tags.slice(0, 2), lensData.metrics, 'Outcome-led delivery'];
+  const panelTitle = siteContent.projectCards.panelTitle;
+  const panelItems =
+    data.architectPanelItems ?? [...data.tags.slice(0, 2), lensData.metrics, siteContent.projectCards.fallbackPanelItem];
 
   useEffect(() => {
     const node = cardRef.current;
@@ -64,29 +59,26 @@ export function ProjectCard({
 
   useEffect(() => {
     setActiveHoverLog(null);
-  }, [isArchitectMode, data.commentaryKey, setActiveHoverLog]);
+  }, [data.commentaryKey, setActiveHoverLog]);
 
   const handlePanelItemEnter = (item: string) => {
-    if (!isArchitectMode) return;
-    setActiveHoverLog(data.commentaryLogs?.[item] ?? null);
+    setActiveHoverLog(getProjectCommentary(data.slug, item));
   };
 
   const handleCardEnter = () => {
-    if (!isArchitectMode) return;
-    setActiveHoverLog(data.commentaryLogs?.overall ?? null);
+    setActiveHoverLog(getProjectCommentary(data.slug));
   };
 
   const handlePanelItemLeave = () => {
-    if (!isArchitectMode) return;
-    setActiveHoverLog(data.commentaryLogs?.overall ?? null);
+    setActiveHoverLog(getProjectCommentary(data.slug));
   };
 
   const handleCardLeave = () => {
-    setActiveHoverLog(outsideProjectCommentary);
+    setActiveHoverLog(content.projects.default);
   };
 
   const handleViewSystem = () => {
-    navigate(`/projects/${data.slug}/deep`);
+    navigate(`/projects/${data.slug}/deep${location.search}`);
   };
 
   return (
@@ -122,7 +114,7 @@ export function ProjectCard({
 
             <AnimatePresence mode="wait">
               <motion.div
-                key={isArchitectMode ? `arch-${data.id}` : `strat-${data.id}`}
+                key={`arch-${data.id}`}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
@@ -133,11 +125,7 @@ export function ProjectCard({
                   <h3 className="max-w-[12ch] text-[2rem] font-bold tracking-tight text-white md:text-[2.3rem] xl:text-[2.8rem]">
                     {data.title}
                   </h3>
-                  <p
-                    className={`max-w-lg text-[13px] leading-relaxed md:text-[14px] xl:text-[15px] ${
-                      isArchitectMode ? 'font-mono text-gray-400' : 'text-[#9FA9BF]'
-                    }`}
-                  >
+                  <p className="max-w-lg font-mono text-[13px] leading-relaxed text-gray-400 md:text-[14px] xl:text-[15px]">
                     {lensData.description}
                   </p>
                 </div>
@@ -150,7 +138,7 @@ export function ProjectCard({
                     className="inline-flex w-fit min-w-40 items-center justify-between gap-3 rounded-full px-4 py-2 text-[10px] font-bold text-black transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white/25 md:text-[11px]"
                     style={{ backgroundColor: aura.accent }}
                   >
-                    <span>{isArchitectMode ? 'VIEW SYSTEM' : 'VIEW FEATURES'}</span>
+                    <span>{siteContent.projectCards.viewSystemCta}</span>
                     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-black text-white">
                       <ArrowRight size={14} />
                     </span>

@@ -1,15 +1,15 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLens } from '@/context/LensContext';
 import { architectureData } from '@/data/architectureMapping';
 
 export function PresalesDiagram() {
-  const { isArchitectMode, setActiveHoverLog } = useLens();
+  const { setActiveHoverLog } = useLens();
   const data = architectureData['presales'];
 
   const architectColor = "#F59E0B"; // aura-gold
   const handleHover = (nodeId: string | null) => {
-    if (!isArchitectMode || !nodeId) {
+    if (!nodeId) {
       setActiveHoverLog(null);
       return;
     }
@@ -30,15 +30,12 @@ export function PresalesDiagram() {
           </filter>
         </defs>
 
-        <AnimatePresence mode="wait">
-          {isArchitectMode ? (
-            <motion.g
-              key="architect-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+        <motion.g
+          key="architect-view"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
               {/* Path: PG -> UI */}
               <motion.path
                 d="M 300 150 L 400 150 L 400 210"
@@ -94,44 +91,7 @@ export function PresalesDiagram() {
                 <text x="400" y="245" fill={architectColor} fontSize="14" fontFamily="monospace" textAnchor="middle" fontWeight="bold">React GenUI</text>
                 <text x="400" y="265" fill={architectColor} fontSize="12" fontFamily="monospace" textAnchor="middle">Dual-Schema Merge</text>
               </motion.g>
-            </motion.g>
-          ) : (
-            <motion.g
-              key="strategist-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* Strategist Value Flow Visual */}
-              <motion.g layoutId="ps-node-pg">
-                <rect x="100" y="230" width="180" height="40" fill="gray" opacity="0.6" rx="4" />
-                <text x="190" y="255" fill="white" fontSize="12" fontFamily="sans-serif" textAnchor="middle">Massive RFP Docs</text>
-              </motion.g>
-
-              <motion.path
-                d="M 280 250 L 350 250"
-                stroke="white" strokeWidth="2" opacity="0.5" fill="none"
-              />
-
-              <motion.g layoutId="ps-node-vector">
-                <circle cx="400" cy="250" r="50" fill={architectColor} opacity="0.8" />
-                <text x="400" y="255" fill="black" fontSize="12" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">AI Workflow</text>
-              </motion.g>
-
-              <motion.path
-                d="M 450 250 L 520 250"
-                stroke="white" strokeWidth="2" opacity="0.5" fill="none"
-              />
-
-              <motion.g layoutId="ps-node-ui">
-                <rect x="520" y="210" width="180" height="80" fill="#333" opacity="0.9" rx="8" />
-                <text x="610" y="245" fill="white" fontSize="14" fontFamily="sans-serif" textAnchor="middle">Context-Aware</text>
-                <text x="610" y="265" fill={architectColor} fontSize="12" fontFamily="sans-serif" textAnchor="middle">Bid Target Reached</text>
-              </motion.g>
-            </motion.g>
-          )}
-        </AnimatePresence>
+        </motion.g>
       </svg>
     </div>
   );

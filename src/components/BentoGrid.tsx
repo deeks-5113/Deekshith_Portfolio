@@ -14,8 +14,7 @@ export function BentoGrid() {
       <ProjectTile
         id="sakhi"
         title="Sakhi (Healthcare)"
-        architectData="Hybrid routing engine, semantic embeddings (SLM vs GPT), Supabase RAG, FastAPI microservices."
-        strategistData="Privacy-safe healthcare companion with session automation and SSL-compliant security."
+        lensData="Hybrid routing engine, semantic embeddings (SLM vs GPT), Supabase RAG, FastAPI microservices."
         icon={<Bot />}
         className="md:col-span-2"
       />
@@ -23,24 +22,21 @@ export function BentoGrid() {
       <ProjectTile
         id="navigator"
         title="Thread Navigator"
-        architectData="Context Teleportation Protocol, DOM tree parsing, Chrome Storage API relay logic."
-        strategistData="Universal thread management and context transfer for 60+ active users across major LLM platforms."
+        lensData="Context Teleportation Protocol, DOM tree parsing, Chrome Storage API relay logic."
         icon={<Code2 />}
       />
 
       <ProjectTile
         id="leadership"
         title="Pre-Sales Co-Pilot & Ops"
-        architectData="React Generative UI, RAG engine, relational and semantic schemas (PostgreSQL + VectorDB). 'Plan-Flow-Reflect' workflow."
-        strategistData="Context-aware document ingestion system to automate enterprise sales workflows. Leading 15+ engineers across 4 teams."
+        lensData="React Generative UI, RAG engine, relational and semantic schemas (PostgreSQL + VectorDB). 'Plan-Flow-Reflect' workflow."
         icon={<Users />}
       />
 
       <ProjectTile
         id="rigor"
         title="Technical Rigor"
-        architectData="8.75 CGPA. 650+ LeetCode problems. Graph traversals, DP optimizations, System Design patterns."
-        strategistData="Strong academic foundation and extreme problem-solving capabilities enabling scalable product delivery."
+        lensData="8.75 CGPA. 650+ LeetCode problems. Graph traversals, DP optimizations, System Design patterns."
         icon={<LineChart />}
         className="md:col-span-2"
       />

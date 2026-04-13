@@ -1,0 +1,355 @@
+{
+  "ui": {
+    "telemetry": {
+      "agentStatus": "Consulting Status: Open to Engagements",
+      "uptime": "Uptime: 650+ Rigor"
+    },
+    "continueCue": {
+      "heroToAbout": {
+        "chapter": "Chapter 02",
+        "title": "The consulting philosophy"
+      },
+      "aboutToProjects": {
+        "chapter": "Chapter 03",
+        "title": "Proof through client systems"
+      },
+      "projectsToBlogs": {
+        "chapter": "Chapter 04",
+        "title": "The thinking behind the builds"
+      }
+    }
+  },
+  "hero": {
+    "name": "Deekshith",
+    "introSuffix": " - Most consultants advise. I execute. I partner with teams to build agentic systems that halt when uncertain, act when confident, and deliver verifiable business value.",
+    "supporting": "I move enterprise AI from probabilistic guessing to verified execution, architecting systems that adapt to your business context and compress delivery time."
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Solving bottlenecks with agentic workflows",
+    "skillPrompt": "Click on any skill",
+    "body": [
+      "I architect and deploy agentic AI systems that plan, act, reflect, and coordinate tools to resolve complex operational bottlenecks for enterprise clients.",
+      "My engineering philosophy is defined by an unwillingness to let a problem sit. If a workflow is broken, I build the automation layer, routing engine, or internal tooling needed to solve it permanently.",
+      "This means moving beyond the prompt box to deliver systems that integrate seamlessly into diverse client environments."
+    ],
+    "closing": "I don't just implement tools. I partner with businesses to execute technical strategies.",
+    "centerLabel": "AI Consulting",
+    "skills": [
+      { "label": "Java", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { "label": "Python", "icon": "https://cdn.simpleicons.org/python/3776AB" },
+      { "label": "Node.js", "icon": "https://cdn.simpleicons.org/nodedotjs/5FA04E" },
+      { "label": "React", "icon": "https://cdn.simpleicons.org/react/61DAFB" },
+      { "label": "n8n", "icon": "https://cdn.simpleicons.org/n8n/EA4B71" },
+      { "label": "TypeScript", "icon": "https://cdn.simpleicons.org/typescript/3178C6" },
+      { "label": "PostgreSQL", "icon": "https://cdn.simpleicons.org/postgresql/4169E1" },
+      { "label": "Supabase", "icon": "https://cdn.simpleicons.org/supabase/3ECF8E" },
+      { "label": "Tailwind CSS", "icon": "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
+      { "label": "Docker", "icon": "https://cdn.simpleicons.org/docker/2496ED" },
+      { "label": "Git", "icon": "https://cdn.simpleicons.org/git/F05032" },
+      { "label": "Chrome", "icon": "https://cdn.simpleicons.org/googlechrome/4285F4" }
+    ]
+  },
+  "projectsSection": {
+    "title": "Client & Architectural Projects",
+    "intro": "Scroll through the stack to view system implementations. Each architecture is built to adapt to varied business contexts.",
+    "landingStateLabel": "Engagement State",
+    "loadedSuffixSingular": "system loaded",
+    "loadedSuffixPlural": "systems loaded"
+  },
+  "landingViews": {
+    "all": {
+      "label": "All Engagements",
+      "description": "Complete showroom across product architectures, consulting frameworks, and enterprise scaling."
+    },
+    "product": {
+      "label": "Product Architecture",
+      "description": "Highlights product intuition, shipped user value, and systems that can scale into owned platforms."
+    },
+    "consulting": {
+      "label": "Consulting Focus",
+      "description": "Prioritizes business-facing systems that compress delivery time and adapt to varied client contexts."
+    },
+    "gcc": {
+      "label": "Enterprise Scale",
+      "description": "Surfaces enterprise-grade systems built for reliability, process rigor, and cross-functional scale."
+    }
+  },
+  "projectCards": {
+    "panelTitle": "CONSULTING ARCHITECTURE",
+    "fallbackPanelItem": "Deterministic execution path",
+    "viewSystemCta": "VIEW SYSTEM",
+    "items": [
+      {
+        "id": "thread-navigator",
+        "title": "Thread Navigator",
+        "shortTitle": "Navigator",
+        "domainAura": "aura-logic",
+        "tags": ["JavaScript", "Chrome Storage API", "DOM Manipulation", "Cross-Platform Injection"],
+        "architectPanelItems": [
+          "Context Teleportation Protocol",
+          "Zero-Server Architecture",
+          "Cross-Platform DOM Interoperability",
+          "Client-Side Execution Only"
+        ],
+        "lens": {
+          "headline": "Context Teleportation Protocol - DOM-Level, Zero Server",
+          "metrics": "100% Local Privacy | Chrome Storage Relay",
+          "description": "Parses platform-specific DOM trees, compiles selected Q&A pairs into clean Markdown, and auto-injects into any target LLM via Chrome Storage relay. No API. No server. No permissions beyond Chrome."
+        },
+        "summary": "An operational tool born from an unwillingness to accept workflow friction, turning fragmented LLM conversations into portable context packets.",
+        "telemetry": [
+          { "label": "Privacy Model", "value": "100% Local" },
+          { "label": "Transfer Time", "value": "<1s" },
+          { "label": "Supported Targets", "value": "3 LLMs" },
+          { "label": "Power Users", "value": "60+" }
+        ],
+        "deepDiveSections": [
+          {
+            "title": "System Mission & Mindset",
+            "body": "Thread Navigator exists to preserve reasoning continuity between isolated model interfaces. It stands as a testament to my engineering mindset: when faced with an operational bottleneck or workflow friction, the tendency must be to architect a permanent solution, not tolerate the problem."
+          },
+          {
+            "title": "Execution Model",
+            "body": "Each thread is parsed into a normalized packet, staged in Chrome storage, and rehydrated into the target interface with clipboard fallback. The entire chain is deterministic, client-side, and highly reliable."
+          },
+          {
+            "title": "Business Outcome",
+            "body": "Eliminated manual copy-paste loops for power users, converting lost operational minutes into seamless model switching."
+          }
+        ],
+        "nextBuild": {
+          "status": "IN PROGRESS - NOT YET BUILT",
+          "title": "Enterprise API Layer",
+          "body": [
+            "Right now, Thread Navigator is entirely local. That's a feature, but it is also a ceiling.",
+            "The next architectural move is an optional sync layer that maps chrome.storage state to Microsoft Graph API or Notion API, letting enterprise teams persist context across devices and share prompt libraries.",
+            "The local-first architecture was never a limitation. It was step one of a phased enterprise deployment."
+          ]
+        }
+      },
+      {
+        "id": "healthcare-agents",
+        "title": "Agentic Companions for Healthcare Providers",
+        "shortTitle": "Healthcare Agents",
+        "domainAura": "aura-medical",
+        "tags": ["FastAPI", "Hybrid HRAG", "Composite Embeddings", "SSE Streaming", "PostgreSQL", "Confidence Gates"],
+        "architectPanelItems": [
+          "4-Layer Hallucination Shield",
+          "Confidence-Gated Hybrid Routing",
+          "Self-Improving Knowledge Flywheel",
+          "Stream Abort on Drift Detection"
+        ],
+        "lens": {
+          "headline": "Zero-Trust Medical Reasoning Engine for Enterprise Health",
+          "metrics": "<2s Latency | 100% Guardrail Coverage",
+          "description": "Collaborated with a health-tech company to build an agentic companion. Four sequential safety layers, similarity scoring, confidence gating, straightjacket prompting, and a mid-stream entity auditor guarantee zero hallucination exposure."
+        },
+        "summary": "Partnered with a healthcare organization to deliver a clinical companion with explicit confidence gates and local-first routing.",
+        "telemetry": [
+          { "label": "Guardrail Layers", "value": "4" },
+          { "label": "Latency", "value": "<2s" },
+          { "label": "Cloud Exposure", "value": "Selective" },
+          { "label": "Hallucination Goal", "value": "Zero" }
+        ],
+        "deepDiveSections": [
+          {
+            "title": "Client Mission",
+            "body": "Collaborated with a rapidly scaling health-tech company to eliminate the black-box nature of medical AI. We built an agent companion that enforces a strictly context-based extraction model, stripping away AI personas to ensure enterprise-grade clinical safety."
+          },
+          {
+            "title": "Execution Model",
+            "body": "The system employs recursive parent hydration. When a granular child chunk is matched, the backend recursively fetches the full H1-H3 hierarchy so the LLM is anchored in expert-verified, institutional data."
+          },
+          {
+            "title": "Business Outcome",
+            "body": "Blocked or uncertain interactions are routed dynamically and logged as hit lists, transforming operational edge cases into a structured institutional knowledge flywheel."
+          }
+        ],
+        "nextBuild": {
+          "status": "IN PROGRESS - NEXT ITERATION",
+          "title": "Agentic Self-Correction",
+          "body": [
+            "The next node is transitioning the pipeline to a LangGraph-based reflective agent tailored for varied clinical contexts.",
+            "Queries below the confidence threshold will enter a Reflect and Retry loop that diagnoses why confidence was low, re-queries with adjusted semantic weights, and resolves gaps autonomously.",
+            "This reduces the burden on human-in-the-loop experts and scales the agent's autonomous resolution capabilities."
+          ]
+        }
+      },
+      {
+        "id": "presales",
+        "title": "Autonomous Pre-Sales Co-Pilot",
+        "shortTitle": "Pre-Sales Co-Pilot",
+        "domainAura": "aura-gold",
+        "tags": ["FastAPI", "PostgreSQL", "VectorDB", "React GenUI", "n8n", "LangChain", "Whisper API"],
+        "architectPanelItems": [
+          "Dual-Schema RAG Engine",
+          "Multi-Agent Orchestration (n8n)",
+          "15-Minute Automated Workflow",
+          "Webhook-Triggered Automation Pipeline"
+        ],
+        "lens": {
+          "headline": "Multi-Agent Pipeline: Enrich -> Transcribe -> Reason -> Deliver",
+          "metrics": "ACID Integrity | Semantic Retrieval | STT Fallback Chain",
+          "description": "Four chained agents handle client enrichment, call transcription, LLM reasoning, and visual deck generation. Designed to compress delivery timelines and adapt dynamically to specific B2B client contexts."
+        },
+        "summary": "A multi-agent revenue engine that automates enterprise research, transcription, retrieval, and deck delivery.",
+        "telemetry": [
+          { "label": "Prep Cycle", "value": "15 min" },
+          { "label": "Agent Stages", "value": "4" },
+          { "label": "Primary Stores", "value": "2" },
+          { "label": "Delivery Mode", "value": "Autonomous" }
+        ],
+        "deepDiveSections": [
+          {
+            "title": "System Mission",
+            "body": "To consult on and transform pre-sales from a manual task into an intelligent, data-driven digital co-pilot motion, maximizing client impact while minimizing expert grunt work."
+          },
+          {
+            "title": "Execution Model",
+            "body": "Built as a handoff chain rather than a monolith. Each module owns a narrow responsibility and exchanges explicit state through a shared traceToken, ensuring auditable and adaptable workflows."
+          },
+          {
+            "title": "Business Outcome",
+            "body": "Shortens B2B sales cycles by delivering high-fidelity deliverables with instant technical credibility, directly driving revenue-generating activities."
+          }
+        ],
+        "nextBuild": {
+          "status": "NEXT ARCHITECTURAL MOVE",
+          "title": "Adaptive Feedback Fine-Tuning",
+          "body": [
+            "The next consulting objective is a feedback loop layer that treats client upvotes, downvotes, and edits as few-shot examples for future workflow decisions.",
+            "That will create a self-optimizing agent that learns an organization's specific technical preferences and voice over time, pushing the system toward zero-edit deliverable generation."
+          ]
+        }
+      }
+    ]
+  },
+  "blogsSection": {
+    "eyebrow": "Consulting Insights",
+    "title": "Thoughts from delivering client systems",
+    "intro": "Not theory. Just lessons from executing architectures that scaled, resolved friction, and delivered business value.",
+    "supporting": "Insights on AI orchestration, operational system design, and building reliable automation for the enterprise.",
+    "cardMeta": "Real execution • Client focus • Verifiable ROI",
+    "readMore": "Read More ->",
+    "post": {
+      "backToHome": "Back to home",
+      "whyItMattersLabel": "Business Impact",
+      "whyItMattersBody": "These posts capture operational insights. Each one starts from real client constraints and workflow bottlenecks, working backward to the architectural principle.",
+      "keyTakeawaysLabel": "Strategic takeaways"
+    },
+    "items": [
+      {
+        "slug": "ai-for-vizag-journey",
+        "title": "From 5 Minutes to 200+ People",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7439871977282129920/?originTrackingId=qZbe2s0jX1gtPoyM%2FKqGsA%3D%3D",
+        "description": "How executing under pressure led to pitching an AI system to 200+ people, and the business value of demonstrating public capability.",
+        "image": "/images/blog-ai-dev.svg",
+        "tag": "Leadership",
+        "readTime": "4 min read",
+        "date": "April 2026",
+        "eyebrow": "Insight 01",
+        "heroSummary": "A short window turned into a live pitch for an AI product. The core lesson was not about presentation; it was about how technical execution and the ability to solve problems on the spot create compounded trust and opportunity.",
+        "lessons": [
+          "Client trust begins with handling high-pressure technical requirements gracefully.",
+          "Demonstrating live capability is the strongest form of business development.",
+          "Momentum belongs to those who build robust solutions that can be validated publicly."
+        ]
+      },
+      {
+        "slug": "thread-navigator-v1-3",
+        "title": "Engineering Workflow Solutions",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7430800943299870720/?originTrackingId=DociBkdsCXlAHrWGGupJkQ%3D%3D",
+        "description": "Why organizations waste hours on repetitive LLM tasks and the architecture behind a zero-server solution.",
+        "image": "/images/blog-system-design.svg",
+        "tag": "Operational Strategy",
+        "readTime": "3 min read",
+        "date": "April 2026",
+        "eyebrow": "Insight 02",
+        "heroSummary": "Workflow friction is a systems problem hidden inside daily operations. This post explores the consulting mindset: identifying a process bottleneck and engineering a permanent, portable context layer rather than settling for temporary workarounds.",
+        "lessons": [
+          "Operational bottlenecks should be engineered out, not managed.",
+          "Teams lose compounding hours to friction they assume is standard.",
+          "True business value lies in packaging complexity into seamless user experiences."
+        ]
+      },
+      {
+        "slug": "ai-workflow-wall",
+        "title": "Breaking the AI Workflow Wall",
+        "href": "https://medium.com/@deekshithsistu/the-ai-workflow-wall-architecting-a-local-first-context-engine-for-llms-1b9f737afd04",
+        "description": "A technical breakdown of deploying local-first context engines to eliminate operational silos in enterprise LLM adoption.",
+        "image": "/images/blog-n8n-ai.svg",
+        "tag": "Enterprise Architecture",
+        "readTime": "6 min read",
+        "date": "April 2026",
+        "eyebrow": "Insight 03",
+        "heroSummary": "Most enterprise AI friction is not model quality. It is the cost of context recovery across silos. This piece details the strategic implementation of a local-first architecture designed to permanently remove that barrier for teams.",
+        "lessons": [
+          "Local-first architecture delivers immediate workflow velocity without compliance overhead.",
+          "UX friction is often an enterprise data retrieval problem in disguise.",
+          "Controlling the input context is the highest leverage point for AI ROI."
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Let's Partner",
+    "title": "Ready to solve a complex bottleneck?",
+    "intro": "Whether you need to architect an agentic workflow, optimize a broken process, or explore enterprise AI deployment, let's discuss your constraints.",
+    "fields": {
+      "firstName": {
+        "label": "First Name",
+        "placeholder": "John"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "placeholder": "Doe"
+      },
+      "email": {
+        "label": "Work Email",
+        "placeholder": "you@company.com"
+      },
+      "phoneNumber": {
+        "label": "Phone Number"
+      },
+      "phoneCountryAria": "Country selector",
+      "phoneAria": "Phone number",
+      "message": {
+        "label": "What operational challenge are you facing?",
+        "placeholder": "Tell me about your business bottleneck, system constraints, or the workflow you want to automate."
+      }
+    },
+    "submitLabel": "Initiate Conversation",
+    "mailto": {
+      "subjectTemplate": "Consulting Inquiry from {firstName} {lastName}",
+      "bodyTemplate": "Hi Deekshith,\n\nYou have a new consulting inquiry:\n\nName: {firstName} {lastName}\nEmail: {email}\nPhone: {phone}\n\nChallenge/Objective:\n{message}\n\n---"
+    },
+    "helper": "Clicking will open your email client securely",
+    "directEmailPrefix": "Or reach out directly at"
+  },
+  "footer": {
+    "name": "Deekshith Sistu",
+    "copyright": "@2026 . All rights reserved.",
+    "socialLinks": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/deeks-5113"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/deekshith-sistu/"
+      },
+      {
+        "label": "X",
+        "href": "https://x.com/deekshiths5113"
+      }
+    ]
+  },
+  "phoneCountryOptions": [
+    { "code": "IN", "label": "India", "dialCode": "+91", "placeholder": "98765 43210" },
+    { "code": "US", "label": "United States", "dialCode": "+1", "placeholder": "(555) 123-4567" },
+    { "code": "GB", "label": "United Kingdom", "dialCode": "+44", "placeholder": "07123 456789" },
+    { "code": "AE", "label": "UAE", "dialCode": "+971", "placeholder": "50 123 4567" },
+    { "code": "SG", "label": "Singapore", "dialCode": "+65", "placeholder": "8123 4567" }
+  ]
+}

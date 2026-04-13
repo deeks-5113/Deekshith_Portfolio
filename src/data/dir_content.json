@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "default": "I specialize in designing and deploying agentic workflows. My recent work involves partnering with health-tech organizations to build conversational agent companions, alongside developing specialized tools that optimize AI context management and data privacy. I focus on the entire lifecycle—from the initial problem statement to full-scale deployment.",
+    "headline": "I specialize in designing and deploying agentic workflows. My recent work involves partnering with health-tech organizations to build conversational agent companions, alongside developing specialized tools that optimize AI context management and data privacy. I focus on the entire lifecycle—from the initial problem statement to full-scale deployment.",
+    "supporting": "Plan-Flow-Reflect and hybrid routing are not slogans here. They are the operating constraints behind how I build systems that know when to act, when to verify, and when to stop."
+  },
+  "about": {
+    "default": "This section explains the operating model behind the builds. The goal is to show how I think about orchestration, routing, and execution layers before the projects arrive as proof.",
+    "headline": "I am not positioning AI as a chat interface. I am positioning it as an execution engine that can plan, coordinate tools, and preserve context across real workflows.",
+    "summary": "The key architectural bias is context management. Good systems do not just generate answers. They deliver the right information to the right model at the right moment.",
+    "center": "Agentic AI sits at the center because the value is not in isolated tools. It is in designing how those tools collaborate under one execution model.",
+    "skills": {
+      "Java": "Java signals systems discipline. It is where I learned to think in strong abstractions, maintainability, and production-grade service design.",
+      "Python": "Python is the fastest bridge from idea to automation. It powers orchestration, backend logic, and the agent workflows that need to move quickly without losing rigor.",
+      "Node.js": "Node.js is where I build event-driven execution layers and interfaces that need to react in real time across browser and backend boundaries.",
+      "React": "React is the presentation layer for complex systems. I use it to surface architecture, state, and interaction in a way that feels deliberate rather than decorative.",
+      "n8n": "n8n represents my bias for visible orchestration. It turns multi-step automation into something observable, editable, and resilient instead of hidden inside scripts.",
+      "TypeScript": "TypeScript lets the interface and orchestration layers stay explicit. It reduces ambiguity in systems where state shape and tool contracts matter.",
+      "PostgreSQL": "PostgreSQL is where operational truth lives. I rely on it when a system needs relational integrity, predictable state, and enterprise-grade persistence.",
+      "Supabase": "Supabase is useful when speed matters but I still want structured data, auth primitives, and developer velocity without giving up a real database.",
+      "Tailwind CSS": "Tailwind CSS is how I keep interfaces expressive without drifting into styling entropy. It helps the UI stay systemized and intentional.",
+      "Docker": "Docker matters because systems should travel cleanly. Packaging the environment is part of the architecture, not an afterthought after the code works.",
+      "Git": "Git is the memory layer for engineering. It preserves intent, iteration, and accountability across how systems actually evolve.",
+      "Chrome": "Chrome points to browser-resident architecture. It is where I build tools that live close to user behavior, DOM state, and execution context."
+    }
+  },
+  "projects": {
+    "default": "Most portfolios show the what. This section is designed to surface the why, so each project card becomes a guided explanation of the architectural pivot that made the system work.",
+    "items": {
+      "thread-navigator": {
+        "default": "I built this to solve the context tax. It is an engineering bridge between isolated LLMs, ensuring reasoning moves as fast as you do, with total privacy baked into the architecture.",
+        "signals": {
+          "Context Teleportation Protocol": "Copying is easy; preserving reasoning is hard. This protocol packages intent into a context packet for instant injection and removes the tax of switching models.",
+          "Zero-Server Architecture": "Data leakage kills adoption. Everything lives in Chrome storage with no backend, no databases, and no APIs. That privacy model is why engineers trusted it immediately.",
+          "Cross-Platform DOM Interoperability": "Walled gardens lacked APIs, so I used the DOM. The parser navigates HTML trees across platforms and turns structured chaos into portable context.",
+          "Client-Side Execution Only": "Local execution removes latency and infrastructure overhead. By leaning on Chrome runtime, the tool scales without servers, operational cost, or data residency risk."
+        }
+      },
+      "sakhi": {
+        "default": "Most healthcare copilots optimize for answers. I optimized for failure modes. Sakhi is a zero-trust clinical agent where every architectural layer exists to prevent unsafe reasoning from reaching the patient.",
+        "signals": {
+          "4-Layer Hallucination Shield": "Most bots hope LLMs stay on track. I built a stream-level auditor scanning generated tokens against grounded source material. If the stream drifts, it aborts.",
+          "Confidence-Gated Hybrid Routing": "Local SLMs handle routine queries for low latency and zero cloud exposure. Complex cases hit GPT only after PII scrubbing, balancing privacy, safety, and cost.",
+          "Self-Improving Knowledge Flywheel": "Every blocked query is logged. Failures are re-ingested as new HRAG nodes with composite embeddings, so the system gets safer as it fails.",
+          "Stream Abort on Drift Detection": "The agent validates reasoning while it streams. If entities or claims detach from approved evidence, token emission stops before the answer leaves the system."
+        }
+      },
+      "presales": {
+        "default": "This was not about making sales research nicer. It was about collapsing an entire pre-sales operating model into one autonomous pipeline where enrichment, reasoning, and delivery happen as a single system.",
+        "signals": {
+          "Multi-Agent Orchestration (n8n)": "I traded god-scripts for an observable agent pipeline via n8n. If one stage degrades, the others can still progress with clear state visibility and retry boundaries.",
+          "Dual-Schema RAG Engine": "Enterprise RFPs mix facts and narratives. PostgreSQL holds strict relational truth while VectorDB handles conceptual retrieval. They merge at the UI into one coherent draft.",
+          "15-Minute Automated Workflow": "The system compresses discovery, transcription, and deck generation into one accelerated session, turning a multi-day prep cycle into an operational sprint.",
+          "Webhook-Triggered Automation Pipeline": "The workflow wakes up on external events, pushes context through specialized stages, and produces deliverables without forcing humans to babysit each handoff."
+        }
+      }
+    }
+  },
+  "blogs": {
+    "default": "The writing section extends the proof. These posts capture the reasoning patterns behind the systems so the viewer sees repeatable judgment, not isolated project outcomes.",
+    "intro": "These are not tutorials. They are field notes from systems that broke, scaled, or exposed a pattern worth keeping.",
+    "items": {
+      "ai-for-vizag-journey": "This post is about momentum creation. A small opportunity became a room of 200 plus people because the artifact was concrete enough to travel on its own.",
+      "thread-navigator-v1-3": "This piece reframes prompt repetition as a systems problem. The interesting move was shifting from manually managing context to engineering reusable inputs.",
+      "ai-workflow-wall": "This article breaks down the local-first context engine behind LLM workflow recovery. The real point is that workflow pain is usually a context retrieval problem disguised as UX friction."
+    }
+  }
+}

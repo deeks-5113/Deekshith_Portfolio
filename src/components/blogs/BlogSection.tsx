@@ -1,11 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { blogs } from '@/data/blogs';
+import { getBlogs } from '@/data/blogs';
 import CardSwap, { Card } from './CardSwap';
 import { useLens } from '@/context/LensContext';
+import { useSiteVariant } from '@/data/siteContent';
 
 export function BlogSection() {
   const navigate = useNavigate();
   const { isTyping } = useLens();
+  const siteVariant = useSiteVariant();
+  const blogs = getBlogs(siteVariant);
 
   if (isTyping) return null;
 

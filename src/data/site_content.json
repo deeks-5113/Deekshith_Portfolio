@@ -1,0 +1,356 @@
+{
+  "ui": {
+    "telemetry": {
+      "agentStatus": "Agent Status: Ready",
+      "uptime": "Uptime: 650+ Rigor"
+    },
+    "continueCue": {
+      "heroToAbout": {
+        "chapter": "Chapter 02",
+        "title": "How the systems are built"
+      },
+      "aboutToProjects": {
+        "chapter": "Chapter 03",
+        "title": "Proof through shipped systems"
+      },
+      "projectsToBlogs": {
+        "chapter": "Chapter 04",
+        "title": "The thinking behind the builds"
+      }
+    }
+  },
+  "hero": {
+    "name": "Deekshith",
+    "introSuffix": " - Most AI products guess. Mine verify. I build agents that halt when uncertain, act when confident, and explain every decision in between.",
+    "supporting": "I move AI from probabilistic guessing to verified execution using the Plan-Flow-Reflect framework and hybrid routing engines."
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Turning AI into execution engines",
+    "skillPrompt": "Click on any skill",
+    "body": [
+      "I build agentic AI systems that plan, act, reflect, and coordinate tools instead of stopping at raw output.",
+      "My focus is context management, routing the right information at the right time so models stay usable inside real workflows.",
+      "That shows up as automation layers, browser tooling, and execution systems built to operate beyond the prompt box."
+    ],
+    "closing": "I don't just use tools. I design how they work together.",
+    "centerLabel": "Agentic AI",
+    "skills": [
+      { "label": "Java", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { "label": "Python", "icon": "https://cdn.simpleicons.org/python/3776AB" },
+      { "label": "Node.js", "icon": "https://cdn.simpleicons.org/nodedotjs/5FA04E" },
+      { "label": "React", "icon": "https://cdn.simpleicons.org/react/61DAFB" },
+      { "label": "n8n", "icon": "https://cdn.simpleicons.org/n8n/EA4B71" },
+      { "label": "TypeScript", "icon": "https://cdn.simpleicons.org/typescript/3178C6" },
+      { "label": "PostgreSQL", "icon": "https://cdn.simpleicons.org/postgresql/4169E1" },
+      { "label": "Supabase", "icon": "https://cdn.simpleicons.org/supabase/3ECF8E" },
+      { "label": "Tailwind CSS", "icon": "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
+      { "label": "Docker", "icon": "https://cdn.simpleicons.org/docker/2496ED" },
+      { "label": "Git", "icon": "https://cdn.simpleicons.org/git/F05032" },
+      { "label": "Chrome", "icon": "https://cdn.simpleicons.org/googlechrome/4285F4" }
+    ]
+  },
+  "projectsSection": {
+    "title": "Projects",
+    "intro": "Scroll through the stack to move project by project. Each card stays pinned while the next one layers over it.",
+    "landingStateLabel": "Landing State",
+    "loadedSuffixSingular": "project loaded",
+    "loadedSuffixPlural": "projects loaded"
+  },
+  "landingViews": {
+    "all": {
+      "label": "All Projects",
+      "description": "Complete showroom across product, consulting, and GCC hiring narratives."
+    },
+    "product": {
+      "label": "Product Company",
+      "description": "Highlights product intuition, shipped user value, and systems that can scale into owned platforms."
+    },
+    "consulting": {
+      "label": "Consulting",
+      "description": "Prioritizes business-facing systems that compress delivery time and adapt to varied client contexts."
+    },
+    "gcc": {
+      "label": "GCC",
+      "description": "Surfaces enterprise-grade systems built for reliability, process rigor, and cross-functional scale."
+    }
+  },
+  "projectCards": {
+    "panelTitle": "ARCHITECTURE SIGNALS",
+    "fallbackPanelItem": "Deterministic execution path",
+    "viewSystemCta": "VIEW SYSTEM",
+    "items": [
+      {
+        "id": "thread-navigator",
+        "title": "Thread Navigator",
+        "shortTitle": "Navigator",
+        "domainAura": "aura-logic",
+        "tags": ["JavaScript", "Chrome Storage API", "DOM Manipulation", "Cross-Platform Injection"],
+        "architectPanelItems": [
+          "Context Teleportation Protocol",
+          "Zero-Server Architecture",
+          "Cross-Platform DOM Interoperability",
+          "Client-Side Execution Only"
+        ],
+        "lens": {
+          "headline": "Context Teleportation Protocol - DOM-Level, Zero Server",
+          "metrics": "100% Local Privacy | Chrome Storage Relay",
+          "description": "Parses platform-specific DOM trees, compiles selected Q&A pairs into clean Markdown, and auto-injects into any target LLM via Chrome Storage relay with clipboard fallback. No API. No server. No permissions beyond Chrome."
+        },
+        "summary": "A browser-resident orchestration layer that turns fragmented LLM conversations into portable context packets.",
+        "telemetry": [
+          { "label": "Privacy Model", "value": "100% Local" },
+          { "label": "Transfer Time", "value": "<1s" },
+          { "label": "Supported Targets", "value": "3 LLMs" },
+          { "label": "Power Users", "value": "60+" }
+        ],
+        "deepDiveSections": [
+          {
+            "title": "System Mission",
+            "body": "Thread Navigator exists to preserve reasoning continuity between isolated model interfaces. The core bet was that context transfer should happen where the user works, not on a remote server."
+          },
+          {
+            "title": "Execution Model",
+            "body": "Each thread is parsed into a normalized packet, staged in Chrome storage, and rehydrated into the target interface with clipboard fallback. The entire chain is deterministic and client-side."
+          },
+          {
+            "title": "System Outcome",
+            "body": "The product eliminated manual copy-paste loops for power users and made model switching feel operational rather than disruptive."
+          }
+        ],
+        "nextBuild": {
+          "status": "IN PROGRESS - NOT YET BUILT",
+          "title": "Enterprise API Layer",
+          "body": [
+            "Right now, Thread Navigator is entirely local. That's a feature, but it is also a ceiling.",
+            "The next architectural move is an optional sync layer that maps chrome.storage state to Microsoft Graph API or Notion API, letting enterprise users persist context across devices and share prompt libraries across teams.",
+            "The local-first architecture was never a limitation. It was step one of a two-step design."
+          ]
+        }
+      },
+      {
+        "id": "sakhi",
+        "title": "Zero Trust Healthcare AI Agents",
+        "shortTitle": "Healthcare AI Agents",
+        "domainAura": "aura-medical",
+        "tags": ["FastAPI", "Hybrid HRAG", "Composite Embeddings", "SSE Streaming", "PostgreSQL", "Confidence Gates"],
+        "architectPanelItems": [
+          "4-Layer Hallucination Shield",
+          "Confidence-Gated Hybrid Routing",
+          "Self-Improving Knowledge Flywheel",
+          "Stream Abort on Drift Detection"
+        ],
+        "lens": {
+          "headline": "4-Layer Zero-Trust Medical Reasoning Engine",
+          "metrics": "<2s Latency | 100% Guardrail Coverage",
+          "description": "Four sequential safety layers, similarity scoring, confidence gating, straightjacket prompting, and a mid-stream entity auditor guarantee zero hallucination exposure before a single token reaches the user."
+        },
+        "summary": "A healthcare agent with explicit confidence gates, local-first routing, and mid-stream drift detection.",
+        "telemetry": [
+          { "label": "Guardrail Layers", "value": "4" },
+          { "label": "Latency", "value": "<2s" },
+          { "label": "Cloud Exposure", "value": "Selective" },
+          { "label": "Hallucination Goal", "value": "Zero" }
+        ],
+        "deepDiveSections": [
+          {
+            "title": "System Mission",
+            "body": "To eliminate the black-box nature of medical AI by enforcing a strictly context-based extraction model that strips all AI personas."
+          },
+          {
+            "title": "Execution Model",
+            "body": "The system employs recursive parent hydration. When a granular child chunk is matched, the backend recursively fetches the full H1-H3 hierarchy so the LLM is anchored in expert-verified data."
+          },
+          {
+            "title": "System Outcome",
+            "body": "Blocked or uncertain interactions are logged as hit lists, turning edge cases into new structured institutional knowledge nodes."
+          }
+        ],
+        "nextBuild": {
+          "status": "IN PROGRESS - NEXT ITERATION",
+          "title": "Agentic Self-Correction",
+          "body": [
+            "The next node is transitioning from a deterministic pipeline to a LangGraph-based reflective agent.",
+            "Right now, a query below the 0.85 threshold is logged and routed to a safety fallback. The next iteration introduces a Reflect and Retry loop that diagnoses why confidence was low, re-queries with adjusted semantic weights, and attempts to resolve the gap autonomously.",
+            "Only after that self-correction loop fails would the system escalate the case into the expert log."
+          ]
+        }
+      },
+      {
+        "id": "presales",
+        "title": "Autonomous Pre-Sales Co-Pilot",
+        "shortTitle": "Pre-Sales Co-Pilot",
+        "domainAura": "aura-gold",
+        "tags": ["FastAPI", "PostgreSQL", "VectorDB", "React GenUI", "n8n", "LangChain", "Whisper API"],
+        "architectPanelItems": [
+          "Dual-Schema RAG Engine",
+          "Multi-Agent Orchestration (n8n)",
+          "15-Minute Automated Workflow",
+          "Webhook-Triggered Automation Pipeline"
+        ],
+        "lens": {
+          "headline": "Multi-Agent Pipeline: Enrich -> Transcribe -> Reason -> Deliver",
+          "metrics": "ACID Integrity | Semantic Retrieval | STT Fallback Chain",
+          "description": "Four chained agents handle client enrichment, call transcription, LLM reasoning, and visual deck generation. PostgreSQL owns relational state. VectorDB handles semantic RFP search. n8n orchestrates the handoffs."
+        },
+        "summary": "A multi-agent revenue engine that automates research, transcription, retrieval, and deck delivery.",
+        "telemetry": [
+          { "label": "Prep Cycle", "value": "15 min" },
+          { "label": "Agent Stages", "value": "4" },
+          { "label": "Primary Stores", "value": "2" },
+          { "label": "Delivery Mode", "value": "Autonomous" }
+        ],
+        "deepDiveSections": [
+          {
+            "title": "System Mission",
+            "body": "To transform pre-sales from a manual, repetitive task into an intelligent, data-driven digital co-pilot motion that maximizes client impact while minimizing expert grunt work."
+          },
+          {
+            "title": "Execution Model",
+            "body": "Built as a handoff chain rather than a monolith. Each module owns a narrow responsibility and exchanges explicit state through a shared traceToken."
+          },
+          {
+            "title": "System Outcome",
+            "body": "Shortens sales cycles by delivering high-fidelity WOW moments with instant technical credibility through auto-generated, ROI-backed point-of-view decks."
+          }
+        ],
+        "nextBuild": {
+          "status": "NEXT ARCHITECTURAL MOVE",
+          "title": "Adaptive Feedback Fine-Tuning",
+          "body": [
+            "Right now, user edits to AI-generated questions or PoC steps are logged, but they are not yet fed back into the generation system.",
+            "The next move is a feedback loop layer that treats upvotes, downvotes, and edits as few-shot examples for future prompts and workflow decisions.",
+            "That would create a self-optimizing agent that learns the team's technical preferences and organizational voice over time, pushing the system toward zero-edit deliverable generation."
+          ]
+        }
+      }
+    ]
+  },
+  "blogsSection": {
+    "eyebrow": "Writing",
+    "title": "Thoughts from building real systems",
+    "intro": "Not theory. Not tutorials. Just lessons from things that broke, scaled, and taught me something.",
+    "supporting": "Three short reads on AI orchestration, operational system design, and automation that survives contact with production.",
+    "cardMeta": "Real build • Real system • No fluff",
+    "readMore": "Read More ->",
+    "post": {
+      "backToHome": "Back to home",
+      "whyItMattersLabel": "Why it matters",
+      "whyItMattersBody": "These posts are meant to capture operating lessons, not content marketing. Each one starts from real implementation constraints and works backward to the principle.",
+      "keyTakeawaysLabel": "Key takeaways"
+    },
+    "items": [
+      {
+        "slug": "ai-for-vizag-journey",
+        "title": "From 5 Minutes to 200+ People",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7439871977282129920/?originTrackingId=qZbe2s0jX1gtPoyM%2FKqGsA%3D%3D",
+        "description": "How a spontaneous ask turned into pitching an AI tool to 200+ people and what it taught me about building in public.",
+        "image": "/images/blog-ai-dev.svg",
+        "tag": "Build in Public",
+        "readTime": "4 min read",
+        "date": "April 2026",
+        "eyebrow": "Field Note 01",
+        "heroSummary": "A short window turned into a room of 200+ people and a live pitch for an AI product. The useful lesson was not confidence. It was learning how quickly momentum compounds when you ship in public and let the work create the next opportunity.",
+        "lessons": [
+          "Momentum often starts from small asks handled well under pressure.",
+          "Public demos create surface area for unexpected opportunities.",
+          "Building in public works best when the artifact is concrete, not performative."
+        ]
+      },
+      {
+        "slug": "thread-navigator-v1-3",
+        "title": "From Managing to Creating Context",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7430800943299870720/?originTrackingId=DociBkdsCXlAHrWGGupJkQ%3D%3D",
+        "description": "Why developers are wasting hours rewriting prompts and how I built a system to engineer inputs instead of repeating them.",
+        "image": "/images/blog-system-design.svg",
+        "tag": "Product Thinking",
+        "readTime": "3 min read",
+        "date": "April 2026",
+        "eyebrow": "Field Note 02",
+        "heroSummary": "Prompt repetition is not just annoying. It is a systems problem hidden inside daily workflow. This post traces the shift from manually managing context to intentionally engineering reusable inputs that preserve reasoning quality.",
+        "lessons": [
+          "Context reuse is a product primitive, not a convenience feature.",
+          "Developers lose more time to repeated setup than they realize.",
+          "The right abstraction is not better prompting. It is better context packaging."
+        ]
+      },
+      {
+        "slug": "ai-workflow-wall",
+        "title": "The AI Workflow Wall",
+        "href": "https://medium.com/@deekshithsistu/the-ai-workflow-wall-architecting-a-local-first-context-engine-for-llms-1b9f737afd04",
+        "description": "A deep dive into building a local-first context engine to eliminate scroll fatigue, silos, and repeated inputs in LLM workflows.",
+        "image": "/images/blog-n8n-ai.svg",
+        "tag": "System Design",
+        "readTime": "6 min read",
+        "date": "April 2026",
+        "eyebrow": "Field Note 03",
+        "heroSummary": "Most AI workflow pain is not model quality. It is the friction of recovering context across long threads, siloed tools, and repeated prompt setup. The piece breaks down the local-first engine designed to remove that wall.",
+        "lessons": [
+          "Local-first architecture can solve workflow friction without adding backend complexity.",
+          "Scroll fatigue is a retrieval problem wearing a UX mask.",
+          "Context engines matter because inputs shape the entire quality envelope of AI output."
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Let's Connect",
+    "title": "Have something interesting in mind?",
+    "intro": "Whether it's building AI systems, solving complex problems, or just exchanging ideas, I'm always open to meaningful conversations.",
+    "fields": {
+      "firstName": {
+        "label": "First Name",
+        "placeholder": "John"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "placeholder": "Doe"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "you@company.com"
+      },
+      "phoneNumber": {
+        "label": "Phone Number"
+      },
+      "phoneCountryAria": "Country selector",
+      "phoneAria": "Phone number",
+      "message": {
+        "label": "What are you thinking about?",
+        "placeholder": "Tell me about your idea, challenge, or what you want to explore."
+      }
+    },
+    "submitLabel": "Let's Talk",
+    "mailto": {
+      "subjectTemplate": "New Contact from {firstName} {lastName}",
+      "bodyTemplate": "Hi Deekshith,\n\nYou have a new message from your portfolio:\n\nName: {firstName} {lastName}\nEmail: {email}\nPhone: {phone}\n\nMessage:\n{message}\n\n---"
+    },
+    "helper": "Clicking will open your email app with details pre-filled",
+    "directEmailPrefix": "Or email me directly at"
+  },
+  "footer": {
+    "name": "Deekshith Sistu",
+    "copyright": "@2026 . All rights reserved.",
+    "socialLinks": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/deeks-5113"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/deekshith-sistu/"
+      },
+      {
+        "label": "X",
+        "href": "https://x.com/deekshiths5113"
+      }
+    ]
+  },
+  "phoneCountryOptions": [
+    { "code": "IN", "label": "India", "dialCode": "+91", "placeholder": "98765 43210" },
+    { "code": "US", "label": "United States", "dialCode": "+1", "placeholder": "(555) 123-4567" },
+    { "code": "GB", "label": "United Kingdom", "dialCode": "+44", "placeholder": "07123 456789" },
+    { "code": "AE", "label": "UAE", "dialCode": "+971", "placeholder": "50 123 4567" },
+    { "code": "SG", "label": "Singapore", "dialCode": "+65", "placeholder": "8123 4567" }
+  ]
+}

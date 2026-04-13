@@ -1,22 +1,11 @@
 import type { SVGProps } from 'react';
+import { useSiteContent } from '@/data/siteContent';
 
-const socialLinks = [
-  {
-    label: 'GitHub',
-    href: 'https://github.com/deeks-5113',
-    icon: GitHubIcon,
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/deekshith-sistu/',
-    icon: LinkedInIcon,
-  },
-  {
-    label: 'X',
-    href: 'https://x.com/deekshiths5113',
-    icon: XIcon,
-  },
-];
+const iconMap = {
+  GitHub: GitHubIcon,
+  LinkedIn: LinkedInIcon,
+  X: XIcon,
+} as const;
 
 function GitHubIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -43,6 +32,9 @@ function XIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 export function SiteFooter() {
+  const { siteContent } = useSiteContent();
+  const { footer } = siteContent;
+
   return (
     <footer className="relative z-10 px-4 pb-10 text-white md:px-8 lg:pl-16">
       <div className="mx-auto max-w-5xl">
@@ -62,8 +54,8 @@ export function SiteFooter() {
 
           <div className="relative grid items-center gap-6 text-center md:grid-cols-3 md:text-left">
             <div className="flex items-center justify-center gap-3 md:justify-start">
-              {socialLinks.map((item) => {
-                const Icon = item.icon;
+              {footer.socialLinks.map((item) => {
+                const Icon = iconMap[item.label as keyof typeof iconMap];
 
                 const className =
                   'inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-zinc-300 transition hover:border-[#C084FC]/45 hover:text-white';
@@ -96,11 +88,11 @@ export function SiteFooter() {
             </div>
 
             <p className="text-base font-semibold tracking-[0.18em] text-white md:text-center">
-              Deekshith Sistu
+              {footer.name}
             </p>
 
             <p className="text-sm text-zinc-400 md:text-right">
-              @2026 . All rights reserved.
+              {footer.copyright}
             </p>
           </div>
         </div>

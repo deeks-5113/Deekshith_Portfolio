@@ -7,6 +7,7 @@ import { ContactSimpleForm } from '@/components/ContactSimpleForm';
 import { SiteFooter } from '@/components/SiteFooter';
 import { useEffect } from 'react';
 import { useLocation, type Location } from 'react-router-dom';
+import { useSiteVariant } from '@/data/siteContent';
 
 type HomeLocationState = {
   scrollTo?: string;
@@ -14,6 +15,7 @@ type HomeLocationState = {
 
 export function HomePage() {
   const location = useLocation() as Location<HomeLocationState>;
+  const landingView = useSiteVariant();
 
   useEffect(() => {
     const targetId = location.state?.scrollTo ?? location.hash.replace('#', '');
@@ -35,7 +37,7 @@ export function HomePage() {
       <TelemetryCluster />
       <HeroSection />
       <AboutSection />
-      <WorkSection />
+      <WorkSection view={landingView} />
       <BlogShowcase />
       <ContactSimpleForm />
       <SiteFooter />

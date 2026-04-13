@@ -10,7 +10,7 @@ const PresalesDiagram = React.lazy(() => import('./diagrams/PresalesDiagram').th
 const UnicolabDiagram = React.lazy(() => import('./diagrams/UnicolabDiagram').then(module => ({ default: module.UnicolabDiagram })));
 
 export function ArchitectureGallery() {
-  const { isArchitectMode, activeProject, setActiveProject } = useLens();
+  const { activeProject, setActiveProject } = useLens();
 
   const projects = Object.values(architectureData);
 
@@ -30,12 +30,10 @@ export function ArchitectureGallery() {
       {/* Header */}
       <div className="mb-16">
         <h2 className="text-3xl md:text-5xl font-bold font-mono tracking-tight text-white mb-4">
-          Core <span className={isArchitectMode ? "text-[#22D3EE]" : "text-[#A1A1AA]"}>Systems</span>
+          Core <span className="text-[#22D3EE]">Systems</span>
         </h2>
         <p className="text-gray-400 font-mono max-w-2xl">
-          {isArchitectMode 
-            ? "Deep dives into deterministic routing architectures, DOM-level state teleportation, and real-time distributed clusters." 
-            : "High-level overviews of how engineered systems reduce enterprise costs, scale human expertise, and eliminate context silos."}
+          Deep dives into deterministic routing architectures, DOM-level state teleportation, and real-time distributed clusters.
         </p>
       </div>
 
@@ -61,7 +59,7 @@ export function ArchitectureGallery() {
                 {isActive && (
                   <motion.div 
                     layoutId="activeScrubber"
-                    className={`absolute left-[-16px] top-0 bottom-0 w-[2px] ${isArchitectMode ? 'bg-[#22D3EE]' : 'bg-[#A1A1AA]'}`}
+                    className="absolute left-[-16px] top-0 bottom-0 w-[2px] bg-[#22D3EE]"
                     initial={false}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
@@ -85,7 +83,7 @@ export function ArchitectureGallery() {
           
           <AnimatePresence mode="wait">
             <motion.div
-              key={`${activeProject}-${isArchitectMode ? 'architect' : 'strategist'}`}
+              key={`${activeProject}-architect`}
               initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
@@ -93,10 +91,8 @@ export function ArchitectureGallery() {
               className="absolute inset-0 flex flex-col p-8"
             >
               {/* Header Title */}
-              <h3 className={`text-xl font-bold mb-6 ${isArchitectMode ? 'text-[#22D3EE] font-mono' : 'text-[#A1A1AA] font-sans'}`}>
-                {isArchitectMode 
-                  ? architectureData[activeProject]?.architectLens.systemHeadline 
-                  : architectureData[activeProject]?.strategistLens.roiHeadline}
+              <h3 className="mb-6 text-xl font-bold font-mono text-[#22D3EE]">
+                {architectureData[activeProject]?.architectLens.systemHeadline}
               </h3>
               
               {/* Interactive SVG Rendering Stage */}

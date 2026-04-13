@@ -1,86 +1,142 @@
-
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLens } from '@/context/LensContext';
 import { Terminal } from 'lucide-react';
-import { architectureData } from '@/data/architectureMapping';
+import TextType from './TextType';
+import { getAboutCommentary, getBlogCommentary, getHeroCommentary, getProjectCommentary } from '@/data/content';
 
-const narrativeData: Record<string, { architect: string; strategist: string }> = {
-  none: {
-    architect: ">_ SYSTEM INITIALIZED. Awaiting user scroll sequences to decode context.",
-    strategist: "Welcome. Navigate through the timeline to explore my strategic impact and execution frameworks.",
-  },
-  leadership: {
-    architect: ">_ Containerized deployments scaling across 4 teams, minimizing build bottlenecks by 40% via optimized CI/CD pipelines.",
-    strategist: "I established centralized systems to align engineering velocity with company OKRs, standardizing cross-functional processes.",
-  },
-  rigor: {
-    architect: ">_ 650+ LeetCode problems solved. Deep expertise in Graph traversals, DP optimizations, and System Design.",
-    strategist: "A consistent dedication to mastering algorithmic complexities perfectly translates into efficient real-world problem solving.",
-  }
+const sectionLabels: Record<string, string> = {
+  hero: 'Opening Hook',
+  about: 'Operating Model',
+  projects: 'Proof',
+  blogs: 'Reflection',
+  connect: 'Close',
 };
 
 export function NarrativeSidebar() {
-  const { isArchitectMode, activeHoverLog, commentaryProject, isTyping } = useLens();
-  const [displayText, setDisplayText] = useState('');
+  const { activeHoverLog, commentaryProject, isTyping } = useLens();
+  const [activeSection, setActiveSection] = useState('hero');
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Target string based on hover state, commentary project, and lens
-  const currentKey = commentaryProject.toLowerCase();
-  
-  let targetText = "";
-  if (isArchitectMode) {
-    if (isTyping || commentaryProject === 'none') {
-      targetText = 'Hello ! , I am Deekshith here';
-    } else if (activeHoverLog) {
-      targetText = activeHoverLog;
-    } else {
-      targetText = architectureData[currentKey]?.commentaryLogs.default || narrativeData[currentKey]?.architect || narrativeData['none'].architect;
-    }
-  } else {
-    if (isTyping || commentaryProject === 'none') {
-      targetText = 'Hello ! , I am Deekshith here';
-    } else {
-      targetText = architectureData[currentKey]?.strategistLens.strategistLog || narrativeData[currentKey]?.strategist || narrativeData['none'].strategist;
-    }
-  }
-
-  // Typewriter effect logic
   useEffect(() => {
-    setDisplayText('');
-    let i = 0;
-    const intervalId = setInterval(() => {
-      setDisplayText(targetText.substring(0, i + 1));
-      i++;
-      if (i >= targetText.length) {
-        clearInterval(intervalId);
+    const sectionIds = Object.keys(sectionLabels);
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (!visibleEntries.length) return;
+
+        setActiveSection(visibleEntries[0].target.id);
+      },
+      {
+        rootMargin: '-20% 0px -45% 0px',
+        threshold: [0.2, 0.35, 0.5, 0.7],
       }
-    }, 20); // typing speed
-    
-    return () => clearInterval(intervalId);
-  }, [targetText]);
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const doc = document.documentElement;
+      const maxScroll = doc.scrollHeight - window.innerHeight;
+      const nextProgress = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
+      setScrollProgress(nextProgress);
+    };
+
+    updateScrollProgress();
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress);
+
+    return () => {
+      window.removeEventListener('scroll', updateScrollProgress);
+      window.removeEventListener('resize', updateScrollProgress);
+    };
+  }, []);
+
+  const targetText = useMemo(() => {
+    if (isTyping) {
+      return 'Trace paused until the opening statement completes.';
+    }
+
+    if (activeHoverLog) {
+      return activeHoverLog;
+    }
+
+    if (activeSection === 'hero') {
+      return getHeroCommentary();
+    }
+
+    if (activeSection === 'about') {
+      return getAboutCommentary();
+    }
+
+    if (activeSection === 'projects') {
+      return getProjectCommentary(commentaryProject);
+    }
+
+    if (activeSection === 'blogs') {
+      return getBlogCommentary();
+    }
+
+    return getHeroCommentary();
+  }, [activeHoverLog, activeSection, commentaryProject, isTyping]);
+
+  const activeLabel = sectionLabels[activeSection] ?? sectionLabels.hero;
+  const narrativeIntegrity = Math.max(8, Math.round(scrollProgress));
 
   return (
-    <div className="w-full relative mt-auto">
-      <div className="bg-twin-card/80 border border-twin-border rounded-xl p-5 shadow-lg relative overflow-hidden">
-        {/* Glow accent */}
-        <div className={`absolute top-0 left-0 w-full h-1 ${isArchitectMode ? 'bg-[#22D3EE]' : 'bg-[#A1A1AA]'}`} />
-        
+    <div className="relative flex w-full flex-col gap-5">
+      <div className="rounded-[1.45rem] border border-white/8 bg-black/25 p-4">
+        <div className="flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">
+          <span>Narrative Integrity</span>
+          <span>{narrativeIntegrity}%</span>
+        </div>
+        <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/8">
+          <div
+            className="h-full rounded-full bg-[linear-gradient(90deg,#22D3EE,#67E8F9)] transition-[width] duration-300"
+            style={{ width: `${narrativeIntegrity}%` }}
+          />
+        </div>
+        <div className="mt-3 flex items-center justify-between text-xs text-zinc-400">
+          <span>Scroll Sync {Math.round(scrollProgress)}%</span>
+          <span>{activeLabel}</span>
+        </div>
+      </div>
+
+      <div className="relative overflow-hidden rounded-[1.45rem] border border-twin-border bg-twin-card/80 p-5 shadow-lg">
+        <div className="absolute top-0 left-0 h-1 w-full bg-[#22D3EE]" />
+
         <div className="flex items-center gap-3 mb-4">
-          <Terminal size={18} className={isArchitectMode ? 'text-[#22D3EE]' : 'text-[#A1A1AA]'} />
-          <h3 className={`text-xs font-bold tracking-widest uppercase ${isArchitectMode ? 'text-[#22D3EE]' : 'text-[#A1A1AA]'}`}>
+          <Terminal size={18} className="text-[#22D3EE]" />
+          <h3 className="text-xs font-bold tracking-widest uppercase text-[#22D3EE]">
             Director's Commentary
           </h3>
         </div>
-        
-        <div className="min-h-[100px]">
-          <p className={`font-mono text-sm leading-relaxed ${isArchitectMode ? 'text-gray-300' : 'text-gray-400 font-sans'}`}>
-            {displayText}
-            <motion.span 
-              animate={{ opacity: [1, 0] }}
-              transition={{ repeat: Infinity, duration: 0.8 }}
-              className={`inline-block w-2 h-4 align-middle ml-1 ${isArchitectMode ? 'bg-[#22D3EE]' : 'bg-[#A1A1AA]'}`}
-            />
-          </p>
+
+        <div>
+          <TextType
+            key={`${activeSection}-${commentaryProject}-${targetText}`}
+            text={targetText}
+            as="p"
+            className="font-mono text-sm leading-[1.9] text-gray-300"
+            typingSpeed={16}
+            pauseDuration={0}
+            loop={false}
+            showCursor
+            cursorCharacter="_"
+            cursorClassName="text-[#22D3EE]"
+          />
         </div>
       </div>
     </div>

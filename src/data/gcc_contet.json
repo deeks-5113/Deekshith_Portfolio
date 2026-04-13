@@ -1,0 +1,355 @@
+{
+  "ui": {
+    "telemetry": {
+      "agentStatus": "System Status: Enterprise Ready",
+      "uptime": "Governance: 100% Local Validation"
+    },
+    "continueCue": {
+      "heroToAbout": {
+        "chapter": "Chapter 02",
+        "title": "The engineering standard"
+      },
+      "aboutToProjects": {
+        "chapter": "Chapter 03",
+        "title": "Proof through enterprise systems"
+      },
+      "projectsToBlogs": {
+        "chapter": "Chapter 04",
+        "title": "The thinking behind the builds"
+      }
+    }
+  },
+  "hero": {
+    "name": "Deekshith",
+    "introSuffix": " - Most AI workflows fail at scale. I architect agentic systems for global capability centers that halt when uncertain, act when confident, and leave a verifiable audit trail.",
+    "supporting": "I move enterprise AI from probabilistic guessing to governed execution using secure, local-first routing engines and cross-functional automation frameworks."
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Architecting systems for enterprise scale",
+    "skillPrompt": "Click on any skill",
+    "body": [
+      "I build agentic AI systems designed to operate securely within enterprise boundaries, focusing on data privacy, zero-server architectures, and robust internal tooling.",
+      "My engineering philosophy is defined by an unwillingness to stay with a problem. In a GCC environment, broken workflows cost thousands of hours. When I encounter internal bottlenecks, my tendency is to architect permanent, secure solutions.",
+      "That shows up as compliant automation layers, browser-resident orchestration, and execution systems built to standardize how global teams interact with AI."
+    ],
+    "closing": "I don't just write code. I build systems that govern how enterprise teams operate.",
+    "centerLabel": "Enterprise AI",
+    "skills": [
+      { "label": "Java", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { "label": "Python", "icon": "https://cdn.simpleicons.org/python/3776AB" },
+      { "label": "Node.js", "icon": "https://cdn.simpleicons.org/nodedotjs/5FA04E" },
+      { "label": "React", "icon": "https://cdn.simpleicons.org/react/61DAFB" },
+      { "label": "n8n", "icon": "https://cdn.simpleicons.org/n8n/EA4B71" },
+      { "label": "TypeScript", "icon": "https://cdn.simpleicons.org/typescript/3178C6" },
+      { "label": "PostgreSQL", "icon": "https://cdn.simpleicons.org/postgresql/4169E1" },
+      { "label": "Supabase", "icon": "https://cdn.simpleicons.org/supabase/3ECF8E" },
+      { "label": "Tailwind CSS", "icon": "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
+      { "label": "Docker", "icon": "https://cdn.simpleicons.org/docker/2496ED" },
+      { "label": "Git", "icon": "https://cdn.simpleicons.org/git/F05032" },
+      { "label": "Chrome", "icon": "https://cdn.simpleicons.org/googlechrome/4285F4" }
+    ]
+  },
+  "projectsSection": {
+    "title": "Enterprise Architecture & Internal Systems",
+    "intro": "Scroll through the stack to view implementations. Each architecture is engineered for security, compliance, and cross-functional reliability.",
+    "landingStateLabel": "Deployment State",
+    "loadedSuffixSingular": "system loaded",
+    "loadedSuffixPlural": "systems loaded"
+  },
+  "landingViews": {
+    "all": {
+      "label": "All Architectures",
+      "description": "Complete showroom across product architectures, consulting frameworks, and enterprise scaling."
+    },
+    "product": {
+      "label": "Product Architecture",
+      "description": "Highlights product intuition, shipped user value, and systems that can scale into owned platforms."
+    },
+    "consulting": {
+      "label": "Consulting Focus",
+      "description": "Prioritizes business-facing systems that compress delivery time and adapt to varied client contexts."
+    },
+    "gcc": {
+      "label": "Enterprise Scale",
+      "description": "Surfaces enterprise-grade systems built for reliability, process rigor, and cross-functional scale."
+    }
+  },
+  "projectCards": {
+    "panelTitle": "ENTERPRISE PROTOCOLS",
+    "fallbackPanelItem": "Deterministic execution path",
+    "viewSystemCta": "VIEW SYSTEM",
+    "items": [
+      {
+        "id": "thread-navigator",
+        "title": "Thread Navigator",
+        "shortTitle": "Navigator",
+        "domainAura": "aura-logic",
+        "tags": ["JavaScript", "Chrome Storage API", "DOM Manipulation", "Cross-Platform Injection"],
+        "architectPanelItems": [
+          "Zero-Server Data Privacy",
+          "Client-Side Execution Only",
+          "Cross-Platform DOM Interoperability",
+          "Enterprise Context Portability"
+        ],
+        "lens": {
+          "headline": "Zero-Server Context Engine for Enterprise Developers",
+          "metrics": "100% Local Privacy | Zero API Surface",
+          "description": "An internal tooling initiative that parses platform-specific DOM trees and auto-injects context into any target LLM via Chrome Storage relay. No external APIs. No server footprint. Compliant with strict enterprise data boundaries."
+        },
+        "summary": "An enterprise productivity tool born from an unwillingness to accept developer workflow friction.",
+        "telemetry": [
+          { "label": "Compliance", "value": "100% Local" },
+          { "label": "Server Footprint", "value": "Zero" },
+          { "label": "Transfer Time", "value": "<1s" },
+          { "label": "Adoption", "value": "Internal Power Users" }
+        ],
+        "deepDiveSections": [
+          {
+            "title": "System Mission & Mindset",
+            "body": "In an enterprise environment, repeated context setup is a massive drain on developer velocity. Thread Navigator reflects my tendency to solve core operational bottlenecks. Instead of leaving the problem as a minor inconvenience, I engineered a zero-server, privacy-first orchestration layer."
+          },
+          {
+            "title": "Execution Model",
+            "body": "Thread data is isolated entirely within the local browser environment. It is normalized, staged in Chrome storage, and rehydrated deterministically without ever pinging an external network, ensuring strict adherence to internal security policies."
+          },
+          {
+            "title": "Enterprise Outcome",
+            "body": "Eliminated manual operational loops for developers, proving that complex AI context management can be executed safely behind corporate firewalls."
+          }
+        ],
+        "nextBuild": {
+          "status": "ENTERPRISE ROADMAP",
+          "title": "Microsoft Graph Integration",
+          "body": [
+            "The immediate next phase scales this from a single-user tool to a team-wide capability.",
+            "By mapping the local storage state securely to Microsoft Graph API, enterprise pods can share prompt libraries and context packets with centralized role-based access control (RBAC).",
+            "The architecture remains secure, but the intelligence becomes collective."
+          ]
+        }
+      },
+      {
+        "id": "healthcare-agents",
+        "title": "Regulated Industry AI Agents",
+        "shortTitle": "Regulated AI",
+        "domainAura": "aura-medical",
+        "tags": ["FastAPI", "Hybrid HRAG", "Composite Embeddings", "SSE Streaming", "PostgreSQL", "Confidence Gates"],
+        "architectPanelItems": [
+          "4-Layer Hallucination Shield",
+          "Confidence-Gated Hybrid Routing",
+          "Stream Abort on Drift Detection",
+          "Strict Entity Auditing"
+        ],
+        "lens": {
+          "headline": "Zero-Trust Reasoning Engine for Regulated Environments",
+          "metrics": "<2s Latency | 100% Guardrail Coverage",
+          "description": "Engineered for a health-tech provider to enforce strict data governance. Four sequential safety layers, similarity scoring, confidence gating, and a mid-stream entity auditor guarantee zero hallucination exposure in high-stakes workflows."
+        },
+        "summary": "A highly governed agentic framework built for a healthcare organization, prioritizing zero-trust data extraction.",
+        "telemetry": [
+          { "label": "Safety Gates", "value": "4 Layers" },
+          { "label": "Latency", "value": "<2s" },
+          { "label": "Data Exposure", "value": "Isolated" },
+          { "label": "Hallucination Tolerance", "value": "Zero" }
+        ],
+        "deepDiveSections": [
+          {
+            "title": "System Mission",
+            "body": "Global Capability Centers often operate in heavily regulated domains like healthcare or finance. This system was built to eliminate the black-box nature of AI, replacing it with a strictly context-based extraction model that strips out unpredictable personas."
+          },
+          {
+            "title": "Execution Model",
+            "body": "Utilizes recursive parent hydration. The LLM only operates on data anchored in expert-verified, institutional knowledge graphs, ensuring that every generated token is traceable to a secure source document."
+          },
+          {
+            "title": "Enterprise Outcome",
+            "body": "Edge cases and uncertain queries are intercepted before generation, logged, and routed to human-in-the-loop auditors, establishing a secure, self-improving data governance flywheel."
+          }
+        ],
+        "nextBuild": {
+          "status": "IN PROGRESS - NEXT ITERATION",
+          "title": "Automated Drift Resolution",
+          "body": [
+            "Transitioning the safeguard layer into a LangGraph-based reflective agent tailored for enterprise compliance.",
+            "Instead of just blocking low-confidence queries, the system will execute a Reflect and Retry loop—diagnosing semantic gaps and adjusting parameters autonomously.",
+            "This reduces the manual burden on enterprise audit teams while maintaining the zero-trust guarantee."
+          ]
+        }
+      },
+      {
+        "id": "presales",
+        "title": "Cross-Functional Revenue Co-Pilot",
+        "shortTitle": "Revenue Automation",
+        "domainAura": "aura-gold",
+        "tags": ["FastAPI", "PostgreSQL", "VectorDB", "React GenUI", "n8n", "LangChain", "Whisper API"],
+        "architectPanelItems": [
+          "Multi-Agent CI/CD pipelines",
+          "Dual-Schema RAG Engine",
+          "15-Minute Automated Workflow",
+          "ACID Integrity Systems"
+        ],
+        "lens": {
+          "headline": "Multi-Agent Pipeline for Global Teams",
+          "metrics": "Semantic Retrieval | Deterministic Handoffs | Scalable State",
+          "description": "Four chained agents handle enrichment, transcription, reasoning, and generation for global pre-sales teams. PostgreSQL owns relational state. VectorDB handles semantic search. Built to standardize cross-functional deliverables."
+        },
+        "summary": "An enterprise multi-agent engine that standardizes research, retrieval, and document generation across global teams.",
+        "telemetry": [
+          { "label": "Cycle Reduction", "value": "From Days to 15m" },
+          { "label": "Agent Nodes", "value": "4" },
+          { "label": "State Management", "value": "ACID Compliant" },
+          { "label": "Deployment", "value": "Cross-Functional" }
+        ],
+        "deepDiveSections": [
+          {
+            "title": "System Mission",
+            "body": "To architect an internal co-pilot that standardizes output quality across global business units, minimizing repetitive expert grunt work and ensuring organizational voice consistency."
+          },
+          {
+            "title": "Execution Model",
+            "body": "Designed as a decoupled handoff chain rather than a fragile monolith. Each module is independently scalable, exchanging explicit state through a shared traceToken to ensure full observability and auditability."
+          },
+          {
+            "title": "Enterprise Outcome",
+            "body": "Drives cross-functional efficiency by instantly generating technical deliverables, standardizing the enterprise knowledge base, and radically accelerating global sales cycles."
+          }
+        ],
+        "nextBuild": {
+          "status": "NEXT ARCHITECTURAL MOVE",
+          "title": "Enterprise Feedback Loops",
+          "body": [
+            "Integrating a centralized feedback loop where global team edits and approvals are logged as few-shot examples.",
+            "This transforms a static automation pipeline into a self-optimizing engine that continuously adapts to the evolving technical standards and branding guidelines of the enterprise."
+          ]
+        }
+      }
+    ]
+  },
+  "blogsSection": {
+    "eyebrow": "Enterprise Engineering",
+    "title": "Standardizing systems at scale",
+    "intro": "Lessons from deploying systems in rigorous environments and building tools that survive enterprise production.",
+    "supporting": "Insights on zero-server governance, eliminating workflow silos, and managing cross-functional scale.",
+    "cardMeta": "Real execution • Enterprise focus • High Rigor",
+    "readMore": "Read More ->",
+    "post": {
+      "backToHome": "Back to home",
+      "whyItMattersLabel": "Architectural Impact",
+      "whyItMattersBody": "These insights capture operational standards. Each one starts from real enterprise constraints and works backward to the architectural standard required for scale.",
+      "keyTakeawaysLabel": "Governance takeaways"
+    },
+    "items": [
+      {
+        "slug": "ai-for-vizag-journey",
+        "title": "Scaling Capability Under Pressure",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7439871977282129920/?originTrackingId=qZbe2s0jX1gtPoyM%2FKqGsA%3D%3D",
+        "description": "How technical readiness led to demonstrating an AI architecture to 200+ people, and the value of rapid execution.",
+        "image": "/images/blog-ai-dev.svg",
+        "tag": "Technical Leadership",
+        "readTime": "4 min read",
+        "date": "April 2026",
+        "eyebrow": "Architecture Note 01",
+        "heroSummary": "A spontaneous requirement turned into a live system demonstration. The core enterprise lesson is that rigorous preparation and a 'tendency to solve' build the foundation for rapid, reliable execution when high-stakes opportunities arise.",
+        "lessons": [
+          "Enterprise agility relies on pre-established architectural rigor.",
+          "Demonstrating live, stable capability builds immediate cross-functional trust.",
+          "Building robust internal tools prepares teams for external scale."
+        ]
+      },
+      {
+        "slug": "thread-navigator-v1-3",
+        "title": "Engineering Away Internal Friction",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7430800943299870720/?originTrackingId=DociBkdsCXlAHrWGGupJkQ%3D%3D",
+        "description": "Why global teams waste compounding hours on LLM setup and how to architect a compliant, zero-server solution.",
+        "image": "/images/blog-system-design.svg",
+        "tag": "Internal Tooling",
+        "readTime": "3 min read",
+        "date": "April 2026",
+        "eyebrow": "Architecture Note 02",
+        "heroSummary": "Workflow friction is a systems failure masquerading as an inconvenience. This post explores the GCC mindset: refusing to accept broken workflows and engineering a permanent, compliant orchestration layer to restore developer velocity.",
+        "lessons": [
+          "Internal bottlenecks must be engineered out, not managed with policy.",
+          "Zero-server architectures provide immediate velocity without infosec delays.",
+          "Standardizing developer tooling is critical for global capability scale."
+        ]
+      },
+      {
+        "slug": "ai-workflow-wall",
+        "title": "Breaking Enterprise Workflow Silos",
+        "href": "https://medium.com/@deekshithsistu/the-ai-workflow-wall-architecting-a-local-first-context-engine-for-llms-1b9f737afd04",
+        "description": "A deep dive into deploying local-first context engines to eliminate operational silos while maintaining data governance.",
+        "image": "/images/blog-n8n-ai.svg",
+        "tag": "Data Governance",
+        "readTime": "6 min read",
+        "date": "April 2026",
+        "eyebrow": "Architecture Note 03",
+        "heroSummary": "The biggest barrier to enterprise AI is not the model; it is the friction of context recovery across strict security silos. This piece breaks down how local-first systems remove that barrier while honoring corporate firewalls.",
+        "lessons": [
+          "Local-first design solves integration friction without adding network complexity.",
+          "Context continuity is essential for predictable AI performance across teams.",
+          "Controlling the operational environment is as important as controlling the data."
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Let's Build",
+    "title": "Ready to scale your enterprise capabilities?",
+    "intro": "Whether it is architecting secure agentic workflows, building robust internal tooling, or standardizing AI execution across your GCC, I am ready to discuss your scale requirements.",
+    "fields": {
+      "firstName": {
+        "label": "First Name",
+        "placeholder": "John"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "placeholder": "Doe"
+      },
+      "email": {
+        "label": "Corporate Email",
+        "placeholder": "you@enterprise.com"
+      },
+      "phoneNumber": {
+        "label": "Phone Number"
+      },
+      "phoneCountryAria": "Country selector",
+      "phoneAria": "Phone number",
+      "message": {
+        "label": "What enterprise bottleneck are you solving?",
+        "placeholder": "Tell me about your workflow friction, governance constraints, or cross-functional systems."
+      }
+    },
+    "submitLabel": "Initiate Protocol",
+    "mailto": {
+      "subjectTemplate": "Enterprise AI Inquiry from {firstName} {lastName}",
+      "bodyTemplate": "Hi Deekshith,\n\nYou have a new enterprise systems inquiry:\n\nName: {firstName} {lastName}\nEmail: {email}\nPhone: {phone}\n\nSystem Objective/Constraint:\n{message}\n\n---"
+    },
+    "helper": "Clicking will securely open your local email client",
+    "directEmailPrefix": "Or contact me directly at"
+  },
+  "footer": {
+    "name": "Deekshith Sistu",
+    "copyright": "@2026 . All rights reserved.",
+    "socialLinks": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/deeks-5113"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/deekshith-sistu/"
+      },
+      {
+        "label": "X",
+        "href": "https://x.com/deekshiths5113"
+      }
+    ]
+  },
+  "phoneCountryOptions": [
+    { "code": "IN", "label": "India", "dialCode": "+91", "placeholder": "98765 43210" },
+    { "code": "US", "label": "United States", "dialCode": "+1", "placeholder": "(555) 123-4567" },
+    { "code": "GB", "label": "United Kingdom", "dialCode": "+44", "placeholder": "07123 456789" },
+    { "code": "AE", "label": "UAE", "dialCode": "+971", "placeholder": "50 123 4567" },
+    { "code": "SG", "label": "Singapore", "dialCode": "+65", "placeholder": "8123 4567" }
+  ]
+}

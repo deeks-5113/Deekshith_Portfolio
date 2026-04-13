@@ -1,5 +1,5 @@
 import { ArrowLeft, Home, Waypoints } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import type { ProjectData } from '@/data/projects';
 
 interface ProjectDeepNavProps {
@@ -8,12 +8,14 @@ interface ProjectDeepNavProps {
 }
 
 export function ProjectDeepNav({ project, onExit }: ProjectDeepNavProps) {
+  const location = useLocation();
+
   return (
     <div className="sticky top-0 z-40 border-b border-white/8 bg-[#050505]/75 backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-4 py-4 md:px-8">
         <div className="flex min-w-0 flex-col gap-2">
           <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono uppercase tracking-[0.22em] text-gray-500">
-            <Link to="/" className="inline-flex items-center gap-1 transition-colors hover:text-white">
+            <Link to={`/${location.search}`} className="inline-flex items-center gap-1 transition-colors hover:text-white">
               <Home size={12} />
               Home
             </Link>

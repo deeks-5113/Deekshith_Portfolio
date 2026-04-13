@@ -1,19 +1,16 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLens } from '@/context/LensContext';
 import { architectureData } from '@/data/architectureMapping';
 
 export function SakhiDiagram() {
-  const { isArchitectMode, setActiveHoverLog } = useLens();
+  const { setActiveHoverLog } = useLens();
   const data = architectureData['sakhi'];
 
-  // Colors
   const architectColor = "#22D3EE";
-  const strategistColor = "#A1A1AA";
 
-  // Hover handlers
   const handleHover = (nodeId: string | null) => {
-    if (!isArchitectMode || !nodeId) {
+    if (!nodeId) {
       setActiveHoverLog(null);
       return;
     }
@@ -35,15 +32,12 @@ export function SakhiDiagram() {
           </filter>
         </defs>
 
-        <AnimatePresence mode="wait">
-          {isArchitectMode ? (
-            <motion.g
-              key="architect-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+        <motion.g
+          key="architect-view"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
               {/* Circuit Board Lines (Strict 90 Degree Routes) */}
               <motion.path
                 d="M 120 250 L 250 250"
@@ -118,33 +112,7 @@ export function SakhiDiagram() {
                 <text x="610" y="365" fill="#6366F1" fontSize="10" fontFamily="monospace" textAnchor="middle">Confidence {'<'} 90%</text>
                 <text x="610" y="380" fill="gray" fontSize="10" fontFamily="monospace" textAnchor="middle">Scrubbed PII</text>
               </motion.g>
-            </motion.g>
-          ) : (
-            <motion.g
-              key="strategist-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* Strategist Triage Funnel Visual */}
-              <motion.g layoutId="node-gate">
-                <polygon points="200,100 600,100 500,200 300,200" fill={strategistColor} opacity="0.8" />
-                <text x="400" y="155" fill="black" fontSize="18" fontFamily="sans-serif" fontWeight="bold" textAnchor="middle">Total Incoming Triage Sessions</text>
-              </motion.g>
-              
-              <motion.g layoutId="node-slm">
-                <polygon points="300,210 500,210 440,310 360,310" fill="gray" opacity="0.6" />
-                <text x="400" y="265" fill="white" fontSize="16" fontFamily="sans-serif" textAnchor="middle">Automated by AI (84%)</text>
-              </motion.g>
-
-              <motion.g layoutId="node-api">
-                <polygon points="360,320 440,320 410,400 390,400" fill="#333" opacity="0.9" />
-                <text x="400" y="365" fill="white" fontSize="14" fontFamily="sans-serif" textAnchor="middle">Escalated</text>
-              </motion.g>
-            </motion.g>
-          )}
-        </AnimatePresence>
+        </motion.g>
       </svg>
     </div>
   );

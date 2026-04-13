@@ -1,6 +1,8 @@
 import type { ComponentType } from 'react';
+import { getProjectCardContent, getSiteContent, type SiteVariant } from './siteContent';
 
 export type ProjectDiagramKey = 'navigator' | 'sakhi' | 'presales';
+export type LandingView = 'all' | 'product' | 'consulting' | 'gcc';
 
 export interface LensContent {
   headline: string;
@@ -48,6 +50,7 @@ export interface ProjectData {
   id: string;
   slug: string;
   commentaryKey: string;
+  landingViews: LandingView[];
   title: string;
   shortTitle: string;
   domainAura: string;
@@ -72,6 +75,7 @@ export const projectsData: ProjectData[] = [
     id: 'thread-navigator',
     slug: 'thread-navigator',
     commentaryKey: 'navigator',
+    landingViews: ['product', 'consulting'],
     title: 'Thread Navigator',
     shortTitle: 'Navigator',
     domainAura: 'aura-logic',
@@ -174,8 +178,9 @@ export const projectsData: ProjectData[] = [
     id: 'sakhi',
     slug: 'sakhi',
     commentaryKey: 'sakhi',
-    title: 'Sakhi - Zero-Trust Clinical AI Agent',
-    shortTitle: 'Sakhi',
+    landingViews: ['gcc', 'consulting'],
+    title: 'Zero Trust Healthcare AI Agents',
+    shortTitle: 'Healthcare AI Agents',
     domainAura: 'aura-medical',
     tags: ['FastAPI', 'Hybrid HRAG', 'Composite Embeddings', 'SSE Streaming', 'PostgreSQL', 'Confidence Gates'],
     architectPanelItems: [
@@ -276,6 +281,7 @@ export const projectsData: ProjectData[] = [
     id: 'presales',
     slug: 'presales',
     commentaryKey: 'presales',
+    landingViews: ['gcc', 'product', 'consulting'],
     title: 'Autonomous Pre-Sales Co-Pilot',
     shortTitle: 'Pre-Sales Co-Pilot',
     domainAura: 'aura-gold',
@@ -376,13 +382,63 @@ export const projectsData: ProjectData[] = [
   },
 ];
 
+function hydrateProject(project: ProjectData, variant: SiteVariant = 'product'): ProjectData {
+  const content = getProjectCardContent(project.id, variant);
+  if (!content) return { ...project };
+
+  return {
+    ...project,
+    title: content.title,
+    shortTitle: content.shortTitle,
+    domainAura: content.domainAura,
+    tags: content.tags,
+    architectPanelItems: content.architectPanelItems,
+    strategistLens: content.lens,
+    architectLens: content.lens,
+    summary: content.summary,
+    telemetry: content.telemetry,
+    deepDiveSections: content.deepDiveSections,
+    nextBuild: content.nextBuild,
+  };
+}
+
 export const projectsBySlug = Object.fromEntries(projectsData.map((project) => [project.slug, project])) as Record<
   string,
   ProjectData
 >;
 
-export function getProjectBySlug(slug: string) {
-  return projectsBySlug[slug];
+export function getProjectBySlug(slug: string, variant: SiteVariant = 'product') {
+  const project = projectsBySlug[slug];
+  return project ? hydrateProject(project, variant) : undefined;
+}
+
+export function getLandingViewMeta(view: LandingView, variant: SiteVariant = 'product') {
+  return getSiteContent(variant).landingViews[view];
+}
+
+const landingViewAliases: Record<string, LandingView> = {
+  all: 'all',
+  consulting: 'consulting',
+  enterprise: 'gcc',
+  gcc: 'gcc',
+  product: 'product',
+  'product-company': 'product',
+  productcompany: 'product',
+};
+
+export function resolveLandingView(view: string | null | undefined): LandingView {
+  if (!view) return 'all';
+
+  const normalizedView = view.trim().toLowerCase();
+  return landingViewAliases[normalizedView] ?? 'all';
+}
+
+export function getProjectsForLandingView(view: LandingView, variant: SiteVariant = 'product') {
+  const projects = view === 'all'
+    ? projectsData
+    : projectsData.filter((project) => project.landingViews.includes(view));
+
+  return projects.map((project) => hydrateProject(project, variant));
 }
 
 export type ProjectDiagramComponent = ComponentType;

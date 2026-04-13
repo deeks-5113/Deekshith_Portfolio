@@ -10,7 +10,6 @@
   --color-aura-gold: #F59E0B;
   --color-aura-rigor: #EF4444;
   --color-lens-architect: #22D3EE;
-  --color-lens-strategist: #A1A1AA;
 }
 
 @layer utilities {
@@ -120,6 +119,56 @@
   }
 }
 
+@keyframes rail-recording-dot {
+  0%,
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 0 rgba(34, 211, 238, 0);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 14px rgba(34, 211, 238, 0.55);
+  }
+}
+
+@keyframes rail-pulse-node {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(34, 211, 238, 0.18);
+  }
+  50% {
+    transform: scale(1.14);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.42);
+  }
+}
+
+@keyframes rail-logic-line {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.16);
+    opacity: 0.88;
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.38);
+    opacity: 1;
+  }
+}
+
+@keyframes skill-cta-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.82;
+    text-shadow: 0 0 0 rgba(192, 132, 252, 0);
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+    text-shadow: 0 0 18px rgba(192, 132, 252, 0.45);
+  }
+}
+
 @layer utilities {
   .orbit-rotate {
     animation: orbit-spin 33.6s linear infinite;
@@ -139,5 +188,22 @@
 
   .center-signal {
     animation: center-signal 9.016s ease-in-out infinite;
+  }
+
+  .rail-recording-dot {
+    animation: rail-recording-dot 1.4s ease-in-out infinite;
+  }
+
+  .rail-pulse-node {
+    animation: rail-pulse-node 1.8s ease-in-out infinite;
+  }
+
+  .rail-logic-line {
+    animation: rail-logic-line 2.8s ease-in-out infinite;
+  }
+
+  .skill-cta-pulse {
+    animation: skill-cta-pulse 5s ease-in-out infinite;
+    transform-origin: left center;
   }
 }

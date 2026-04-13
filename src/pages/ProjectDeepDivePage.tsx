@@ -395,7 +395,7 @@ function ThreadNavigatorDeepDive({ project }: { project: ProjectData }) {
         <SectionHeader
           index="Section 03"
           title="Deep Dive Signals"
-          subtitle="Three lenses for evaluating the system"
+          subtitle="Three architectural signals for evaluating the system"
         />
 
         <div className="grid gap-4 xl:grid-cols-3">
@@ -428,26 +428,16 @@ function ThreadNavigatorDeepDive({ project }: { project: ProjectData }) {
       >
         <SectionHeader
           index="Section 04"
-          title="Dual Lens Analysis"
-          subtitle="How this project reads depending on who's evaluating it"
+          title="Architectural Analysis"
+          subtitle="How this project holds together under technical scrutiny"
         />
 
-        <div className="grid gap-0 overflow-hidden rounded-[1.75rem] border border-white/8 xl:grid-cols-2">
-          <div className="border-b border-white/8 bg-[rgba(34,211,238,0.05)] p-6 xl:border-b-0 xl:border-r xl:border-white/8 md:p-8">
-            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-cyan-300">Architect Lens</p>
-            <div className="mt-3 h-px w-full bg-white/8" />
-            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
-              {lensAnalysis?.architect}
-            </p>
-          </div>
-
-          <div className="bg-[rgba(245,158,11,0.05)] p-6 md:p-8">
-            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-amber-300">Strategy Lens</p>
-            <div className="mt-3 h-px w-full bg-white/8" />
-            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
-              {lensAnalysis?.strategy}
-            </p>
-          </div>
+        <div className="overflow-hidden rounded-[1.75rem] border border-white/8 bg-[rgba(34,211,238,0.05)] p-6 md:p-8">
+          <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-cyan-300">Architecture Review</p>
+          <div className="mt-3 h-px w-full bg-white/8" />
+          <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
+            {lensAnalysis?.architect}
+          </p>
         </div>
       </motion.section>
 
@@ -705,7 +695,7 @@ function SakhiDeepDive({ project }: { project: ProjectData }) {
         <SectionHeader
           index="Section 03"
           title="Deep Dive Signals"
-          subtitle="Three lenses for evaluating the zero-trust clinical engine"
+          subtitle="Three architectural signals for evaluating the zero-trust clinical engine"
         />
 
         <div className="grid gap-4 xl:grid-cols-3">
@@ -738,26 +728,16 @@ function SakhiDeepDive({ project }: { project: ProjectData }) {
       >
         <SectionHeader
           index="Section 04"
-          title="Dual Lens Analysis"
-          subtitle="How Sakhi reads through the architect lens and the strategy lens"
+          title="Architectural Analysis"
+          subtitle="How Sakhi holds together as a zero-trust clinical system"
         />
 
-        <div className="mt-8 grid gap-0 overflow-hidden rounded-[1.75rem] border border-white/8 xl:grid-cols-2">
-          <div className="border-b border-white/8 bg-[rgba(34,211,238,0.05)] p-6 xl:border-b-0 xl:border-r xl:border-white/8 md:p-8">
-            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-cyan-300">Architect Lens</p>
-            <div className="mt-3 h-px w-full bg-white/8" />
-            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
-              {lensAnalysis?.architect}
-            </p>
-          </div>
-
-          <div className="bg-[rgba(20,184,166,0.05)] p-6 md:p-8">
-            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-emerald-300">Strategy Lens</p>
-            <div className="mt-3 h-px w-full bg-white/8" />
-            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
-              {lensAnalysis?.strategy}
-            </p>
-          </div>
+        <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/8 bg-[rgba(34,211,238,0.05)] p-6 md:p-8">
+          <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-cyan-300">Architecture Review</p>
+          <div className="mt-3 h-px w-full bg-white/8" />
+          <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
+            {lensAnalysis?.architect}
+          </p>
         </div>
       </motion.section>
 
@@ -997,26 +977,16 @@ function PresalesDeepDive({ project }: { project: ProjectData }) {
       >
         <SectionHeader
           index="Section 04"
-          title="Dual Lens Analysis"
-          subtitle="How the system reads through architect depth and strategist value"
+          title="Architectural Analysis"
+          subtitle="How the system holds together through depth, reliability, and orchestration clarity"
         />
 
-        <div className="mt-8 grid gap-0 overflow-hidden rounded-[1.75rem] border border-white/8 xl:grid-cols-2">
-          <div className="border-b border-white/8 bg-[rgba(245,158,11,0.05)] p-6 xl:border-b-0 xl:border-r xl:border-white/8 md:p-8">
-            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-amber-300">Architect Lens</p>
-            <div className="mt-3 h-px w-full bg-white/8" />
-            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
-              {lensAnalysis?.architect}
-            </p>
-          </div>
-
-          <div className="bg-[rgba(99,102,241,0.05)] p-6 md:p-8">
-            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-indigo-300">Strategy Lens</p>
-            <div className="mt-3 h-px w-full bg-white/8" />
-            <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
-              {lensAnalysis?.strategy}
-            </p>
-          </div>
+        <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/8 bg-[rgba(245,158,11,0.05)] p-6 md:p-8">
+          <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-amber-300">Architecture Review</p>
+          <div className="mt-3 h-px w-full bg-white/8" />
+          <p className="mt-6 whitespace-pre-line text-[15px] leading-[1.7] text-gray-300">
+            {lensAnalysis?.architect}
+          </p>
         </div>
       </motion.section>
 

@@ -1,154 +1,92 @@
 import React from 'react';
-import { FolderGit2, Home, Newspaper, User, Users } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { NarrativeSidebar } from './NarrativeSidebar';
+import { Link2, Sparkles } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import { useDeepDive } from '@/contexts/DeepDiveContext';
 import { getProjectBySlug } from '@/data/projects';
+import { NarrativeSidebar } from './NarrativeSidebar';
 
 export function Sidebar() {
   const { isInDeepDive, currentProjectId } = useDeepDive();
   const location = useLocation();
-  const navigate = useNavigate();
   const activeProject = currentProjectId ? getProjectBySlug(currentProjectId) : null;
-  const deepDiveSections =
-    activeProject?.slug === 'thread-navigator' ||
-    activeProject?.slug === 'sakhi' ||
-    activeProject?.slug === 'presales'
-      ? [
-          { id: 'identity', label: 'Project Identity' },
-          { id: 'architecture', label: 'System Architecture' },
-          { id: 'signals', label: 'Deep Dive Signals' },
-          { id: 'lenses', label: 'Dual Lens Analysis' },
-          { id: 'next-build', label: "What I'd Build Next" },
-        ]
-      : [];
+  const isLandingNarrativeRoute =
+    location.pathname === '/' ||
+    location.pathname === '/product' ||
+    location.pathname === '/consulting' ||
+    location.pathname === '/gcc';
+  const isHomeNarrative = isLandingNarrativeRoute && !isInDeepDive;
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const railHeader = (
+    <div className="mb-1 border-b border-white/8 pb-6">
+      <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.32em] text-[#22D3EE]">
+        <Sparkles size={12} />
+        Narrative Rail
+      </div>
+      <h1 className="mt-4 text-xl font-bold tracking-tight text-white">Deekshith Sistu</h1>
+      <p className="mt-1 text-[11px] leading-tight text-twin-accent">
+        Agentic AI Developer | AI-Native Architect
+      </p>
+    </div>
+  );
 
-  const handleNavigateToSection = (sectionId: string) => {
-    if (location.pathname === '/') {
-      scrollToSection(sectionId);
-      return;
-    }
+  const deepDivePanel = isInDeepDive && activeProject?.sidebar ? (
+    <>
+      <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-4">
+        <div className="mb-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-500">
+          <Link2 size={12} />
+          Focused Path
+        </div>
+        <p className="text-sm leading-relaxed text-zinc-300">
+          Deep dive mode keeps only contextual escape hatches. Entry and exit stay task-specific; the rest of the screen stays focused on the case study.
+        </p>
+      </div>
 
-    navigate('/', { state: { scrollTo: sectionId } });
-  };
+      <div className="mt-4 px-1">
+        <h2 className="mb-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+          Director&apos;s Commentary
+        </h2>
+        <div className="rounded-xl border border-twin-border bg-twin-card/80 p-5 shadow-lg">
+          <p className="whitespace-pre-line font-mono text-sm leading-relaxed text-gray-300">
+            {activeProject.sidebar.commentary}
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-4 px-1">
+        <h2 className="mb-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+          System Log
+        </h2>
+        <div className="rounded-xl border border-twin-border bg-twin-card/80 p-5 shadow-lg">
+          <div className="space-y-2 font-mono text-[11px] leading-relaxed text-gray-400">
+            {activeProject.sidebar.systemLog.map((entry) => (
+              <p key={entry}>{entry}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  ) : (
+    <div className="sticky top-0">
+      <NarrativeSidebar />
+    </div>
+  );
 
   return (
-    <aside
-      className="fixed left-0 top-0 bottom-0 z-40 hidden w-72 flex-col border-r border-twin-border bg-twin-bg/95 p-5 backdrop-blur-sm lg:flex"
-    >
-      {/* Profile Section */}
-      <div className="mb-6">
-        <h1 className="text-xl font-bold text-white mb-1 tracking-tight">Deekshith Sistu</h1>
-        <p className="text-[11px] text-twin-accent font-mono leading-tight">Agentic AI Developer | AI-Native Architect</p>
-      </div>
+    <>
+      <aside className="fixed inset-y-0 left-0 z-40 hidden lg:flex lg:w-[var(--narrative-rail-width)] lg:flex-col lg:border-r lg:border-twin-border lg:bg-twin-bg/95 lg:p-5 lg:backdrop-blur-sm">
+        {railHeader}
+        <div className="flex flex-1 flex-col overflow-y-auto">
+          {deepDivePanel}
+        </div>
+      </aside>
 
-      {/* Navigation */}
-      <nav className="mb-4">
-        <h2 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3">Navigation</h2>
-        <ul className="space-y-0.5">
-          <li>
-            <Link to="/" className="flex items-center gap-3 text-sm text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-twin-card/50">
-              <Home size={16} /> Home
-            </Link>
-          </li>
-          <li>
-            <button
-              type="button"
-              onClick={() => handleNavigateToSection('about')}
-              className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
-            >
-              <User size={16} /> About
-            </button>
-          </li>
-          <li>
-            <div className="flex flex-col gap-1 mt-1 p-2 relative">
-              <button
-                type="button"
-                onClick={() => (isInDeepDive ? scrollToSection('identity') : handleNavigateToSection('projects'))}
-                className="flex items-center gap-3 text-left text-sm text-gray-300 transition-colors hover:text-white"
-              >
-                <FolderGit2 size={16} /> Projects
-              </button>
-              {isInDeepDive && deepDiveSections.length > 0 && (
-                <ul className="pl-7 text-[11px] text-gray-400 font-mono mt-1 space-y-1">
-                  {deepDiveSections.map((section) => (
-                    <li key={section.id}>
-                      <button
-                        type="button"
-                        onClick={() => scrollToSection(section.id)}
-                        className="block py-1 text-left transition-colors hover:text-twin-accent"
-                      >
-                        {'-> '}
-                        {section.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </li>
-          <li>
-            <button
-              type="button"
-              onClick={() => handleNavigateToSection('blogs')}
-              className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
-            >
-              <Newspaper size={16} /> Blogs
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              onClick={() => handleNavigateToSection('connect')}
-              className="flex w-full items-center gap-3 rounded-lg p-2 text-left text-sm text-gray-300 transition-colors hover:bg-twin-card/50 hover:text-white"
-            >
-              <Users size={16} /> Let&apos;s Connect
-            </button>
-          </li>
-        </ul>
-      </nav>
-
-      <div className="flex-grow flex flex-col justify-end gap-4">
-        {isInDeepDive && activeProject?.sidebar ? (
-          <>
-            <div className="px-2">
-              <h2 className="mb-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">
-                Director's Commentary
-              </h2>
-              <div className="rounded-xl border border-twin-border bg-twin-card/80 p-5 shadow-lg">
-                <p className="whitespace-pre-line font-mono text-sm leading-relaxed text-gray-300">
-                  {activeProject.sidebar.commentary}
-                </p>
-              </div>
-            </div>
-
-            <div className="px-2">
-              <h2 className="mb-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">
-                System Log
-              </h2>
-              <div className="rounded-xl border border-twin-border bg-twin-card/80 p-5 shadow-lg">
-                <div className="space-y-2 font-mono text-[11px] leading-relaxed text-gray-400">
-                  {activeProject.sidebar.systemLog.map((entry) => (
-                    <p key={entry}>{entry}</p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <h2 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2 px-2">System Log</h2>
+      {isHomeNarrative && (
+        <div className="sticky top-[5.25rem] z-40 px-4 pb-2 md:px-8 lg:hidden">
+          <div className="rounded-[1.5rem] border border-white/10 bg-[#050505]/90 p-4 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
             <NarrativeSidebar />
-          </>
-        )}
-      </div>
-    </aside>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

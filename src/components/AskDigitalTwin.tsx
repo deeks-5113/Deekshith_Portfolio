@@ -7,7 +7,7 @@ import { useLens } from '@/context/LensContext';
 export function AskDigitalTwin() {
   const [query, setQuery] = useState('');
   const [result, setResult] = useState<string | null>(null);
-  const { isArchitectMode, setActiveProject, isTyping } = useLens();
+  const { setActiveProject, isTyping } = useLens();
 
   if (isTyping) return null;
 
@@ -29,17 +29,11 @@ export function AskDigitalTwin() {
     let output = '';
     
     if (matchesSkills) {
-      output = isArchitectMode 
-        ? `[Skill Detected]: Present in tech stack graph. Proficiency active.`
-        : `Yes, I have extensive experience with that technology, utilizing it to drive high-value outcomes.`;
+      output = `[Skill Detected]: Present in tech stack graph. Proficiency active.`;
     } else if (matchesExp) {
-      output = isArchitectMode
-        ? `[Log: ${matchesExp.project}]: ${matchesExp.description}`
-        : `During my time at ${matchesExp.company}, I worked on ${matchesExp.project}. ${matchesExp.description}`;
+      output = `[Log: ${matchesExp.project}]: ${matchesExp.description}`;
     } else {
-      output = isArchitectMode
-        ? `[404]: Context not found in current embedding space.`
-        : `I don't have that specific information in my digital memory vault. Connect with me directly to learn more!`;
+      output = `[404]: Context not found in current embedding space.`;
     }
 
     setResult(output);
@@ -47,7 +41,7 @@ export function AskDigitalTwin() {
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 xl:pl-48 mb-32 relative z-10">
-      <div className={`backdrop-blur-md p-6 rounded-2xl w-full transition-all duration-500 ${isArchitectMode ? 'bg-[#050505]/80 border border-[#22D3EE]/30 shadow-[0_0_25px_rgba(34,211,238,0.05)]' : 'bg-twin-card/50 border border-twin-border'}`}>
+      <div className="w-full rounded-2xl border border-[#22D3EE]/30 bg-[#050505]/80 p-6 backdrop-blur-md transition-all duration-500 shadow-[0_0_25px_rgba(34,211,238,0.05)]">
         <h3 className="text-xl font-bold mb-4">Ask my Digital Twin</h3>
         <form onSubmit={handleSearch} className="relative flex items-center mb-4">
           <Search className="absolute left-4 text-gray-400" size={18} />
@@ -56,9 +50,7 @@ export function AskDigitalTwin() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="E.g., 'What did you build for Sakhi?' or 'React'"
-            className={`w-full bg-transparent border rounded-xl py-3 pl-12 pr-4 text-[#ededed] focus:outline-none transition-colors ${
-              isArchitectMode ? 'border-[#22D3EE]/30 focus:border-[#22D3EE]' : 'border-twin-border focus:border-twin-accent'
-            }`}
+            className="w-full rounded-xl border border-[#22D3EE]/30 bg-transparent py-3 pl-12 pr-4 text-[#ededed] transition-colors focus:border-[#22D3EE] focus:outline-none"
           />
           <button 
             type="submit" 
@@ -70,8 +62,8 @@ export function AskDigitalTwin() {
         
         {result && (
           <div className="mt-4 p-4 rounded-xl bg-twin-bg border border-twin-border">
-            <p className={`${isArchitectMode ? 'font-mono text-[#22D3EE] text-sm' : 'font-sans text-[#A1A1AA]'} leading-relaxed`}>
-              {isArchitectMode ? '>_ ' : ''}{result}
+            <p className="font-mono text-sm leading-relaxed text-[#22D3EE]">
+              {'>_ '}{result}
             </p>
           </div>
         )}

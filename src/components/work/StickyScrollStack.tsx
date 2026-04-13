@@ -6,6 +6,7 @@ const projectsData: ProjectCardData[] = [
 {
   id: 'thread-navigator',
   slug: 'thread-navigator',
+  landingViews: ['product', 'consulting'],
   shortTitle: 'Thread Navigator',
   diagramKey: 'navigator',
   breadcrumbLabel: 'Thread Navigator',
@@ -54,11 +55,12 @@ const projectsData: ProjectCardData[] = [
 {
   id: 'sakhi',
   slug: 'sakhi',
-  shortTitle: 'Sakhi',
+  landingViews: ['gcc', 'consulting'],
+  shortTitle: 'Healthcare AI Agents',
   diagramKey: 'sakhi',
   breadcrumbLabel: 'Sakhi',
   commentaryKey: 'sakhi',
-  title: 'Sakhi — Zero-Trust Clinical AI Agent',
+  title: 'Zero Trust Healthcare AI Agents',
   domainAura: 'aura-medical',
   tags: ['FastAPI', 'Hybrid HRAG', 'Composite Embeddings', 'SSE Streaming', 'PostgreSQL', 'Confidence Gates'],
   architectPanelItems: [
@@ -103,6 +105,7 @@ const projectsData: ProjectCardData[] = [
 {
   id: 'presales',
   slug: 'presales',
+  landingViews: ['gcc', 'product', 'consulting'],
   shortTitle: 'Pre-Sales Co-Pilot',
   diagramKey: 'presales',
   breadcrumbLabel: 'Pre-Sales',

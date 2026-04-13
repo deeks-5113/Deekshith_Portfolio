@@ -1,10 +1,13 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { getBlogBySlug } from '@/data/blogs';
+import { useSiteContent } from '@/data/siteContent';
 
 export function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
-  const blog = slug ? getBlogBySlug(slug) : undefined;
+  const { siteVariant, siteContent } = useSiteContent();
+  const blog = slug ? getBlogBySlug(slug, siteVariant) : undefined;
+  const { post } = siteContent.blogsSection;
 
   if (!blog) {
     return <Navigate to="/" replace />;
@@ -17,7 +20,7 @@ export function BlogPostPage() {
         className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-300 transition-colors hover:border-white/20 hover:text-white"
       >
         <ArrowLeft size={16} />
-        Back to home
+        {post.backToHome}
       </Link>
 
       <div className="mt-10 overflow-hidden rounded-[2rem] border border-white/10 bg-[#060606]/85 shadow-[0_40px_120px_rgba(0,0,0,0.35)]">
@@ -41,15 +44,14 @@ export function BlogPostPage() {
 
         <div className="grid gap-10 p-8 lg:grid-cols-[0.75fr_1.25fr] lg:p-10">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.35em] text-zinc-500">Why it matters</p>
+            <p className="font-mono text-xs uppercase tracking-[0.35em] text-zinc-500">{post.whyItMattersLabel}</p>
             <p className="mt-5 text-base leading-8 text-zinc-400">
-              These posts are meant to capture operating lessons, not content marketing. Each one starts from real
-              implementation constraints and works backward to the principle.
+              {post.whyItMattersBody}
             </p>
           </div>
 
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.35em] text-zinc-500">Key takeaways</p>
+            <p className="font-mono text-xs uppercase tracking-[0.35em] text-zinc-500">{post.keyTakeawaysLabel}</p>
             <div className="mt-5 space-y-4">
               {blog.lessons.map((lesson) => (
                 <article key={lesson} className="rounded-[1.4rem] border border-white/8 bg-white/[0.03] p-5">
