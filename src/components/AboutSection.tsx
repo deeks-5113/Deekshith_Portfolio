@@ -12,7 +12,7 @@ type SkillNode = {
 export function AboutSection() {
   const { isTyping, setActiveHoverLog } = useLens();
   const { siteContent } = useSiteContent();
-  const { about, ui } = siteContent;
+  const { about } = siteContent;
   const orbitSkills: SkillNode[] = siteContent.about.skills;
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -43,9 +43,7 @@ export function AboutSection() {
       }}
       onMouseLeave={() => setActiveHoverLog(selectedSkill ? getAboutSkillCommentary(selectedSkill) : null)}
     >
-      <div
-        className="grid items-center gap-16 overflow-visible rounded-[2rem] border border-white/8 bg-black/75 px-6 py-8 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-sm md:px-10 md:py-12 xl:grid-cols-2"
-      >
+      <div className="grid items-center gap-16 overflow-visible rounded-[2rem] border border-white/8 bg-black/75 px-6 py-8 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-sm md:px-10 md:py-12 xl:grid-cols-2">
         <div className="relative">
           <div className="absolute left-0 top-0 h-32 w-32 rounded-full bg-[#A855F7]/12 blur-3xl" aria-hidden="true" />
           <p className="relative font-mono text-xs uppercase tracking-[0.38em] text-[#A855F7]">{about.eyebrow}</p>
@@ -74,9 +72,7 @@ export function AboutSection() {
             ))}
           </div>
 
-          <p className="relative mt-7 text-base font-medium text-[#C084FC] md:text-lg">
-            {about.closing}
-          </p>
+          <p className="relative mt-7 text-base font-medium text-[#C084FC] md:text-lg">{about.closing}</p>
         </div>
 
         <div className="relative flex items-center justify-center">
@@ -98,9 +94,7 @@ export function AboutSection() {
               </div>
             </div>
 
-            <div
-              className="group absolute inset-0 motion-reduce:animate-none orbit-rotate"
-            >
+            <div className="group absolute inset-0 motion-reduce:animate-none orbit-rotate">
               {orbitSkills.map((skill, index) => {
                 const angle = (index / orbitSkills.length) * Math.PI * 2 - Math.PI / 2;
                 const x = Math.cos(angle) * orbitRadius;
@@ -143,7 +137,7 @@ export function AboutSection() {
                           setHoveredSkill(null);
                           setActiveHoverLog(selectedSkill ? getAboutSkillCommentary(selectedSkill) : getAboutCommentary());
                         }}
-                        className={`relative cursor-pointer flex h-[2.8rem] w-[2.8rem] items-center justify-center rounded-full border bg-[#090909] transition duration-300 motion-reduce:animate-none focus:outline-none md:h-[3.2rem] md:w-[3.2rem] ${
+                        className={`relative flex h-[2.8rem] w-[2.8rem] cursor-pointer items-center justify-center rounded-full border bg-[#090909] transition duration-300 motion-reduce:animate-none focus:outline-none md:h-[3.2rem] md:w-[3.2rem] ${
                           isActive
                             ? 'scale-[1.4] border-[#C084FC]/80 bg-[radial-gradient(circle_at_top,_rgba(192,132,252,0.2),_rgba(9,9,9,0.98)_68%)] shadow-[0_0_28px_rgba(168,85,247,0.65),0_0_56px_rgba(126,34,206,0.32)]'
                             : isHovered
@@ -175,11 +169,7 @@ export function AboutSection() {
         </div>
       </div>
 
-      <SectionContinueCue
-        targetId="projects"
-        chapter={ui.continueCue.aboutToProjects.chapter}
-        title={ui.continueCue.aboutToProjects.title}
-      />
+      <SectionContinueCue targetId="operating-model" chapter="Chapter 03" title="The engineering standard" />
     </section>
   );
 }

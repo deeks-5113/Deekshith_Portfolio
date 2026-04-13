@@ -6,7 +6,8 @@ import { getAboutCommentary, getBlogCommentary, getHeroCommentary, getProjectCom
 
 const sectionLabels: Record<string, string> = {
   hero: 'Opening Hook',
-  about: 'Operating Model',
+  about: 'About',
+  'operating-model': 'Operating Model',
   projects: 'Proof',
   blogs: 'Reflection',
   connect: 'Close',
@@ -79,6 +80,10 @@ export function NarrativeSidebar() {
 
     if (activeSection === 'about') {
       return getAboutCommentary();
+    }
+
+    if (activeSection === 'operating-model') {
+      return 'This section audits the engineering standards behind the portfolio. Hover a pillar to inspect the condition, response, and why the output reads more senior than the timeline suggests.';
     }
 
     if (activeSection === 'projects') {

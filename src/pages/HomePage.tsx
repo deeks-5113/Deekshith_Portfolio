@@ -1,6 +1,7 @@
 import { TelemetryCluster } from '@/components/TelemetryCluster';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
+import { OperatingModelSection } from '@/components/OperatingModelSection';
 import { WorkSection } from '@/components/work/WorkSection';
 import { BlogShowcase } from '@/components/blogs/BlogShowcase';
 import { ContactSimpleForm } from '@/components/ContactSimpleForm';
@@ -37,6 +38,7 @@ export function HomePage() {
       <TelemetryCluster />
       <HeroSection />
       <AboutSection />
+      <OperatingModelSection />
       <WorkSection view={landingView} />
       <BlogShowcase />
       <ContactSimpleForm />
