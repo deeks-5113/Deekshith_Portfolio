@@ -155,7 +155,7 @@ export function AboutSection() {
 
                       <div
                         className={`pointer-events-none absolute left-1/2 top-full z-40 mt-5 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-black/95 px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-zinc-100 shadow-[0_0_24px_rgba(0,0,0,0.45)] transition duration-200 ${
-                          isActive ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
+                          isActive || isHovered ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
                         }`}
                       >
                         {skill.label}

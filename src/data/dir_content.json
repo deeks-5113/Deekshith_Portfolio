@@ -10,18 +10,18 @@
     "summary": "The key architectural bias is context management. Good systems do not just generate answers. They deliver the right information to the right model at the right moment.",
     "center": "Agentic AI sits at the center because the value is not in isolated tools. It is in designing how those tools collaborate under one execution model.",
     "skills": {
-      "Java": "Java signals systems discipline. It is where I learned to think in strong abstractions, maintainability, and production-grade service design.",
-      "Python": "Python is the fastest bridge from idea to automation. It powers orchestration, backend logic, and the agent workflows that need to move quickly without losing rigor.",
-      "Node.js": "Node.js is where I build event-driven execution layers and interfaces that need to react in real time across browser and backend boundaries.",
-      "React": "React is the presentation layer for complex systems. I use it to surface architecture, state, and interaction in a way that feels deliberate rather than decorative.",
-      "n8n": "n8n represents my bias for visible orchestration. It turns multi-step automation into something observable, editable, and resilient instead of hidden inside scripts.",
-      "TypeScript": "TypeScript lets the interface and orchestration layers stay explicit. It reduces ambiguity in systems where state shape and tool contracts matter.",
-      "PostgreSQL": "PostgreSQL is where operational truth lives. I rely on it when a system needs relational integrity, predictable state, and enterprise-grade persistence.",
-      "Supabase": "Supabase is useful when speed matters but I still want structured data, auth primitives, and developer velocity without giving up a real database.",
-      "Tailwind CSS": "Tailwind CSS is how I keep interfaces expressive without drifting into styling entropy. It helps the UI stay systemized and intentional.",
-      "Docker": "Docker matters because systems should travel cleanly. Packaging the environment is part of the architecture, not an afterthought after the code works.",
-      "Git": "Git is the memory layer for engineering. It preserves intent, iteration, and accountability across how systems actually evolve.",
-      "Chrome": "Chrome points to browser-resident architecture. It is where I build tools that live close to user behavior, DOM state, and execution context."
+      "Java": "I have been working with Java for the last 2 years. It is where I learned to think in strong abstractions, maintainability, and production-grade service design.",
+      "Python": "I have deployed multiple Python FastAPI services. It is my go-to for rapid prototyping, data manipulation, and building custom connectors to APIs and databases.",
+      "Node.js": "I have built more than 5 applications using Node.js. It is my preferred environment for orchestrating multi-tool workflows, especially when real-time interaction and JavaScript ecosystem libraries are involved.",
+      "React": "All my frontend work is in React. It allows me to build dynamic, component-driven interfaces and also have the exeperice of curating custome components using LLMs to keep the UI consistent and adaptable to complex data flows.",
+      "n8n": "I have designed more than 20 workflows using n8n. It is my choice for orchestration and to plug in specialized agents. All the initial prototypes of the projects were built in n8n to quickly iterate on the agentic flow before committing to code.",
+      "TypeScript": "All my React code is mostly in TypeScript. It is much easier to maintain and scale as the systems grow in complexity, and it helps catch errors early in the development process.",
+      "PostgreSQL": "I have designed relational schemas and queries for more than 10 enterprise applications. I use PostgreSQL when I need structured data storage with strong consistency guarantees, especially for applications that require complex querying and transactional integrity.",
+      "Supabase": "I have deployed opensource PostgreSQL databases using Supabase. I have maintained multiple projects on Supabase, leveraging its real-time capabilities and built-in authentication and bucket storage to accelerate development and reduce operational overhead.",
+      "Tailwind CSS": "I have 1 year of experience using Tailwind CSS. But in the short span I ahve worked on multiple projects with it.It allowed me to rapidly prototype and build responsive, modern UIs without writing custom CSS, which is especially useful when iterating on design with LLM-generated components.",
+      "Docker": "I have containerized more than 15 applications using Docker. Added domains,  Configured SSL and optimized images for production deployment. I have laid CI/CD pipelines that build and deploy Docker containers with github actions and other tools.",
+      "Git": "I have maintained and contributed to more than 30 repositories using Git. I am proficient in branching strategies, pull request workflows, and version control best practices to ensure smooth collaboration and code management across teams.",
+      "Chrome": "I have built multiple Chrome Extensions. I have deployed extensions that leverage Chrome's storage API for local data management, and I have experience with content scripts and background scripts to create seamless user experiences while ensuring data privacy and security."
     }
   },
   "projects": {
